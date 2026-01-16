@@ -1,0 +1,757 @@
+\documentclass[12pt, a4paper, oneside]{report}
+\usepackage{graphicx} % For including images
+\usepackage{titlesec} % For customizing section titles
+\usepackage{tocloft} % For customizing table of contents
+\usepackage{acro} % For acronyms
+\usepackage{enumitem}
+\usepackage{placeins} % For \FloatBarrier
+\usepackage{float} % For [H] float placement
+\usepackage{caption} % For caption alignment control
+\usepackage{tabularx} % For tables that fit \textwidth
+\usepackage{array} % For column definitions in tabularx
+%% ____Bibliography____%%
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{chapterbib}
+\usepackage[breaklinks]{hyperref} % For clickable links in the document
+%\hypersetup{colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=blue}
+% Page margins
+\usepackage[left=1.5in, right=1in, top=1in, bottom=1in]{geometry}
+
+% Consistent numbering styles (no bullet lists)
+\setlist[enumerate,1]{label=\arabic*., leftmargin=*}
+\setlist[enumerate,2]{label=\alph*), leftmargin=*}
+\setlist[enumerate,3]{label=\roman*), leftmargin=*}
+
+% Avoid blank pages created when a \chapter starts at the top of an already-cleared page
+\makeatletter
+\newcommand{\clearpageifnotempty}{\ifdim\pagetotal=0pt\else\clearpage\fi}
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{\if@openright\cleardoublepage\else\clearpageifnotempty\fi}{}{}
+\makeatother
+
+% Remove page number from the first page
+\thispagestyle{empty}
+
+% Customize table of contents, list of figures, and list of tables
+\renewcommand{\cfttoctitlefont}{\hfill\Large\bfseries}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\cftloftitlefont}{\hfill\Large\bfseries}
+\renewcommand{\cftafterloftitle}{\hfill}
+\renewcommand{\cftlottitlefont}{\hfill\Large\bfseries}
+\renewcommand{\cftafterlottitle}{\hfill}
+
+% Define acronyms
+\DeclareAcronym{AI}{
+  short = AI,
+  long  = Artificial Intelligence
+}
+
+\DeclareAcronym{AMASS}{
+  short = AMASS,
+  long  = Archive of Motion Capture as Surface Shapes
+}
+
+\DeclareAcronym{API}{
+  short = API,
+  long  = Application Programming Interface
+}
+
+\DeclareAcronym{AR}{
+  short = AR,
+  long  = Augmented Reality
+}
+
+\DeclareAcronym{biRNN}{
+  short = biRNN,
+  long  = Bidirectional Recurrent Neural Network
+}
+
+\DeclareAcronym{CoM}{
+  short = CoM,
+  long  = Center of Mass
+}
+
+\DeclareAcronym{DIP}{
+  short = DIP,
+  long  = Deep Inertial Poser
+}
+
+\DeclareAcronym{DNN}{
+  short = DNN,
+  long  = Deep Neural Networks
+}
+
+\DeclareAcronym{ECE}{
+  short = ECE,
+  long  = Expected Calibration Error
+}
+
+\DeclareAcronym{FID}{
+  short = FID,
+  long  = Fréchet Inception Distance
+}
+
+\DeclareAcronym{FIP}{
+  short = FIP,
+  long  = Fast Inertial Poser
+}
+
+\DeclareAcronym{FPS}{
+  short = FPS,
+  long  = Frames Per Second
+}
+
+\DeclareAcronym{FSR}{
+  short = FSR,
+  long  = Foot Sliding Ratio
+}
+
+\DeclareAcronym{GPU}{
+  short = GPU,
+  long  = Graphics Processing Unit
+}
+
+\DeclareAcronym{HMR}{
+  short = HMR,
+  long  = Human Mesh Recovery
+}
+
+\DeclareAcronym{IK}{
+  short = IK,
+  long  = Inverse Kinematics
+}
+
+\DeclareAcronym{IMU}{
+  short = IMU,
+  long  = Inertial Measurement Unit
+}
+
+\DeclareAcronym{LBS}{
+  short = LBS,
+  long  = Linear Blend Skinning
+}
+
+\DeclareAcronym{LPIPS}{
+  short = LPIPS,
+  long  = Learned Perceptual Image Patch Similarity
+}
+
+\DeclareAcronym{ML}{
+  short = ML,
+  long  = Machine Learning
+}
+
+\DeclareAcronym{MPJPE}{
+  short = MPJPE,
+  long  = Mean Per Joint Position Error
+}
+
+\DeclareAcronym{PA-MPJPE}{
+  short = PA-MPJPE,
+  long  = Procrustes-Aligned Mean Per Joint Position Error
+}
+
+\DeclareAcronym{PD}{
+  short = PD,
+  long  = Proportional Derivative
+}
+
+\DeclareAcronym{PIFu}{
+  short = PIFu,
+  long  = Pixel-aligned Implicit Function
+}
+
+\DeclareAcronym{PIP}{
+  short = PIP,
+  long  = Physical Inertial Poser
+}
+
+\DeclareAcronym{PCA}{
+  short = PCA,
+  long  = Principal Component Analysis
+}
+
+\DeclareAcronym{PSD}{
+  short = PSD,
+  long  = Pose Space Deformation
+}
+
+\DeclareAcronym{PVE}{
+  short = PVE,
+  long  = Per Vertex Error
+}
+
+\DeclareAcronym{RGB}{
+  short = RGB,
+  long  = Red Green Blue
+}
+
+\DeclareAcronym{RNN}{
+  short = RNN,
+  long  = Recurrent Neural Network
+}
+
+\DeclareAcronym{ROMP}{
+  short = ROMP,
+  long  = Regressing Monocular 3D Pose and Shape
+}
+
+\DeclareAcronym{SIP}{
+  short = SIP,
+  long  = Sparse Inertial Poser
+}
+
+\DeclareAcronym{SMPL}{
+  short = SMPL,
+  long  = Skinned Multi-Person Linear Model
+}
+
+\DeclareAcronym{TIP}{
+  short = TIP,
+  long  = Transformer Inertial Poser
+}
+
+\DeclareAcronym{VR}{
+  short = VR,
+  long  = Virtual Reality
+}
+
+
+\begin{document}
+
+\include{cover}
+
+\renewcommand{\thepage}{\roman{page}} % Start page numbering in roman
+
+\chapter*{Abstract}
+Human activity reconstruction is widely used in the health industry, sports, rehabilitation, and virtual reality platforms. Traditional motion capture technology often relies on multiple inertial sensors including accelerometers, gyroscopes, as well as magnetometers, increasing the cost, complexity, and the power consumption.
+This project presents a simplified human activity reconstruction system using a sparse sensor configuration with only five 3-axis accelerometer sensors placed on the wrists, ankles, and torso which is designed as a simple wearable device. Machine learning algorithms are employed for recognizing patterns in human movement from the 15 accelerometer reading we are obtaining for a certain time period, and inverse kinematics is employed to model overall human movement. Our main aim is to represent the reconstructed model as a customized 3D avatar motion based on the body dimensions. Therefore, the proposed approach demonstrates a low cost and simple wearable alternative to conventional human activity reconstruction systems.
+
+\newpage
+
+% Table of Contents
+\tableofcontents
+\newpage
+
+% List of Figures
+\listoffigures
+\newpage
+
+% List of Tables
+\listoftables
+\newpage
+
+% Acronyms
+\addcontentsline{toc}{chapter}{Acronyms} % Add to table of contents
+\acuseall % Use all acronyms to ensure they appear in the list
+\printacronyms
+\newpage
+
+\renewcommand{\thepage}{\arabic{page}} % Start page numbering in arabic 
+\setcounter{page}{1} % start page numbering from 1
+
+% Main Content
+\chapter{Introduction}
+\section{Background}
+\noindent Human activity reconstruction of a user’s 3D skeletal configuration has become increasingly important for analyzing and visualizing human movement in areas such as healthcare, sports analysis, rehabilitation, virtual reality, gaming, biomechanical analysis and immersive human computer interaction, including virtual and augmented reality, since it enables remote monitoring and evaluation. These systems must function reliably in everyday environments and minimize intrusiveness and user instrumentation.\vspace{\baselineskip}
+
+\noindent Traditional motion capture systems rely on high-end optical based setups with multiple cameras, markers such as Vicon, and high accuracy inertial sensors, which require expensive infrastructure, controlled environments, and complex setups to attach them to the body, making them unsuitable for portable or everyday use.\vspace{\baselineskip}
+
+\noindent Sensor based approaches that mount devices directly on the human body can overcome the line-of-sight limitations of the vision based methods. Hence, Inertial Measurement Units (\ac{IMU}s), which provide acceleration and orientation data are proposed due to their low power consumption and ease of wearability. Dense inertial configurations, typically using more than 17 \ac{IMU}s placed near major joints, can directly estimate a joint's orientation. Therefore, these systems rely heavily on sensor accuracy. Even though there are commercial solutions based on this system like Xsens, dense \ac{IMU} setups are intrusive, uncomfortable to wear and require extensive calibration making them undesirable for consumer level usages\cite{yi2021transpose}.\vspace{\baselineskip}
+
+\noindent In contrast, recent research shows that sparse sensor configurations can effectively capture motion by using the lesser number of sensors which are placed on the key segments of the body. The reduced number of sensors leads to insufficient joint constraints, making the motion reconstruction more complex. The \ac{IMU}s itself is incapable of measuring the distances directly and the early sparse \ac{IMU} methods primarily based on optimization approaches which the human motion was reconstructed by matching sensor data to pre recorded motion datasets or by solving constrained convex or nonconvex optimization problems using physical and kinematic constraints. Therefore, these methods require high computational power and present significant latency making these unsuitable for real time applications.\vspace{\baselineskip}
+
+\noindent To address these limitations, learning based methods using Deep Neural Networks (\ac{DNN}s) have been proposed and Deep Inertial Poser (\ac{DIP}) was one of the earliest learning based method used to directly map sparse \ac{IMU} data to full body pose using \ac{DNN}s and large scale training datasets. \ac{DIP} significantly improved the real time performance which was a challenge in earlier times but still had some limitations in accuracy and recreation of the complex motions. Then , the Transformer Inertial Poser (\ac{TIP}) introduced transformer architectures combined with sampling based optimization to capture long term temporal dependencies in motion data improving the reconstruction quality but the computational cost was increased. Physical Inertial Poser (\ac{PIP}) further incorporated physical constraints and torque modeling through dual proportional derivative (\ac{PD}) controllers to model the torque and optimize the output of the transpose. But this additional optimization layer increases the computational burden and reduces the suitability for resource constrained platforms.\vspace{\baselineskip}
+
+\noindent For real-world applications involving consumers, motion capture systems should be able to operate within mobile platforms such as \ac{AR}-\ac{VR} Headsets, Smart Glasses, or wearable technology that impose tight power, size, and processing resource constraints. More importantly, most of the current approaches haven’t considered body shape information. This disregard causes bias to body shapes and adds to computational costs involved in pose estimation.\vspace{\baselineskip}
+
+\noindent Then the Fast Inertial Poser (\ac{FIP}) was proposed which is a real time motion capture method which can reduce the computational burden and latency while increasing the accuracy of the human activity reconstruction making it more suitable for embedded platforms with limited computational power and also it consider the body measurements of the user before wearing the device.\vspace{\baselineskip}
+
+\noindent Also, the coupling of Machine Learning (\ac{ML}) methods and biomechanical modeling has emerged as a successful strategy for the estimation of correct 3D skeletal poses using noisy and incomplete sensor data. From the point of view of \ac{IMU}-based motion capture systems, Machine Learning models can be trained to learn the complex, generally nonlinear relations between the sensor data (Inertial measurements of orientation, Angular Velocity, and Acceleration) and the corresponding joint orientations of the human body. Using the prior knowledge of human motion learned by Machine Learning systems, it is possible to overcome the ambiguities inherent to the application of incomplete sensor setups and noisy sensor readings.\vspace{\baselineskip}
+
+\noindent With joint orientation/pose parameters estimated by \ac{ML} algorithms, a full-body skeletal reconstruction is often obtained via Inverse Kinematics (\ac{IK}). It imposes constraints such as bone length, joint limits, and body part hierarchical order to ensure a valid skeletal reconstruction that is not only meaningful in a physical sense but anatomically feasible as well. Thus, \ac{ML} is used for a problem that is undetermined yet important for pose reconstruction and temporal consistency of the reconstruction sequence, and \ac{IK} is then used to refine the final reconstruction and prepare it for visualization purposes.\vspace{\baselineskip}
+
+\noindent The synergy of \ac{ML}-based pose estimation and inverse kinematics is even more valuable for real-time computation on embedded systems. \ac{ML} inference is fast once the model is trained, and \ac{IK} is a light Post-processing step that maintains human body consistency with relatively inexpensive global optimization. Thus, these two combined can make skeletal data generation from sparse \ac{IMU} highly efficient for minimally invasive and real-time motion capture systems used for applications like \ac{VR}/\ac{AR}, gaming, and human-computer interaction\cite{xiao2024fast}.
+\vspace{\baselineskip}
+
+
+\section{Problem Statement}
+
+\noindent Even though human activity reconstruction is carried out using wearable motion capture systems in areas such as healthcare, sports, virtual reality, and rehabilitation. Most existing \ac{IMU}-based motion capture approaches rely on multiple sensors incorporating accelerometers and gyroscopes to estimate body orientation and joint movements with high accuracy. Commercial systems such as Xsens MVN and perception neuron typically employ 10-17 \ac{IMU}s leading to increased hardware cost, complex calibration procedures and higher computational requirements for sensor fusion and drift compensation making such systems less suitable for simple and low hardware cost wearable solutions.\vspace{\baselineskip}
+
+\noindent Gyroscope-based motion reconstruction involves sensor fusion, calibration processes, and drift compensation algorithms which increases the computational power, power consumption and the design complexity. Also, over time the drift will accumulate and this leads to inaccuracies in the orientation which affects the precision of the reconstruction over longer spans of the activity. Furthermore, when a larger number of gyroscope and accelerometer equipped sensors are used, it reduces the wearability and simplicity, making them uncomfortable for users and impractical for everyday or long-term use.\vspace{\baselineskip}
+
+\noindent Considering all these limitations, a simple, low cost and minimally intrusive system approach is needed for human activity reconstruction. Therefore, the challenge is to utilize a sparse set of accelerometer only sensors and combine evolving engineering technologies in order to reconstruct meaningful human motion while maintaining affordability, simplicity, and user comfort.\vspace{\baselineskip}
+
+\section{Objectives and Scope}
+
+\subsection{Objectives}
+
+\noindent The aim of this project is to develop a low cost and wearable human activity detection and reconstruction system using accelerometers.\vspace{\baselineskip}
+
+\noindent The specific objectives of the project are as follows,
+\vspace{\baselineskip}
+
+\begin{enumerate}[leftmargin=*, itemsep=1em]
+    \item{Accurately acquire raw motion data from the user during movement} \\
+    \textit{Expected outcome} -- Accurate accelerometer-based sensor readings with synchronized timestamps representing the user's physical movement to be used for further processing.
+
+    \item {Design and develop a method to estimate joint postures and orientations using the collected raw accelerometer data} \\
+    \textit{Expected outcome} -- Accurate joint posture parameters, such as joint angles and orientations, that represent the user's physical movement for use in skeletal mapping.
+
+    \item {Design a skeletal model using joint posture parameters and create a 3D avatar} \\
+    \textit{Expected outcome} -- A realistic, 3D human avatar that reconstructs the full-body motion of the user's physical movement.
+
+    \item {Design and implement a subsystem to validate the reconstructed human activity and the avatar output through a reliable evaluation method} \\
+    \textit{Expected outcome} -- Validation results representing the accuracy, consistency, plausibility, and reliability of the human activity reconstruction system.
+\end{enumerate}
+\vspace{\baselineskip}
+
+\subsection{Scope}
+\begin{enumerate}[leftmargin=*, itemsep=1.5em]
+    \item \textbf{Sensor Configuration} \\
+    \textit{Scope:} The project utilizes five 3D accelerometer modules positioned on the wrists, ankles, and torso to capture human motion data. \\
+    \textit{Limitation:} The absence of gyroscopes introduces ambiguity in full 3D orientation estimation, especially regarding yaw rotation (heading).
+
+    \item \textbf{Calibration and Reliability} \\
+    \textit{Scope:} Accelerometers will be selected, configured, and calibrated to ensure consistent data acquisition across different users. \\
+    \textit{Limitation:} Calibration accuracy may vary due to sensor placement errors and morphological differences between users.
+
+    \item \textbf{Activity Acquisition} \\
+    \textit{Scope:} Data acquisition is performed while users execute a predefined set of activities, finalized after sensor data analysis. \\
+    \textit{Limitation:} System performance may degrade when encountering activities outside the predefined set.
+
+    \newpage
+
+    \item \textbf{Signal Preprocessing} \\
+    \textit{Scope:} Implementation of filtering and normalization techniques to reduce noise in accelerometer signals. \\
+    \textit{Limitation:} High-dynamic movements may reduce the effectiveness of gravity-based orientation estimation.
+
+    \item \textbf{Machine Learning (\ac{ML}) Estimation} \\
+    \textit{Scope:} Utilization of ML-based models for joint configuration estimation. \\
+    \textit{Limitation:} Reliability is highly dependent on the quality and diversity of training data; estimated parameters may only serve as rough approximations.
+
+    \item \textbf{Motion Reconstruction} \\
+    \textit{Scope:} Application of inverse biomechanical kinematics for physical motion reconstruction. \\
+    \textit{Limitation:} Inverse Kinematics (\ac{IK}) solutions are not necessarily unique and may introduce errors when sensor data is highly ambiguous.
+
+    \item \textbf{Avatar Generation} \\
+    \textit{Scope:} Fine-tuning of a customized 3D avatar and skin generation. \\
+    \textit{Limitation:} The accuracy of the avatar's visual representation depends on image quality and the robustness of the underlying pose estimation.
+  \end{enumerate}
+
+
+
+
+\chapter{Literature Review}
+
+\section{Previous Work}
+
+\subsection{Developing the Models using Sparse \ac{IMU}s to Estimate the Joint Postures and the Orientations}
+\ac{IMU} based human activity reconstruction aims to model full body pose while avoiding the limitations of camera-based systems. Over time, research on this topic has evolved from optimization-based approaches to deep learning models while reducing the number of sensors, computational power, cost, and durability. \ac{SIP}, \ac{DIP}, \ac{TIP}, \ac{PIP}, and \ac{FIP} represent key milestones along this research journey.
+
+\subsubsection*{Sparse Inertial Poser (\ac{SIP})}
+\ac{SIP} is an optimization-based method that formulated pose estimation as a global or temporal optimization problem using motion priors and kinematic constraints. Even though this method has a high accuracy with sparse \ac{IMU}s, it is computationally expensive and has a higher latency, which limits real-time and mobile applicability \cite{yi2021transpose}.
+
+\subsubsection*{Deep Inertial Poser (\ac{DIP})}
+\ac{DIP} employs bidirectional \ac{RNN}s to estimate joint rotations from the \ac{IMU} dataset, handled through learned kinematic constraints making it faster than the SIP method with a good accuracy rate. However, past and future frames are needed to improve accuracy; their dependence on future information introduces non-causal inference and latency, making them unsuitable for live applications \cite{huang2018deep}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Overview of the DIP pipeline.png}
+    \caption{Overview of the DIP pipeline \cite{huang2018deep}}
+    \label{fig:dip_pipeline}
+\end{figure}
+
+\subsubsection*{Transformer Inertial Poser (\ac{TIP})}
+\ac{TIP} uses a transformer-based architecture to capture long-range temporal dependencies without an inverse kinematic solver, allowing it to handle complex motions accurately[cite: 103]. However, it requires high computational and memory resources, limiting deployment on embedded or wearable devices \cite{yi2021transpose}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Overview of the TIP pipeline.png}
+    \caption{Overview of the TIP pipeline \cite{yi2021transpose}}
+    \label{fig:tip_pipeline}
+\end{figure}
+
+\subsubsection*{Physics-based Inertial Poser (\ac{PIP})}
+\ac{PIP} combines physics-based modeling with optimization and inverse kinematics to enforce physical plausibility, such as balance and ground contact[cite: 142]. It can estimate physically realistic motion and handle contact better than other methods[cite: 143]. However, this method also requires complex system design and high computational cost, limiting real-time applicability \cite{xiao2024fast}.
+
+\subsubsection*{Fast Inertial Poser (\ac{FIP})}
+\ac{FIP} embodies a real-time solution based on human motion reconstruction to deduce full-body pose based on six sparse \ac{IMU}s by adapting information of the human shape. The solution employs a bidirectional \ac{RNN} honoring the human body kinematic structure to facilitate real-time computation and minimize latency. The inclusion of body parameters, such as height and limb lengths, aids in canceling ambiguities in pose inference arising from sparse sensing. Experimental results on \ac{AMASS} and \ac{DIP}-\ac{IMU} datasets provide evidence of state-of-the-art performance, running above 60 \ac{FPS} within a 15ms latency \cite{xiao2024fast}.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Overview of the FIP pipeline.png}
+    \caption{Overview of the FIP pipeline \cite{xiao2024fast}}
+    \label{fig:fip_pipeline}
+\end{figure}
+
+\FloatBarrier
+
+\subsection{Developing the Models using Accelerometers to Estimate the Joint Postures and the Orientations}
+\begin{enumerate}[leftmargin=*, itemsep=1em]
+    \item Human activity reconstruction for full-body pose has been performed using only four sparse 3-axis accelerometers placed on the wrists and ankles. Instead of using accelerometer readings directly, which can introduce significant drift, this method used a data-driven approach leveraging a large motion capture database. A simulate-and-optimize approach was utilized to generate synthesized accelerometer readings to align with sensor data through nearest-neighbor search and graph optimization. Inverse kinematics and reduced-dimensional pose representations were used to recover plausible full-body poses in real-time \cite{tautges2011motion}.
+
+    \begin{figure}[!htbp]
+        \centering
+        \includegraphics[width=0.95\textwidth]{Overview of the system proposed in tautges 2011.png}
+        \caption{Overview of the system proposed in tautges 2011 \cite{tautges2011motion}}
+        \label{fig:tautges2011}
+    \end{figure}
+    \newpage  
+    \item Human motion can also be reconstructed using wearable accelerometers in isolation from optical motion capture systems. This low-cost framework uses several body-mounted tri-axial accelerometers to estimate motion for sports and outdoors where optical systems are impractical. The approach relies on a data-driven motion database and a motion graph constructed from pre-recorded motion capture data \cite{kelly2010human}. While the method produced naturalistic motions, it was prone to positional drift over time, illustrating a major limitation of accelerometer-only approaches.
+
+    \begin{figure}[!htbp]
+        \centering
+      \includegraphics[width=0.7\textwidth]{Overview of the system proposed in kelly 2010.png}
+        \caption{Overview of the system proposed in kelly 2010 \cite{kelly2010human}}
+        \label{fig:kelly2010}
+    \end{figure}
+\end{enumerate}
+
+\FloatBarrier
+
+\subsection{3D Skeletal Reconstruction using Parametric Pose Angles}
+Traditional motion capture often relies on deriving absolute 3D coordinates ($x, y, z$) for individual joints. However, for applications requiring high anatomical fidelity, simple coordinate-based methods are insufficient as they lack surface information and rigid biomechanical constraints. Parametric skeletal reconstruction addresses these limitations by estimating pose angles of a digital skin. This approach ensures reconstructed motion adheres to physiological limits and serves as the foundation for "Digital Twin" technologies.
+
+\subsubsection*{SMPLify (Skinned Multi-Person Linear Model)}
+The SMPL model is a vertex-based statistical model defining the human body surface. It is parametric, controlled by two low-dimensional vectors: Shape ($\beta$), representing coefficients derived from PCA, and Pose ($\theta$), representing axis-angle rotations of joints in a kinematic tree. The skin consists of 6,890 vertices bound using Linear Blend Skinning (LBS) weights \cite{loper2015smpl}.
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Mathematical Formulation} \\
+    The body mesh is a function of shape ($\beta$) and pose ($\theta$):
+  \begin{enumerate}[leftmargin=*]
+        \item \textbf{Shape ($\beta$)} \\
+        A vector of 10 coefficients derived from Principal Component Analysis (PCA) of body scans. Changing these values alters the subject's height, weight, and muscularity without affecting their pose.
+        
+        \item \textbf{Pose ($\theta$)} \\
+        A vector of $24 \times 3$ parameters representing the axis-angle rotation of the 23 joints relative to their parents in the kinematic tree, plus the global orientation of the root joint (Pelvis).
+  \end{enumerate}
+
+    \item \textbf{Kinematic Tree \& Skinning} \\
+    The model utilizes a hierarchical kinematic tree (e.g., the shoulder moves the elbow, which moves the wrist). The "Skin" consists of \textbf{6,890 vertices} that are bound to this skeleton using \textbf{Linear Blend Skinning (LBS)} weights. This ensures that when the skeleton moves (driven by the reconstructed angles), the skin stretches and deforms realistically, providing the necessary surface data for regeneration analysis.
+  \end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Evaluation of SMPLify reconstruction performance across varying accuracy percentiles.png}
+    \caption{Evaluation of SMPLify reconstruction performance across varying accuracy percentiles\cite{loper2015smpl} }
+    \label{fig:smplify_eval}
+\end{figure}
+
+
+
+\subsubsection*{HMR (Human Mesh Recovery)}
+HMR utilizes a neural network to predict pose and shape coefficients from a single image in one step. This confirmed real-time skeletal reconstruction while preserving human anatomy \cite{kanazawa2018hmr}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Qualitative results of Human Mesh Recovery (HMR) on unconstrained monocular RGB images.png}
+    \caption{Qualitative results of Human Mesh Recovery (HMR) on unconstrained monocular RGB images \cite{kanazawa2018hmr}}
+    \label{fig:hmr_qualitative}
+\end{figure}
+
+\subsubsection{ROMP (Regressing Monocular 3D Pose and Shape)}
+While SMPL provides the container for the data, ROMP is the engine used to extract that data from monocular images. It is a "one-stage" regression network designed to operate efficiently on local GPU hardware\cite{sun2021monocular}.
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Single-Stage Architecture} \\
+    Unlike older "two-stage" methods (like SMPLify) that first detect 2D keypoints and then separately optimize a 3D model to fit them—a slow and iterative process—ROMP utilizes a ResNet-50 backbone to perform end-to-end regression. It takes an input image and simultaneously predicts the camera parameters, body center, and SMPL parameters in a single forward pass.
+
+    \item \textbf{Pixel-Level Center Map} \\
+    ROMP distinguishes itself by treating the 3D body center as a pixel-level representation. It generates a "Center Map" (heatmap) to locate subjects even in crowded scenes.
+
+    \item \textbf{Parameter Map Construction:} For every detected body center, ROMP samples a feature vector that is decoded into:
+    \begin{enumerate}[leftmargin=*]
+        \item \textbf{3D Pose ($\theta$):} The rotation matrices for all 24 joints.
+        \item \textbf{Body Shape ($\beta$):} The coefficients describing the user's unique anatomy.
+    \end{enumerate}
+  \end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{The ROMP One-Stage Regression Architecture for 3D Mesh Recovery.png}
+    \caption{The ROMP One-Stage Regression Architecture for 3D Mesh Recovery \cite{sun2021monocular}}
+    \label{fig:romp_architecture}
+\end{figure}
+
+\subsection{3D Skin Generation and Skeletal Binding}
+Human digitization has evolved from primitive skeletal models to complex, mesh-based representations containing both identity and motion. Current research in 3D skin generation and skeletal binding is dominated by three major technological pillars: 
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Parametric Body Modeling} \\
+    The most influential progression in skin creation is the \textbf{Skinned Multi-Person Linear (SMPL)} model \cite{loper2015smpl}. Other than the stick-figure skeleton model, SMPL is a vertex-based representation of simplified human bodies that provides a low-dimensional parameter space to describe human body shapes. It deforms a generic template with shape parameters $\beta$ to correspond to distinctive physical proportion and pose parameters $\theta$ that define joint rotations.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+  \includegraphics[width=0.8\textwidth]{Decomposition of the SMPL model into shape and pose parameters.png}
+    \caption{Decomposition of the SMPL model into shape ($\beta$) and pose ($\theta$) parameters \cite{loper2015smpl}}
+    \label{fig:loper_smpl}
+\end{figure}
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Automated Mesh Recovery} \\
+    The alternative to manual character creation is solved with use of the so called \textbf{Human Mesh Recovery (HMR)} methods. Research by Kanazawa et al. \cite{kanazawa2018hmr} showed that it is possible to directly regress SMPL parameters from a single RGB image using end-to-end deep learning. \textbf{Pixel-aligned Implicit Functions (PIFu)} \cite{saito2019pifu} go further in this direction, enabling digitization of "clothed" humans and obtaining high-resolution texture and clothing folds that parametric models generally fail to represent.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Real-time 3D Human Mesh Recovery (HMR) from a single RGB image.png}
+    \caption{Real-time 3D Human Mesh Recovery (HMR) from a single RGB image\cite{kanazawa2018hmr} }
+  \label{fig:hmr_single_rgb}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{High-resolution surface reconstruction using Pixel-aligned Implicit Functions (PIFu).png}
+    \caption{High-resolution surface reconstruction using Pixel-aligned Implicit Functions (PIFu)\cite{saito2019pifu}}
+  \label{fig:pifu_highres}
+\end{figure}
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Vertex-to-Bone Mathematical Binding} \\
+    To ensure that the generated skin can deform with the skeleton without visual artifacts or slippage, Linear Blend Skinning (LBS) is used. LBS was developed as skeletal subspace deformation. While basic LBS can suffer from volume loss, the foundational work in Pose Space Deformation (\ac{PSD}) \cite{lewis2000pose} created the mathematical means to connect the weighted influence of mesh vertices to the motions of the bones. This balances the surface deformation to the active bone movements while reducing joint distortion artifacts.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Comparison of joint volume loss in standard Linear Blend Skinning (LBS) vs. the corrected Pose Space Deformation (PSD).png}
+    \caption{Comparison of joint volume loss in standard Linear Blend Skinning (LBS) vs. the corrected Pose Space Deformation (PSD) (PIFu)\cite{lewis2000pose}}
+  \label{fig:lbs}
+\end{figure}
+
+
+\subsection{Validation for Accelerometer-Based Activity Reconstruction}
+A primary objective of this research is to validate the proposed activity reconstruction model through comprehensive assessment of its accuracy, consistency, plausibility, and reliability. To achieve rigorous validation, this study adopts a hierarchical framework comprising four distinct levels, each addressing a different dimension of reconstruction quality. This multi-tiered approach is particularly critical for accelerometer-based systems, where inherent challenges such as sensor drift and the limited observational scope of inertial measurement units compared to optical motion capture systems necessitate evaluation beyond conventional geometric accuracy metrics alone.
+
+\begin{enumerate}[leftmargin=*, itemsep=1em, label=\roman*.]
+
+  \item \textbf{Geometric Accuracy Assessment:} \\
+    Geometric validation forms the foundation of motion reconstruction evaluation, primarily relying on Euclidean distance metrics to quantify positional deviations from ground truth data obtained through optical motion capture systems\cite{zhao2025ppmotion}.
+    \begin{enumerate}[leftmargin=*]
+        \item \textbf{MPJPE (Mean Per Joint Position Error):} The average distance (in millimeters) between predicted and true joint coordinates.
+        \item \textbf{PA-MPJPE (Procrustes-Aligned MPJPE):} This rigid alignment removes errors related to global rotation and scale, focusing purely on the "pose" structure.
+        \item \textbf{PVE (Per Vertex Error):} For full avatars (meshes), this measures the error of every vertex on the body surface, capturing body shape (e.g., fat/muscle) accuracy better than just joints.
+  \end{enumerate}
+
+  \item \textbf{Physical Plausibility Verification:} \\
+    Given that accelerometers fundamentally measure force-related quantities governed by Newtonian mechanics, validation must extend beyond geometric correspondence to encompass physical realism\cite{zhu2025human}.
+    \begin{enumerate}[leftmargin=*]
+        \item \textbf{Foot Sliding (FSR):} A critical metric for generative models. It measures the distance feet travel while they should be planted on the ground. High foot sliding is a primary indicator of poor reconstruction quality.
+        \item \textbf{PhysCap \& NeuralPhysCap:} These methods validate motion by running it through a physics simulator (like MuJoCo). If the simulator cannot replicate the motion without applying impossible external forces (e.g., invisible strings pulling the puppet), the reconstruction is flagged as "implausible".
+        \item \textbf{Center of Mass (CoM) Stability:} This verifies if the avatar is balanced or if it would physically fall over given the reconstructed pose.
+  \end{enumerate}
+
+  \item \textbf{Perceptual Quality Evaluation:} \\
+    Recent scholarship acknowledges that mathematical accuracy does not guarantee perceptually natural motion, addressing the potential for technically correct but visually uncanny results\cite{zhao2025ppmotion}.
+    \begin{enumerate}[leftmargin=*]
+        \item \textbf{LPIPS (Learned Perceptual Image Patch Similarity):} A deep-learning metric used to compare rendered frames of the avatar against real video. It correlates better with human visual perception than pixel-level errors.
+        \item \textbf{FID (Fréchet Inception Distance):} Measures the distance between the distribution of generated motions and real human motions. A lower FID means the motion "looks" more natural and human-like.
+        \item \textbf{PP-Motion:} A newly proposed metric (2025) that combines physical constraints with human perceptual scores to give a single "Fidelity" rating.
+  \end{enumerate}
+
+  \item \textbf{Reliability and Uncertainty Quantification:} \\
+    The most sophisticated validation tier addresses model confidence calibration and epistemic uncertainty. This reliability assessment is particularly pertinent for accelerometer-based systems operating in unconstrained environments where activity diversity may exceed training data coverage\cite{ponton2025step2motion}.
+    \begin{enumerate}[leftmargin=*]
+        \item \textbf{Expected Calibration Error (ECE)} measures the alignment between predicted confidence levels and actual accuracy rates, with elevated ECE values signaling unreliable confidence estimates.
+        \item \textbf{Epistemic uncertainty quantification} identifies knowledge gaps in the model's training distribution, proving essential for detecting when the system encounters novel activities beyond its learned repertoire.
+  \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+\section{Gaps in Literature}
+\subsection{Developing the Models using Accelerometers to Estimate the Joint Postures and the Orientations }
+There are several gaps remaining in accelerometer-only based motion human activity reconstruction existing research. First, dependence on large fixed motion databases like AMASS limits the generalizationabilty and the quality of reconstruction of out-of-distribution motions as they fail to reconstruct complex and novel movements that were not present in the training data which leads to stiff motions. Second, optimization and retrieval methods being used in earlier approaches for motion reconstruction require high computational costs limiting the applicability in lightweight systems. Additionally, existing accelerometer based methods face ambiguities in rotational pose estimation and require very strong assumptions in the case of missing information when it comes to yaw rotations. The fine grained motion information, global translation estimation and adaption capability for different human morphologies and complex motions are also less represented in the existing research. These facts point towards more sophisticated methods being designed for more effective and efficient research in human activity reconstruction using accelerometers\cite{tautges2011motion}.
+
+
+\subsection{Parametric Reconstruction and Anatomical Binding}
+While notable progress has been achieved separately in the areas of 3D surface modeling and inertial pose estimation, effectively combining these two technologies remains a major challenge—particularly when operating with sparse sensor setups.The following sections outline the specific deficiencies in current research that this study aims to address.
+
+\paragraph{Metric Scale and Manual Measurement Ambiguity}
+Current regression-based approaches such as ROMP\cite{sun2021monocular} and HMR\cite{kanazawa2018hmr} are capable of reliably estimating 3D body shape and proportions; however, their outputs are typically expressed in a unit-less coordinate space. Most existing works focus on visual pose appearance rather than absolute metric correctness. This limitation is a major unresolved challenge for clinical applications, such as skin regeneration, where real-world measurements are essential.
+Moreover, existing sparse inertial systems such as the Fast Inertial Poser\cite{xiao2024fast} still rely heavily on manual measurements. Users are required to input pre-measured limb lengths and biological parameters to properly calibrate the skeletal model. Currently there is no fully autonomous pipeline that bridges automated data derived from single-perspective visual inputs with the real-time requirements of sparse inertial sensing
+
+
+\paragraph{Biometric Mismatch and Kinematic Drift}
+A recurring problem in motion reconstruction is the Body Size Mismatch caused by the use of "standard" digital templates. Research shows that even slight differences between a digital skeleton’s segment lengths (e.g., the humerus)  and a user’s actual anatomy can cause the Inverse Kinematics (IK) solver to compute inaccurate joint angles\cite{molloy2023impact}. This often leads to kinematic drift and visually unrealistic artifacts, like feet sinking through the floor. Current studies do not offer a reliable method for automatically resizing a digital skeleton to match a user’s specific limb lengths using just a single-photo calibration before inertial tracking. 
+
+\paragraph{Volume Preservation and Physiological Binding Gaps}
+The final challenge lies in maintaining the visual realism of a 3D surface during extreme motions. Conventional techniques for skeletal binding, like Linear Blend Skinning (LBS), often struggle with "volume loss"\cite{lewis2000pose}. This results in joints—particularly elbows and knees—appearing to collapse or form a pinched, "candy-wrapper" effect when bent deeply. While generic corrective models exist, they fail to consider the unique muscle and soft-tissue volumes of an individual. Currently, there is no integrated approach that leverages a user’s initial photograph to guide the 3D model in realistically stretching and folding the skin according to that person’s specific anatomy.
+
+\begin{table}[H]
+\captionsetup{justification=raggedright,singlelinecheck=false}
+\caption{Summary of Identified Gaps in Literature}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3cm}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+\hline
+\textbf{Gap Category} & \textbf{Current Limitation} & \textbf{Impact on Reconstruction} \\ \hline
+\textbf{Metric Ambiguity} & Models are unit-less and require manual height/limb entry. & Lack of clinical accuracy in skin regeneration. \\ \hline
+\textbf{Biometric Mismatch} & Reliance on generic "average" skeletons. & Calculated joint angles are mathematically incorrect. \\ \hline
+\textbf{Binding Artifacts} & Standard LBS causes joint collapse and volume loss. & Unrealistic visual representation during movement. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+
+\chapter{Methodology}
+
+
+\section{Research Design}
+This research follows a structured approach to human activity reconstruction. First, joint postures and orientations are estimated using sensor data and computational models. In parallel, a 3D skeletal model is reconstructed, and a virtual avatar is generated to represent human motion. These two outputs are integrated to form a complete motion representation. Finally, the proposed system is validated using experimental data, and its performance is evaluated based on accuracy, consistency, and reliability metrics.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Methodology Chart.png}
+    \caption{Block diagram of the proposed methodology }
+  \label{fig:methodology_block_diagram}
+\end{figure}
+
+\subsubsection{Estimate the joint postures and the orientations}
+Since joint postures and the orientations cannot be directly obtained by only using accelerometer data, we are planning to work on different approaches at the same time as follows.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.87\textwidth]{Estimate Joint Postures.png}
+    \caption{Flowchart of the Estimate the joint postures and the orientations }
+  \label{fig:estimate_joint_postures_flowchart}
+\end{figure}
+
+The process commences with directly employing the available hardware components for retrieving raw data from wearable devices pertaining to the accelerometer sensor. The hardware components are solely responsible for providing initial inertial measurements to facilitate the analysis of joint posture and orientation. Wearable sensor-retrieved raw data constitutes the input for the proposed system addressing the estimation of joint posture and orientation by employing the strategy of integrating various estimation techniques.
+
+Three parallel strategies are incorporated within the proposed architecture for estimating joint posture parameters:
+\begin{enumerate}
+    \item \textbf{Machine Learning Prediction:} A prediction model using machine learning algorithms has been employed for patterns within the accelerometer data and estimating joint posture and orientation information.
+    \item \textbf{Geometrical Equations:} Geometrical equations for joint estimation, considering relative orientations among the sensors and gravity constraints, have been employed for joint parameter derivation.
+    \item \textbf{Inverse Kinematics:} The theory of inverse kinematics for the refinement of joint orientation estimates, based on anatomical and biomechanical constraints, has been introduced.
+\end{enumerate}
+
+The parallel strategies illustrated above permit a comparative assessment and enhance the robustness of the posture estimation process. The results are assessed based on sensor accuracy, computational ability, and estimation robustness. If inadequate, the system upgrades existing elements, such as optimizing sensor locations or sampling. Once standards are satisfied, data collection and experimentation take place to accomplish a comprehensive joint posture estimation system .
+
+\subsubsection{Avatar Generation and Animation}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.87\textwidth]{3D Skeletal Reconstruction.png}
+    \caption{Flowchart of the Avatar Generation and Animation }
+  \label{fig:avatar_generation_flowchart}
+\end{figure}
+In human activity reconstruction, the visualization layer must go beyond basic skeletal overlays to deliver a biologically realistic and metrically precise representation of the individual.  A significant limitation identified in current research is the reliance on generic skeletal models that fail to account for individual variations in limb length and body mass.The primary objective of this subsystem is to develop a unified framework that generates a personalized "Digital Twin" and animates it using a high-fidelity skin deformation pipeline. Instead of manual rigging, this research automates the transition from a 2D image to a moving 3D surface through three stages:
+\begin{enumerate}
+    \item \textbf{Skeletal Reconstruction:} The system investigates Deep Regression methods (e.g., ROMP or HMR) to automatically predict skeletal parameters ($\theta$) and shape coefficients ($\beta$) from a single monocular image in a single pass.
+    \item \textbf{Surface Modelling and Binding:} The avatar utilizes the Skinned Multi-Person Linear (SMPL) model, defining the surface with 6,890 vertices attached to a skeletal structure using Linear Blend Skinning (LBS).
+    \item \textbf{Animation Pipeline:} A real-time processing loop receives a standardized Pose Vector ($\theta$) composed of axis-angle rotation parameters. This vector drives the LBS engine to apply rotations to the scaled skeleton with a target latency of less than 15ms .
+\end{enumerate}
+
+\subsubsection{Validation}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Validation.png}
+    \caption{Flowchart of the Validation }
+  \label{fig:validation_flowchart}
+\end{figure}
+In human action reconstruction, an ideal system is expected to follow a hierarchical framework comprising four distinct levels. However, to date, no existing model fully satisfies all four levels of this framework. The primary objective of our methodology is not to validate or improve an existing model, but rather to develop a new model that addresses the identified limitations in current approaches.
+
+Therefore, instead of validating our system against an ideal but unavailable benchmark, we validate our proposed model through comparative analysis with well-established and validated models that are currently used in real-world applications. Based on our literature review, we identified several relevant models for this purpose, including
+
+\begin{enumerate}[leftmargin=*]
+    \item PP-Motion\cite{zhao2025ppmotion}
+    \item EveryWear\cite{zhu2025human}
+    \item Step2Motion\cite{ponton2025step2motion}
+\end{enumerate}
+Among these, we select a representative model that employs computer vision and image processing techniques and compare its performance with our proposed model. The comparison focuses on key evaluation criteria such as accuracy, consistency, plausibility, and reliability. This comparative validation allows us to assess the effectiveness of our approach while positioning our model within the context of existing, validated systems.
+
+\section{Data Collection}
+
+\subsubsection{Accelerometer Based Sensor Readings Collection}
+\begin{enumerate}[leftmargin=*]
+    \item Five 3-axis accelerometer sensors are placed on key body segments: both wrists, both ankles, and the torso.
+    \item Each sensor measures linear acceleration along three orthogonal axes (x, y, z), including both gravitational and motion-induced acceleration.
+    \item Prior to acquisition, sensor calibration corrects offset and scale errors. Sensors are securely attached to minimize relative motion.
+    \item Sensor axes are aligned with anatomical reference frames, and signals are sampled at a fixed frequency as continuous time-series data.
+    \item Predefined activity sets ensure consistency across data samples.
+\end{enumerate}
+
+\subsubsection{Biometric and Kinematic Data Integration}
+This module defines the inputs required to build the Digital Twin:
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Visual Calibration Data:} A single high-resolution monocular RGB image of the subject in a neutral A-pose, resized to $512 \times 512$ pixels.
+    \item \textbf{Manual Biometric Metadata:} The subject’s true height ($H_{real}$) is used for Height-Anchor Scaling to transform unit-less bone lengths into centimeter measurements.
+    \item \textbf{Kinematic Interface:} The system receives 24×3 axis-angle rotation parameters from the Motion Reconstruction Module.
+    \item \textbf{Synchronization:} The avatar initializes in a "Zero Pose" at $t=0$ to align the virtual skeleton and mesh with calibrated sensor orientations.
+\end{enumerate}
+
+\chapter{Timeline and Resource Required}
+
+\section{Timeline}
+\begin{figure}[H]
+    \centering
+  \includegraphics[width=0.89\textwidth]{Timeline.png}
+    \caption{TimeLine }
+    \label{fig:timeline}
+\end{figure}
+
+
+\section{Resource Required}
+This is a general estimation of budget for this project. These prices can be vary since the exact electronics/ services are not decided yet.
+
+\begin{table}[H]
+    \centering
+    \caption{Estimated Budget for Project Components and Services}
+    \label{tab:project_budget}
+    \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{No} & \textbf{Item / Service} & \textbf{price} \\ \hline
+        1 & Repair for existing components & 5 000 \\ \hline
+        2 & Web hosting & 10 000 -- 15 000 \\ \hline
+        3 & ML training platform & 5 000 -- 8 000 \\ \hline
+        4 & Cloud computing & 15 000 -- 20 000 \\ \hline
+        5 & API s & 7 000 -- 10 000 \\ \hline
+          & \textbf{Total} & \textbf{42 000 -- 58 000} \\ \hline
+    \end{tabular}
+\end{table}
+
+
+
+\chapter{Conclusion}
+\noindent This project proposal outlines a comprehensive framework for accomplishing high
+fidelity human activity reconstruction with a sparse configuration of only five 3-axis 
+accelerometers. By strategically positioning these sensors on the wrists, ankles, and 
+torso, the suggested system addresses the critical need for a low-cost, minimally 
+intrusive, and portable alternative to standard motion capture technologies which 
+often rely on dense, expensive, and complex sensor arrays. \vspace{\baselineskip}
+
+
+\noindent The methodology uniquely bridges the gap between raw inertial data and realistic 
+visualization by combining three parallel estimation strategies: machine learning
+based pattern recognition, geometric orientation equations, and inverse kinematics 
+theory. This combined approach serves to maintain robustness of the joint posture 
+and orientation estimation despite ambiguities in the accelerometer-only data.\vspace{\baselineskip}
+
+
+\noindent A significant contribution of this research is the development of a personalized 
+"Digital Twin" through an automated 3D avatar generation pipeline. The system 
+eliminates the need for generic digital templates and manual measurements by 
+utilizing deep regression models like ROMP or HMR, as well as the Skinned Multi
+Person Linear (SMPL) model. This provides metric accuracy and biologically 
+realistic skin deformation, which successfully reduces common visual defects such 
+as joint volume loss and kinematic drift. \vspace{\baselineskip}
+
+
+\noindent Finally, the project implements a robust four-tier validation framework that includes 
+geometric, physical, perceptual, and reliability assessments - to ensure the system's 
+performance fulfils real-world expectations. This project's effective integration of 
+sparse inertial sensing with advanced computer vision and biomechanical modeling, 
+results in a scalable and efficient solution for applications in healthcare, sports 
+analysis, and immersive virtual environments.\vspace{\baselineskip}
+
+
+
+% References
+\renewcommand{\bibname}{References}
+\bibliographystyle{ieeetr}
+\addcontentsline{toc}{chapter}{References} % Add to table of contents
+\bibliography{bibliography} 
+%\printbibliography
+
+\end{document}
