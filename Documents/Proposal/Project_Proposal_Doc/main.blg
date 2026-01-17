@@ -1,40 +1,44 @@
-This is BibTeX, Version 0.99d (TeX Live 2025)
+This is BibTeX, Version 0.99e
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 10 items.
 A level-1 auxiliary file: cover.aux
+Reallocating 'name_of_file' (item size: 1) to 7 items.
 The style file: ieeetr.bst
+Reallocating 'name_of_file' (item size: 1) to 13 items.
 Database file #1: bibliography.bib
 Warning--empty journal in kelly2010human
-You've used 14 entries,
+Warning--empty journal in gunawardena2025wsn
+You've used 15 entries,
             1876 wiz_defined-function locations,
-            561 strings with 6667 characters,
-and the built_in function-call counts, 4393 in all, are:
-= -- 386
-> -- 259
+            565 strings with 6889 characters,
+and the built_in function-call counts, 4575 in all, are:
+= -- 400
+> -- 273
 < -- 0
-+ -- 91
-- -- 77
-* -- 346
-:= -- 656
-add.period$ -- 14
-call.type$ -- 14
-change.case$ -- 14
++ -- 96
+- -- 81
+* -- 362
+:= -- 688
+add.period$ -- 16
+call.type$ -- 15
+change.case$ -- 15
 chr.to.int$ -- 0
-cite$ -- 15
-duplicate$ -- 218
-empty$ -- 375
-format.name$ -- 77
-if$ -- 1033
+cite$ -- 17
+duplicate$ -- 226
+empty$ -- 390
+format.name$ -- 81
+if$ -- 1072
 int.to.chr$ -- 0
-int.to.str$ -- 14
-missing$ -- 14
-newline$ -- 45
-num.names$ -- 14
-pop$ -- 55
+int.to.str$ -- 15
+missing$ -- 15
+newline$ -- 49
+num.names$ -- 15
+pop$ -- 59
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 139
+skip$ -- 141
 stack$ -- 0
 substring$ -- 256
 swap$ -- 89
@@ -42,8 +46,8 @@ text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 1
-while$ -- 40
-width$ -- 16
-write$ -- 134
-(There was 1 warning)
+warning$ -- 2
+while$ -- 41
+width$ -- 17
+write$ -- 143
+(There were 2 warnings)
