@@ -26,7 +26,7 @@
 \contentsline {chapter}{\numberline {3}Methodology}{19}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Research Design}{19}{section.3.1}%
 \contentsline {subsubsection}{Estimate the joint postures and the orientations}{20}{subsubsection*.22}%
-\contentsline {subsubsection}{Avatar Generation and Animation}{22}{subsubsection*.24}%
+\contentsline {subsubsection}{Avatar Generation and Animation}{21}{subsubsection*.24}%
 \contentsline {subsubsection}{Validation}{23}{subsubsection*.26}%
 \contentsline {section}{\numberline {3.2}Data Collection}{24}{section.3.2}%
 \contentsline {subsubsection}{Accelerometer Based Sensor Readings Collection}{24}{subsubsection*.28}%

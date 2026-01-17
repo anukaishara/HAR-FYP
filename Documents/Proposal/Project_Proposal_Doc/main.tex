@@ -9,6 +9,7 @@
 \usepackage{caption} % For caption alignment control
 \usepackage{tabularx} % For tables that fit \textwidth
 \usepackage{array} % For column definitions in tabularx
+\usepackage{etoolbox} % For \patchcmd
 %% ____Bibliography____%%
 \usepackage[numbers,sort&compress]{natbib}
 \usepackage{chapterbib}
@@ -27,9 +28,6 @@
 \newcommand{\clearpageifnotempty}{\ifdim\pagetotal=0pt\else\clearpage\fi}
 \patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{\if@openright\cleardoublepage\else\clearpageifnotempty\fi}{}{}
 \makeatother
-
-% Remove page number from the first page
-\thispagestyle{empty}
 
 % Customize table of contents, list of figures, and list of tables
 \renewcommand{\cfttoctitlefont}{\hfill\Large\bfseries}
@@ -397,12 +395,12 @@ The research developed two distinct paradigms for activity classification based 
     \item Detection by Capturing Spatial Dependencies: When an activity is seen as a single snapshot of sensor readings, conventional machine learning approaches are used. The Random Forest Classifier (RFC) outperformed KNN, SVM, and Naïve Bayes, with an accuracy of over 96\%.
     \item Detection by Capturing Spatial and Temporal Dependencies: For activities defined as a series of instances, Convolutional Neural Networks (CNNs) were used to capture complex physical movements over time. This strategy achieved an accuracy and F1-score of more than 97\%.
     
-  A key conclusion of this study was the identification of wrist sensors (Sensor IDs 1 and 4) as the most significant pair for classifying target activities. \cite{gunawardena2025wsn}. The results show that a reduced arrangement of two sensors can give reliable activity recognition with only slight reduction in performance, provided the models are trained on a balanced and sufficiently large dataset. Following Figure \ref{fig:WWSN and 3 axes of accelerometer} shows the sensor positioning of WWSN and the three axes of accelerometer.
+  A key conclusion of this study was the identification of wrist sensors (Sensor IDs 1 and 4) as the most significant pair for classifying target activities. \cite{gunawardena2025wsn}. The results show that a reduced arrangement of two sensors can give reliable activity recognition with only slight reduction in performance, provided the models are trained on a balanced and sufficiently large dataset. Following Figure \ref{fig:WWSN_axes_accelerometer} shows the sensor positioning of WWSN and the three axes of accelerometer.
     \begin{figure}[!htbp]
         \centering
         \includegraphics[width=0.95\textwidth]{Sensor positioning of WWSN and 3 axes of accelerometer.png}
         \caption{Sensor positioning of WWSN and the three axes of accelerometers.}
-        \label{fig:WWSN and 3 axes of accelerometer}
+        \label{fig:WWSN_axes_accelerometer}
     \end{figure}
     \newpage  
 
@@ -414,7 +412,7 @@ The research developed two distinct paradigms for activity classification based 
 Traditional motion capture often relies on deriving absolute 3D coordinates ($x, y, z$) for individual joints. However, for applications requiring high anatomical fidelity, simple coordinate-based methods are insufficient as they lack surface information and rigid biomechanical constraints. Parametric skeletal reconstruction addresses these limitations by estimating pose angles of a digital skin. This approach ensures reconstructed motion adheres to physiological limits and serves as the foundation for "Digital Twin" technologies.
 
 \subsubsection*{SMPLify (Skinned Multi-Person Linear Model)}
-The SMPL model is a vertex-based statistical model defining the human body surface. It is parametric, controlled by two low-dimensional vectors: Shape ($\beta$), representing coefficients derived from PCA, and Pose ($\theta$), representing axis-angle rotations of joints in a kinematic tree. The skin consists of 6,890 vertices bound using Linear Blend Skinning (LBS) weights \cite{loper2015smpl}.
+The SMPL model is a vertex-based statistical model defining the human body surface. It is parametric, controlled by two low-dimensional vectors: Shape ($\beta$), representing coefficients derived from PCA, and Pose ($\theta$), representing axis-angle rotations of joints in a kinematic tree. The skin consists of 6,890 vertices bound using Linear Blend Skinning (LBS) weights \cite{loper2015smpl}. The effectiveness of this reconstruction approach is illustrated in Figure \ref{fig:smplify_eval}, which demonstrates the SMPLify model's performance across varying accuracy percentiles. 
 
 \begin{enumerate}[leftmargin=*]
     \item \textbf{Mathematical Formulation} \\
@@ -434,19 +432,19 @@ The SMPL model is a vertex-based statistical model defining the human body surfa
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{Evaluation of SMPLify reconstruction performance across varying accuracy percentiles.png}
-    \caption{Evaluation of SMPLify reconstruction performance across varying accuracy percentiles\cite{loper2015smpl} }
+    \caption{Evaluation of SMPLify reconstruction performance across varying accuracy percentiles}
     \label{fig:smplify_eval}
 \end{figure}
 
 
 
 \subsubsection*{HMR (Human Mesh Recovery)}
-HMR utilizes a neural network to predict pose and shape coefficients from a single image in one step. This confirmed real-time skeletal reconstruction while preserving human anatomy \cite{kanazawa2018hmr}.
+HMR utilizes a neural network to predict pose and shape coefficients from a single image in one step. This confirmed real-time skeletal reconstruction while preserving human anatomy \cite{kanazawa2018hmr}. The qualitative capabilities of this end-to-end regression are presented in Figure \ref{fig:hmr_qualitative}, demonstrating the recovery of 3D meshes from unconstrained RGB images.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{Qualitative results of Human Mesh Recovery (HMR) on unconstrained monocular RGB images.png}
-    \caption{Qualitative results of Human Mesh Recovery (HMR) on unconstrained monocular RGB images \cite{kanazawa2018hmr}}
+    \caption{Qualitative results of Human Mesh Recovery (HMR) on unconstrained monocular RGB images}
     \label{fig:hmr_qualitative}
 \end{figure}
 
@@ -465,11 +463,12 @@ While SMPL provides the container for the data, ROMP is the engine used to extra
         \item \textbf{Body Shape ($\beta$):} The coefficients describing the user's unique anatomy.
     \end{enumerate}
   \end{enumerate}
+  The complete one-stage pipeline, from the backbone feature extraction to the final parameter regression, is visualized in Figure \ref{fig:romp_architecture}, highlighting the pixel-level localization strategy.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{The ROMP One-Stage Regression Architecture for 3D Mesh Recovery.png}
-    \caption{The ROMP One-Stage Regression Architecture for 3D Mesh Recovery \cite{sun2021monocular}}
+    \caption{The ROMP One-Stage Regression Architecture for 3D Mesh Recovery}
     \label{fig:romp_architecture}
 \end{figure}
 
@@ -478,47 +477,47 @@ Human digitization has evolved from primitive skeletal models to complex, mesh-b
 
 \begin{enumerate}[leftmargin=*]
     \item \textbf{Parametric Body Modeling} \\
-    The most influential progression in skin creation is the \textbf{Skinned Multi-Person Linear (SMPL)} model \cite{loper2015smpl}. Other than the stick-figure skeleton model, SMPL is a vertex-based representation of simplified human bodies that provides a low-dimensional parameter space to describe human body shapes. It deforms a generic template with shape parameters $\beta$ to correspond to distinctive physical proportion and pose parameters $\theta$ that define joint rotations.
-\end{enumerate}
+    The most influential progression in skin creation is the \textbf{Skinned Multi-Person Linear (SMPL)} model \cite{loper2015smpl}. Other than the stick-figure skeleton model, SMPL is a vertex-based representation of simplified human bodies that provides a low-dimensional parameter space to describe human body shapes. It deforms a generic template with shape parameters $\beta$ to correspond to distinctive physical proportion and pose parameters $\theta$ that define joint rotations. The visual separation of these parameters is depicted in Figure \ref{fig:loper_smpl}, illustrating how the model mathematically decouples body shape (identity) from skeletal pose (motion).
+
 
 \begin{figure}[H]
     \centering
   \includegraphics[width=0.8\textwidth]{Decomposition of the SMPL model into shape and pose parameters.png}
-    \caption{Decomposition of the SMPL model into shape ($\beta$) and pose ($\theta$) parameters \cite{loper2015smpl}}
+    \caption{Decomposition of the SMPL model into shape ($\beta$) and pose ($\theta$) parameters}
     \label{fig:loper_smpl}
 \end{figure}
 
-\begin{enumerate}[leftmargin=*]
+
     \item \textbf{Automated Mesh Recovery} \\
-    The alternative to manual character creation is solved with use of the so called \textbf{Human Mesh Recovery (HMR)} methods. Research by Kanazawa et al. \cite{kanazawa2018hmr} showed that it is possible to directly regress SMPL parameters from a single RGB image using end-to-end deep learning. \textbf{Pixel-aligned Implicit Functions (PIFu)} \cite{saito2019pifu} go further in this direction, enabling digitization of "clothed" humans and obtaining high-resolution texture and clothing folds that parametric models generally fail to represent.
-\end{enumerate}
+    The alternative to manual character creation is solved with use of the so called \textbf{Human Mesh Recovery (HMR)} methods. Research by Kanazawa et al. \cite{kanazawa2018hmr} showed that it is possible to directly regress SMPL parameters from a single RGB image using end-to-end deep learning.This regression capability is visualized in \ref{fig:hmr_single_rgb}, showing the model's output on diverse input images. \textbf{Pixel-aligned Implicit Functions (PIFu)} \cite{saito2019pifu} go further in this direction, enabling digitization of "clothed" humans and obtaining high-resolution texture and clothing folds that parametric models generally fail to represent. The ability of PIFu to capture these fine-grained surface details and clothing deformations is demonstrated in \ref{fig:pifu_highres}.
+
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{Real-time 3D Human Mesh Recovery (HMR) from a single RGB image.png}
-    \caption{Real-time 3D Human Mesh Recovery (HMR) from a single RGB image\cite{kanazawa2018hmr} }
+    \caption{Real-time 3D Human Mesh Recovery (HMR) from a single RGB image}
   \label{fig:hmr_single_rgb}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{High-resolution surface reconstruction using Pixel-aligned Implicit Functions (PIFu).png}
-    \caption{High-resolution surface reconstruction using Pixel-aligned Implicit Functions (PIFu)\cite{saito2019pifu}}
+    \caption{High-resolution surface reconstruction using Pixel-aligned Implicit Functions}
   \label{fig:pifu_highres}
 \end{figure}
 
-\begin{enumerate}[leftmargin=*]
+
     \item \textbf{Vertex-to-Bone Mathematical Binding} \\
-    To ensure that the generated skin can deform with the skeleton without visual artifacts or slippage, Linear Blend Skinning (LBS) is used. LBS was developed as skeletal subspace deformation. While basic LBS can suffer from volume loss, the foundational work in Pose Space Deformation (\ac{PSD}) \cite{lewis2000pose} created the mathematical means to connect the weighted influence of mesh vertices to the motions of the bones. This balances the surface deformation to the active bone movements while reducing joint distortion artifacts.
-\end{enumerate}
+    To ensure that the generated skin can deform with the skeleton without visual artifacts or slippage, Linear Blend Skinning (LBS) is used. LBS was developed as skeletal subspace deformation. While basic LBS can suffer from volume loss, the foundational work in Pose Space Deformation (\ac{PSD}) \cite{lewis2000pose} created the mathematical means to connect the weighted influence of mesh vertices to the motions of the bones. This balances the surface deformation to the active bone movements while reducing joint distortion artifacts. The improvement in volume preservation offered by this technique compared to standard skinning is illustrated in Figure \ref{fig:lbs}.
+
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{Comparison of joint volume loss in standard Linear Blend Skinning (LBS) vs. the corrected Pose Space Deformation (PSD).png}
-    \caption{Comparison of joint volume loss in standard Linear Blend Skinning (LBS) vs. the corrected Pose Space Deformation (PSD) (PIFu)\cite{lewis2000pose}}
+    \caption{Comparison of joint volume loss in standard Linear Blend Skinning (LBS) vs. the corrected Pose Space Deformation}
   \label{fig:lbs}
 \end{figure}
-
+\end{enumerate}
 
 \subsection{Validation for Accelerometer-Based Activity Reconstruction}
 A primary objective of this research is to validate the proposed activity reconstruction model through comprehensive assessment of its accuracy, consistency, plausibility, and reliability. To achieve rigorous validation, this study adopts a hierarchical framework comprising four distinct levels, each addressing a different dimension of reconstruction quality. This multi-tiered approach is particularly critical for accelerometer-based systems, where inherent challenges such as sensor drift and the limited observational scope of inertial measurement units compared to optical motion capture systems necessitate evaluation beyond conventional geometric accuracy metrics alone.
@@ -630,9 +629,17 @@ Three parallel strategies are incorporated within the proposed architecture for 
     \item \textbf{Inverse Kinematics:} The theory of inverse kinematics for the refinement of joint orientation estimates, based on anatomical and biomechanical constraints, has been introduced.
 \end{enumerate}
 
-The parallel strategies illustrated above permit a comparative assessment and enhance the robustness of the posture estimation process. The results are assessed based on sensor accuracy, computational ability, and estimation robustness. If inadequate, the system upgrades existing elements, such as optimizing sensor locations or sampling. Once standards are satisfied, data collection and experimentation take place to accomplish a comprehensive joint posture estimation system .
+The parallel strategies illustrated above permit a comparative assessment and enhance the robustness of the posture estimation process. The results are assessed based on sensor accuracy, computational ability, and estimation robustness. If inadequate, the system upgrades existing elements, such as optimizing sensor locations or sampling. Once standards are satisfied, data collection and experimentation take place to accomplish a comprehensive joint posture estimation system.
 
 \subsubsection{Avatar Generation and Animation}
+In human activity reconstruction, the visualization layer must go beyond basic skeletal overlays to deliver a biologically realistic and metrically precise representation of the individual. Below Figure \ref{fig:avatar_generation_flowchart} shows the flowchart of the avatar generation and animation which we are planning to work on.  A significant limitation identified in current research is the reliance on generic skeletal models that fail to account for individual variations in limb length and body mass.The primary objective of this subsystem is to develop a unified framework that generates a personalized "Digital Twin" and animates it using a high-fidelity skin deformation pipeline. Instead of manual rigging, this research automates the transition from a 2D image to a moving 3D surface through three stages:
+\\
+\begin{enumerate}
+    \item \textbf{Skeletal Reconstruction:} The system investigates Deep Regression methods (e.g., ROMP or HMR) to automatically predict skeletal parameters ($\theta$) and shape coefficients ($\beta$) from a single monocular image in a single pass.
+    \newpage
+    \item \textbf{Surface Modelling and Binding:} The avatar utilizes the Skinned Multi-Person Linear (SMPL) model, defining the surface with 6,890 vertices attached to a skeletal structure using Linear Blend Skinning (LBS).
+    \item \textbf{Animation Pipeline:} A real-time processing loop receives a standardized Pose Vector ($\theta$) composed of axis-angle rotation parameters. This vector drives the LBS engine to apply rotations to the scaled skeleton with a target latency of less than 15ms .
+\end{enumerate}
 \begin{figure}[H]
     \centering
     \includegraphics[
@@ -642,13 +649,7 @@ The parallel strategies illustrated above permit a comparative assessment and en
     \caption{Flowchart of the Avatar Generation and Animation }
   \label{fig:avatar_generation_flowchart}
 \end{figure}
-In human activity reconstruction, the visualization layer must go beyond basic skeletal overlays to deliver a biologically realistic and metrically precise representation of the individual. Above Figure \ref{fig:avatar_generation_flowchart} shows the flowchart of the avatar generation and animation which we are planning to work on.  A significant limitation identified in current research is the reliance on generic skeletal models that fail to account for individual variations in limb length and body mass.The primary objective of this subsystem is to develop a unified framework that generates a personalized "Digital Twin" and animates it using a high-fidelity skin deformation pipeline. Instead of manual rigging, this research automates the transition from a 2D image to a moving 3D surface through three stages:
-\begin{enumerate}
-    \item \textbf{Skeletal Reconstruction:} The system investigates Deep Regression methods (e.g., ROMP or HMR) to automatically predict skeletal parameters ($\theta$) and shape coefficients ($\beta$) from a single monocular image in a single pass.
-    \item \textbf{Surface Modelling and Binding:} The avatar utilizes the Skinned Multi-Person Linear (SMPL) model, defining the surface with 6,890 vertices attached to a skeletal structure using Linear Blend Skinning (LBS).
-    \item \textbf{Animation Pipeline:} A real-time processing loop receives a standardized Pose Vector ($\theta$) composed of axis-angle rotation parameters. This vector drives the LBS engine to apply rotations to the scaled skeleton with a target latency of less than 15ms .
-\end{enumerate}
-
+\newpage
 \subsubsection{Validation}
 \begin{figure}[H]
     \centering

@@ -9,13 +9,13 @@
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Overview of the system proposed in tautges 2011}}{8}{figure.caption.6}%
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Overview of the system proposed in Kelly (2010)}}{9}{figure.caption.7}%
 \contentsline {figure}{\numberline {2.6}{\ignorespaces Sensor positioning of WWSN and the three axes of accelerometers.}}{10}{figure.caption.8}%
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Evaluation of SMPLify reconstruction performance across varying accuracy percentiles\cite {loper2015smpl} }}{12}{figure.caption.9}%
-\contentsline {figure}{\numberline {2.8}{\ignorespaces Qualitative results of Human Mesh Recovery (HMR) on unconstrained monocular RGB images \cite {kanazawa2018hmr}}}{12}{figure.caption.10}%
-\contentsline {figure}{\numberline {2.9}{\ignorespaces The ROMP One-Stage Regression Architecture for 3D Mesh Recovery \cite {sun2021monocular}}}{13}{figure.caption.12}%
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Decomposition of the SMPL model into shape ($\beta $) and pose ($\theta $) parameters \cite {loper2015smpl}}}{14}{figure.caption.13}%
-\contentsline {figure}{\numberline {2.11}{\ignorespaces Real-time 3D Human Mesh Recovery (HMR) from a single RGB image\cite {kanazawa2018hmr} }}{14}{figure.caption.14}%
-\contentsline {figure}{\numberline {2.12}{\ignorespaces High-resolution surface reconstruction using Pixel-aligned Implicit Functions (PIFu)\cite {saito2019pifu}}}{15}{figure.caption.15}%
-\contentsline {figure}{\numberline {2.13}{\ignorespaces Comparison of joint volume loss in standard Linear Blend Skinning (LBS) vs. the corrected Pose Space Deformation (PSD) (PIFu)\cite {lewis2000pose}}}{15}{figure.caption.16}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Evaluation of SMPLify reconstruction performance across varying accuracy percentiles}}{12}{figure.caption.9}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Qualitative results of Human Mesh Recovery (HMR) on unconstrained monocular RGB images}}{12}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces The ROMP One-Stage Regression Architecture for 3D Mesh Recovery}}{13}{figure.caption.12}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Decomposition of the SMPL model into shape ($\beta $) and pose ($\theta $) parameters}}{14}{figure.caption.13}%
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Real-time 3D Human Mesh Recovery (HMR) from a single RGB image}}{14}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.12}{\ignorespaces High-resolution surface reconstruction using Pixel-aligned Implicit Functions}}{15}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Comparison of joint volume loss in standard Linear Blend Skinning (LBS) vs. the corrected Pose Space Deformation}}{15}{figure.caption.16}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Block diagram of the proposed methodology }}{19}{figure.caption.21}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Flowchart of the Estimate the joint postures and the orientations }}{20}{figure.caption.23}%
