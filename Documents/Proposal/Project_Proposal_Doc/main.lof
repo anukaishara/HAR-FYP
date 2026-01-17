@@ -3,23 +3,24 @@
 \gdef \the@ipfilectr {}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Overview of the DIP pipeline \cite {huang2018deep}}}{6}{figure.caption.3}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Overview of the TIP pipeline \cite {yi2021transpose}}}{7}{figure.caption.4}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Overview of the FIP pipeline \cite {xiao2024fast}}}{8}{figure.caption.5}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Overview of the system proposed in tautges 2011 \cite {tautges2011motion}}}{8}{figure.caption.6}%
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Overview of the system proposed in kelly 2010 \cite {kelly2010human}}}{9}{figure.caption.7}%
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Evaluation of SMPLify reconstruction performance across varying accuracy percentiles\cite {loper2015smpl} }}{11}{figure.caption.8}%
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Qualitative results of Human Mesh Recovery (HMR) on unconstrained monocular RGB images \cite {kanazawa2018hmr}}}{11}{figure.caption.9}%
-\contentsline {figure}{\numberline {2.8}{\ignorespaces The ROMP One-Stage Regression Architecture for 3D Mesh Recovery \cite {sun2021monocular}}}{12}{figure.caption.11}%
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Decomposition of the SMPL model into shape ($\beta $) and pose ($\theta $) parameters \cite {loper2015smpl}}}{13}{figure.caption.12}%
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Real-time 3D Human Mesh Recovery (HMR) from a single RGB image\cite {kanazawa2018hmr} }}{13}{figure.caption.13}%
-\contentsline {figure}{\numberline {2.11}{\ignorespaces High-resolution surface reconstruction using Pixel-aligned Implicit Functions (PIFu)\cite {saito2019pifu}}}{14}{figure.caption.14}%
-\contentsline {figure}{\numberline {2.12}{\ignorespaces Comparison of joint volume loss in standard Linear Blend Skinning (LBS) vs. the corrected Pose Space Deformation (PSD) (PIFu)\cite {lewis2000pose}}}{14}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Overview of the DIP pipeline}}{7}{figure.caption.3}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Overview of the TIP pipeline}}{7}{figure.caption.4}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Overview of the FIP pipeline}}{8}{figure.caption.5}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Overview of the system proposed in tautges 2011}}{8}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Overview of the system proposed in Kelly (2010)}}{9}{figure.caption.7}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Sensor positioning of WWSN and the three axes of accelerometers.}}{10}{figure.caption.8}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Evaluation of SMPLify reconstruction performance across varying accuracy percentiles\cite {loper2015smpl} }}{12}{figure.caption.9}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Qualitative results of Human Mesh Recovery (HMR) on unconstrained monocular RGB images \cite {kanazawa2018hmr}}}{12}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces The ROMP One-Stage Regression Architecture for 3D Mesh Recovery \cite {sun2021monocular}}}{13}{figure.caption.12}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Decomposition of the SMPL model into shape ($\beta $) and pose ($\theta $) parameters \cite {loper2015smpl}}}{14}{figure.caption.13}%
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Real-time 3D Human Mesh Recovery (HMR) from a single RGB image\cite {kanazawa2018hmr} }}{14}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.12}{\ignorespaces High-resolution surface reconstruction using Pixel-aligned Implicit Functions (PIFu)\cite {saito2019pifu}}}{15}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Comparison of joint volume loss in standard Linear Blend Skinning (LBS) vs. the corrected Pose Space Deformation (PSD) (PIFu)\cite {lewis2000pose}}}{15}{figure.caption.16}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Block diagram of the proposed methodology }}{18}{figure.caption.20}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Flowchart of the Estimate the joint postures and the orientations }}{19}{figure.caption.22}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Flowchart of the Avatar Generation and Animation }}{21}{figure.caption.24}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Flowchart of the Validation }}{22}{figure.caption.26}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Block diagram of the proposed methodology }}{19}{figure.caption.21}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Flowchart of the Estimate the joint postures and the orientations }}{20}{figure.caption.23}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Flowchart of the Avatar Generation and Animation }}{22}{figure.caption.25}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Flowchart of the Validation }}{23}{figure.caption.27}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces TimeLine }}{25}{figure.caption.29}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces TimeLine }}{26}{figure.caption.30}%
 \addvspace {10\p@ }

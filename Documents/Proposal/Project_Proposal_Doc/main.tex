@@ -308,39 +308,14 @@ This project presents a simplified human activity reconstruction system using a 
 
 \subsection{Scope}
 \begin{enumerate}[leftmargin=*, itemsep=1.5em]
-    \item \textbf{Sensor Configuration} \\
-    \textit{Scope:} The project utilizes five 3D accelerometer modules positioned on the wrists, ankles, and torso to capture human motion data. \\
-    \textit{Limitation:} The absence of gyroscopes introduces ambiguity in full 3D orientation estimation, especially regarding yaw rotation (heading).
-
-    \item \textbf{Calibration and Reliability} \\
-    \textit{Scope:} Accelerometers will be selected, configured, and calibrated to ensure consistent data acquisition across different users. \\
-    \textit{Limitation:} Calibration accuracy may vary due to sensor placement errors and morphological differences between users.
-
-    \item \textbf{Activity Acquisition} \\
-    \textit{Scope:} Data acquisition is performed while users execute a predefined set of activities, finalized after sensor data analysis. \\
-    \textit{Limitation:} System performance may degrade when encountering activities outside the predefined set.
-
-    \newpage
-
-    \item \textbf{Signal Preprocessing} \\
-    \textit{Scope:} Implementation of filtering and normalization techniques to reduce noise in accelerometer signals. \\
-    \textit{Limitation:} High-dynamic movements may reduce the effectiveness of gravity-based orientation estimation.
-
-    \item \textbf{Machine Learning (\ac{ML}) Estimation} \\
-    \textit{Scope:} Utilization of ML-based models for joint configuration estimation. \\
-    \textit{Limitation:} Reliability is highly dependent on the quality and diversity of training data; estimated parameters may only serve as rough approximations.
-
-    \item \textbf{Motion Reconstruction} \\
-    \textit{Scope:} Application of inverse biomechanical kinematics for physical motion reconstruction. \\
-    \textit{Limitation:} Inverse Kinematics (\ac{IK}) solutions are not necessarily unique and may introduce errors when sensor data is highly ambiguous.
-
-    \item \textbf{Avatar Generation} \\
-    \textit{Scope:} Fine-tuning of a customized 3D avatar and skin generation. \\
-    \textit{Limitation:} The accuracy of the avatar's visual representation depends on image quality and the robustness of the underlying pose estimation.
-  \end{enumerate}
-
-
-
+    \item Development of computational methods to estimate the posture or the movement of the human body using only accelerometer data, without reliance on gyroscopes or magnetometers. To compensate for the limited input which utilizes only 5 accelerometer based sensors, advanced predictive and calculative methods will be needed. Therefore, due to computational latency and processing constraints, real time motion reconstruction will not be feasible. Consequently, the system operates in an offline capacity; data is recorded during the session and manually processed post-hoc for activity reconstruction.
+    
+    \item Integration of estimated posture or the movement into a skeletal kinematic model for a high fidelity representation of the user’s movements.
+    
+    \item Creation of a personalized 3D human avatar that animates the reconstructed skeletal motion, incorporating skin generation based on individual user parameters such as limb lengths, body proportions and skin tone providing a realistic visual representation of the user’s physical movements while enhancing the user experience. However, a primary limitation of the current model is the absence of fine-grained joint articulation-specifically finger movements, subtle rotational variances, and head orientation as the reconstruction is constrained by the sparse five-sensor input.
+    
+    \item Design and implementation of a dedicated validation subsystem that utilizes a synchronized video feed as the ground-truth reference. The validation process involves a side-by-side comparison of the raw video footage against the reconstructed avatar motion. This subsystem focuses on qualitative assessment and approximate accuracy rather than exhaustive quantitative precision, as the primary objective is to validate the model's architectural integrity from a visualization perspective. The validation process may be limited by the availability, synchronization accuracy and quality of reference video data or ground-truth motion capture systems.
+\end{enumerate}
 
 \chapter{Literature Review}
 
@@ -353,22 +328,22 @@ This project presents a simplified human activity reconstruction system using a 
 \ac{SIP} is an optimization-based method that formulated pose estimation as a global or temporal optimization problem using motion priors and kinematic constraints. Even though this method has a high accuracy with sparse \ac{IMU}s, it is computationally expensive and has a higher latency, which limits real-time and mobile applicability \cite{yi2021transpose}.
 
 \subsubsection*{Deep Inertial Poser (\ac{DIP})}
-\ac{DIP} employs bidirectional \ac{RNN}s to estimate joint rotations from the \ac{IMU} dataset, handled through learned kinematic constraints making it faster than the SIP method with a good accuracy rate. However, past and future frames are needed to improve accuracy; their dependence on future information introduces non-causal inference and latency, making them unsuitable for live applications \cite{huang2018deep}.
+\ac{DIP} employs bidirectional \ac{RNN}s to estimate joint rotations from the \ac{IMU} dataset, handled through learned kinematic constraints making it faster than the SIP method with a good accuracy rate. However, past and future frames are needed to improve accuracy; their dependence on future information introduces non-causal inference and latency, making them unsuitable for live applications \cite{huang2018deep}. The followig Figure~\ref{fig:dip_pipeline} shows the overview of the DIP pipeline.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{Overview of the DIP pipeline.png}
-    \caption{Overview of the DIP pipeline \cite{huang2018deep}}
+    \caption{Overview of the DIP pipeline}
     \label{fig:dip_pipeline}
 \end{figure}
 
 \subsubsection*{Transformer Inertial Poser (\ac{TIP})}
-\ac{TIP} uses a transformer-based architecture to capture long-range temporal dependencies without an inverse kinematic solver, allowing it to handle complex motions accurately[cite: 103]. However, it requires high computational and memory resources, limiting deployment on embedded or wearable devices \cite{yi2021transpose}.
+\ac{TIP} uses a transformer-based architecture to capture long-range temporal dependencies without an inverse kinematic solver, allowing it to handle complex motions accurately[cite: 103]. However, it requires high computational and memory resources, limiting deployment on embedded or wearable devices \cite{yi2021transpose}. The followig Figure~\ref{fig:tip_pipeline} shows the overview of the TIP pipeline.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{Overview of the TIP pipeline.png}
-    \caption{Overview of the TIP pipeline \cite{yi2021transpose}}
+    \caption{Overview of the TIP pipeline}
     \label{fig:tip_pipeline}
 \end{figure}
 
@@ -376,12 +351,12 @@ This project presents a simplified human activity reconstruction system using a 
 \ac{PIP} combines physics-based modeling with optimization and inverse kinematics to enforce physical plausibility, such as balance and ground contact[cite: 142]. It can estimate physically realistic motion and handle contact better than other methods[cite: 143]. However, this method also requires complex system design and high computational cost, limiting real-time applicability \cite{xiao2024fast}.
 
 \subsubsection*{Fast Inertial Poser (\ac{FIP})}
-\ac{FIP} embodies a real-time solution based on human motion reconstruction to deduce full-body pose based on six sparse \ac{IMU}s by adapting information of the human shape. The solution employs a bidirectional \ac{RNN} honoring the human body kinematic structure to facilitate real-time computation and minimize latency. The inclusion of body parameters, such as height and limb lengths, aids in canceling ambiguities in pose inference arising from sparse sensing. Experimental results on \ac{AMASS} and \ac{DIP}-\ac{IMU} datasets provide evidence of state-of-the-art performance, running above 60 \ac{FPS} within a 15ms latency \cite{xiao2024fast}.
+\ac{FIP} embodies a real-time solution based on human motion reconstruction to deduce full-body pose based on six sparse \ac{IMU}s by adapting information of the human shape. The solution employs a bidirectional \ac{RNN} honoring the human body kinematic structure to facilitate real-time computation and minimize latency. The inclusion of body parameters, such as height and limb lengths, aids in canceling ambiguities in pose inference arising from sparse sensing. Experimental results on \ac{AMASS} and \ac{DIP}-\ac{IMU} datasets provide evidence of state-of-the-art performance, running above 60 \ac{FPS} within a 15ms latency \cite{xiao2024fast}. The followig Figure~\ref{fig:fip_pipeline} shows the overview of the FIP pipeline.
 
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=0.95\textwidth]{Overview of the FIP pipeline.png}
-    \caption{Overview of the FIP pipeline \cite{xiao2024fast}}
+    \caption{Overview of the FIP pipeline}
     \label{fig:fip_pipeline}
 \end{figure}
 
@@ -389,23 +364,49 @@ This project presents a simplified human activity reconstruction system using a 
 
 \subsection{Developing the Models using Accelerometers to Estimate the Joint Postures and the Orientations}
 \begin{enumerate}[leftmargin=*, itemsep=1em]
-    \item Human activity reconstruction for full-body pose has been performed using only four sparse 3-axis accelerometers placed on the wrists and ankles. Instead of using accelerometer readings directly, which can introduce significant drift, this method used a data-driven approach leveraging a large motion capture database. A simulate-and-optimize approach was utilized to generate synthesized accelerometer readings to align with sensor data through nearest-neighbor search and graph optimization. Inverse kinematics and reduced-dimensional pose representations were used to recover plausible full-body poses in real-time \cite{tautges2011motion}.
+    \item Human activity reconstruction for full-body pose has been performed using only four sparse 3-axis accelerometers placed on the wrists and ankles. Instead of using accelerometer readings directly, which can introduce significant drift, this method used a data-driven approach leveraging a large motion capture database. A simulate-and-optimize approach was utilized to generate synthesized accelerometer readings to align with sensor data through nearest-neighbor search and graph optimization. Inverse kinematics and reduced-dimensional pose representations were used to recover plausible full-body poses in real-time \cite{tautges2011motion}. Following Figure~\ref{fig:tautges2011} shows the overview of the system proposed in tautges 2011.
 
     \begin{figure}[!htbp]
         \centering
         \includegraphics[width=0.95\textwidth]{Overview of the system proposed in tautges 2011.png}
-        \caption{Overview of the system proposed in tautges 2011 \cite{tautges2011motion}}
+        \caption{Overview of the system proposed in tautges 2011}
         \label{fig:tautges2011}
     \end{figure}
     \newpage  
-    \item Human motion can also be reconstructed using wearable accelerometers in isolation from optical motion capture systems. This low-cost framework uses several body-mounted tri-axial accelerometers to estimate motion for sports and outdoors where optical systems are impractical. The approach relies on a data-driven motion database and a motion graph constructed from pre-recorded motion capture data \cite{kelly2010human}. While the method produced naturalistic motions, it was prone to positional drift over time, illustrating a major limitation of accelerometer-only approaches.
+    \item Human motion can also be reconstructed using wearable accelerometers in complete isolation from the requirement for optical motion capture systems. A portable, low-cost framework where several body-mounted tri-axial accelerometers were used to estimate full-body motion, especially for sports and outdoors for which optical systems are impractical. Instead of directly computing the joint angles from sensor data, their approach relies on a data-driven motion database and a motion graph constructed from pre-recorded motion capture data. On this database, virtual accelerometers were simulated, and a dynamic programming–based matching algorithm was used for finding pose sequences whose simulated accelerations best matched the measured sensor readings. While the method indeed produced naturalistic motions using only accelerometer data, it was prone to positional drift over time, showing one major limitation of accelerometer-based motion reconstruction approaches.\cite{kelly2010human} Following Figure~\ref{fig:kelly2010} shows the overview of the system proposed in kelly 2010.
 
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[
+        width=0.7\textwidth,
+        height=0.65\textheight,
+        keepaspectratio
+    ]{Overview of the system proposed in kelly 2010.png}
+    \caption{Overview of the system proposed in Kelly (2010)}
+    \label{fig:kelly2010}
+\end{figure}
+
+\end{enumerate}
+
+\FloatBarrier
+
+\subsection{Human Activity Detection Using WWSN and Artificial Intelligence}
+Beyond skeletal pose estimation, localized research has demonstrated the efficacy of a Wearable Wireless Sensor Network (WWSN) for direct activity classification using sparse accelerometer data. This study, from the University of Ruhuna, accurately differentiated six specific physical activities: cycling, pushups, running, squats, walking, and table tennis. The study also aimed to discover the optimal configurations of the sensors to lessen the burden placed on the user.
+
+The research developed two distinct paradigms for activity classification based on the dependencies they capture:
+\begin{enumerate}[leftmargin=*, itemsep=1em]
+    \item Detection by Capturing Spatial Dependencies: When an activity is seen as a single snapshot of sensor readings, conventional machine learning approaches are used. The Random Forest Classifier (RFC) outperformed KNN, SVM, and Naïve Bayes, with an accuracy of over 96\%.
+    \item Detection by Capturing Spatial and Temporal Dependencies: For activities defined as a series of instances, Convolutional Neural Networks (CNNs) were used to capture complex physical movements over time. This strategy achieved an accuracy and F1-score of more than 97\%.
+    
+  A key conclusion of this study was the identification of wrist sensors (Sensor IDs 1 and 4) as the most significant pair for classifying target activities. \cite{gunawardena2025wsn}. The results show that a reduced arrangement of two sensors can give reliable activity recognition with only slight reduction in performance, provided the models are trained on a balanced and sufficiently large dataset. Following Figure \ref{fig:WWSN and 3 axes of accelerometer} shows the sensor positioning of WWSN and the three axes of accelerometer.
     \begin{figure}[!htbp]
         \centering
-      \includegraphics[width=0.7\textwidth]{Overview of the system proposed in kelly 2010.png}
-        \caption{Overview of the system proposed in kelly 2010 \cite{kelly2010human}}
-        \label{fig:kelly2010}
+        \includegraphics[width=0.95\textwidth]{Sensor positioning of WWSN and 3 axes of accelerometer.png}
+        \caption{Sensor positioning of WWSN and the three axes of accelerometers.}
+        \label{fig:WWSN and 3 axes of accelerometer}
     \end{figure}
+    \newpage  
+
 \end{enumerate}
 
 \FloatBarrier
