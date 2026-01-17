@@ -380,8 +380,7 @@ This project presents a simplified human activity reconstruction system using a 
     \includegraphics[
         width=0.7\textwidth,
         height=0.65\textheight,
-        keepaspectratio
-    ]{Overview of the system proposed in kelly 2010.png}
+        keepaspectratio]{Overview of the system proposed in kelly 2010.png}
     \caption{Overview of the system proposed in Kelly (2010)}
     \label{fig:kelly2010}
 \end{figure}
@@ -602,7 +601,8 @@ The final challenge lies in maintaining the visual realism of a 3D surface durin
 
 
 \section{Research Design}
-This research follows a structured approach to human activity reconstruction. First, joint postures and orientations are estimated using sensor data and computational models. In parallel, a 3D skeletal model is reconstructed, and a virtual avatar is generated to represent human motion. These two outputs are integrated to form a complete motion representation. Finally, the proposed system is validated using experimental data, and its performance is evaluated based on accuracy, consistency, and reliability metrics.
+This research follows a structured approach to human activity reconstruction. First, joint postures and orientations are estimated using sensor data and computational models. In parallel, a 3D skeletal model is reconstructed, and a virtual avatar is generated to represent human motion. These two outputs are integrated to form a complete motion representation. Finally, the proposed system is validated using experimental data, and its performance is evaluated based on accuracy, consistency, and reliability metrics. Following Figure \ref{fig:methodology_block_diagram} illustrates the proposed methodology.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{Methodology Chart.png}
@@ -611,10 +611,12 @@ This research follows a structured approach to human activity reconstruction. Fi
 \end{figure}
 
 \subsubsection{Estimate the joint postures and the orientations}
-Since joint postures and the orientations cannot be directly obtained by only using accelerometer data, we are planning to work on different approaches at the same time as follows.
+Since joint postures and the orientations cannot be directly obtained by only using accelerometer data, we are planning to work on different approaches at the same time as follows. Following Figure \ref{fig:estimate_joint_postures_flowchart} shows the flowchart of the estimate the joint postures and the orientations.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.87\textwidth]{Estimate Joint Postures.png}
+    \includegraphics[width=0.87\textwidth,
+    height=0.82\textheight,
+    keepaspectratio]{Estimate Joint Postures.png}
     \caption{Flowchart of the Estimate the joint postures and the orientations }
   \label{fig:estimate_joint_postures_flowchart}
 \end{figure}
@@ -633,11 +635,14 @@ The parallel strategies illustrated above permit a comparative assessment and en
 \subsubsection{Avatar Generation and Animation}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.87\textwidth]{3D Skeletal Reconstruction.png}
+    \includegraphics[
+    width=0.87\textwidth,
+    height=0.6\textheight,
+    keepaspectratio]{3D Skeletal Reconstruction.png}
     \caption{Flowchart of the Avatar Generation and Animation }
   \label{fig:avatar_generation_flowchart}
 \end{figure}
-In human activity reconstruction, the visualization layer must go beyond basic skeletal overlays to deliver a biologically realistic and metrically precise representation of the individual.  A significant limitation identified in current research is the reliance on generic skeletal models that fail to account for individual variations in limb length and body mass.The primary objective of this subsystem is to develop a unified framework that generates a personalized "Digital Twin" and animates it using a high-fidelity skin deformation pipeline. Instead of manual rigging, this research automates the transition from a 2D image to a moving 3D surface through three stages:
+In human activity reconstruction, the visualization layer must go beyond basic skeletal overlays to deliver a biologically realistic and metrically precise representation of the individual. Above Figure \ref{fig:avatar_generation_flowchart} shows the flowchart of the avatar generation and animation which we are planning to work on.  A significant limitation identified in current research is the reliance on generic skeletal models that fail to account for individual variations in limb length and body mass.The primary objective of this subsystem is to develop a unified framework that generates a personalized "Digital Twin" and animates it using a high-fidelity skin deformation pipeline. Instead of manual rigging, this research automates the transition from a 2D image to a moving 3D surface through three stages:
 \begin{enumerate}
     \item \textbf{Skeletal Reconstruction:} The system investigates Deep Regression methods (e.g., ROMP or HMR) to automatically predict skeletal parameters ($\theta$) and shape coefficients ($\beta$) from a single monocular image in a single pass.
     \item \textbf{Surface Modelling and Binding:} The avatar utilizes the Skinned Multi-Person Linear (SMPL) model, defining the surface with 6,890 vertices attached to a skeletal structure using Linear Blend Skinning (LBS).
@@ -647,11 +652,14 @@ In human activity reconstruction, the visualization layer must go beyond basic s
 \subsubsection{Validation}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{Validation.png}
+    \includegraphics[width=0.6\textwidth,
+    height=0.9\textheight,
+    keepaspectratio
+    ]{Validation.png}
     \caption{Flowchart of the Validation }
   \label{fig:validation_flowchart}
 \end{figure}
-In human action reconstruction, an ideal system is expected to follow a hierarchical framework comprising four distinct levels. However, to date, no existing model fully satisfies all four levels of this framework. The primary objective of our methodology is not to validate or improve an existing model, but rather to develop a new model that addresses the identified limitations in current approaches.
+In human action reconstruction, an ideal system is expected to follow a hierarchical framework comprising four distinct levels as shown in the above Figure \ref{fig:validation_flowchart}. However, to date, no existing model fully satisfies all four levels of this framework. The primary objective of our methodology is not to validate or improve an existing model, but rather to develop a new model that addresses the identified limitations in current approaches.
 
 Therefore, instead of validating our system against an ideal but unavailable benchmark, we validate our proposed model through comparative analysis with well-established and validated models that are currently used in real-world applications. Based on our literature review, we identified several relevant models for this purpose, including
 
@@ -704,11 +712,11 @@ This is a general estimation of budget for this project. These prices can be var
         \hline
         \textbf{No} & \textbf{Item / Service} & \textbf{price} \\ \hline
         1 & Repair for existing components & 5 000 \\ \hline
-        2 & Web hosting & 10 000 -- 15 000 \\ \hline
-        3 & ML training platform & 5 000 -- 8 000 \\ \hline
-        4 & Cloud computing & 15 000 -- 20 000 \\ \hline
-        5 & API s & 7 000 -- 10 000 \\ \hline
-          & \textbf{Total} & \textbf{42 000 -- 58 000} \\ \hline
+        2 & Web hosting & 15 000 \\ \hline
+        3 & ML training platform & 8 000 \\ \hline
+        4 & Cloud computing & 20 000 \\ \hline
+        5 & API s & 10 000 \\ \hline
+          & \textbf{Total} & \textbf{58 000} \\ \hline
     \end{tabular}
 \end{table}
 

@@ -31,8 +31,8 @@
 \contentsline {section}{\numberline {3.2}Data Collection}{24}{section.3.2}%
 \contentsline {subsubsection}{Accelerometer Based Sensor Readings Collection}{24}{subsubsection*.28}%
 \contentsline {subsubsection}{Biometric and Kinematic Data Integration}{24}{subsubsection*.29}%
-\contentsline {chapter}{\numberline {4}Timeline and Resource Required}{26}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Timeline}{26}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Resource Required}{27}{section.4.2}%
-\contentsline {chapter}{\numberline {5}Conclusion}{28}{chapter.5}%
-\contentsline {chapter}{References}{28}{chapter.5}%
+\contentsline {chapter}{\numberline {4}Timeline and Resource Required}{25}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Timeline}{25}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Resource Required}{26}{section.4.2}%
+\contentsline {chapter}{\numberline {5}Conclusion}{27}{chapter.5}%
+\contentsline {chapter}{References}{27}{chapter.5}%

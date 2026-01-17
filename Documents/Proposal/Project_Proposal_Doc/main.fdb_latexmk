@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1768635833.54948 "main.aux" "main.bbl" "main" 1768635840.37794 0
+["bibtex main"] 1768639015.57945 "main.aux" "main.bbl" "main" 1768639076.93648 0
   "./bibliography.bib" 1768635410 5449 ebb771046589bb71f4cc08dc7926d8e0 ""
   "C:/Users/dulen/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/ieeetr.bst" 1291864344 18361 1a00e58565e7f19bf2b3e1bfb82254ae ""
-  "cover.aux" 1768635835 1854 7900832100911a7925cdac6e2c6c5c37 "pdflatex"
-  "main.aux" 1768635839 17204 ed4d21083db4c904ff18d6eea1fc50ab "pdflatex"
+  "cover.aux" 1768639071 1854 7900832100911a7925cdac6e2c6c5c37 "pdflatex"
+  "main.aux" 1768639075 17204 25c3ff48daf83d442ff24205f0feaca6 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1768635833.87462 "c:/Users/dulen/Desktop/FYP/Project proposal/HAR-FYP/Documents/Proposal/Project_Proposal_Doc/main.tex" "main.pdf" "main" 1768635840.37892 0
+["pdflatex"] 1768639070.49739 "c:/Users/dulen/Desktop/FYP/Project proposal/HAR-FYP/Documents/Proposal/Project_Proposal_Doc/main.tex" "main.pdf" "main" 1768639076.93761 0
   "3D Skeletal Reconstruction.png" 1768540515 471561 0e2c5cb29ec66c5c8c458e94bb2f63fb ""
   "C:/Users/dulen/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1768567248 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/dulen/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1200.pk" 1768541737 14064 ec74f2854d8d6983224bf2960feb5733 ""
@@ -110,16 +110,16 @@
   "The ROMP One-Stage Regression Architecture for 3D Mesh Recovery.png" 1768540515 336142 09f52335e77cefc02644e2d653d6763b ""
   "Timeline.png" 1768540515 1208388 6b1e72c0fac6111dd88e45dd1b1fc738 ""
   "Validation.png" 1768540515 453091 d2c47e0825c04d246d1935055ee1d956 ""
-  "c:/Users/dulen/Desktop/FYP/Project proposal/HAR-FYP/Documents/Proposal/Project_Proposal_Doc/main.tex" 1768635826 56842 30cebe0afbebad1236b9604cbf15edbf ""
-  "cover.aux" 1768635835 1854 7900832100911a7925cdac6e2c6c5c37 "pdflatex"
+  "c:/Users/dulen/Desktop/FYP/Project proposal/HAR-FYP/Documents/Proposal/Project_Proposal_Doc/main.tex" 1768639069 57386 2f76bb021184265133b45a28dbe2dddb ""
+  "cover.aux" 1768639071 1854 7900832100911a7925cdac6e2c6c5c37 "pdflatex"
   "cover.tex" 1768540515 2362 17d46579ba3f19d4a04f65469d478dfe ""
-  "main.aux" 1768635839 17204 ed4d21083db4c904ff18d6eea1fc50ab "pdflatex"
-  "main.bbl" 1768635833 3790 9eb66d2d059a75f516919257ec6a3f0b "bibtex main"
-  "main.lof" 1768635839 2817 1de5a2b1a5a1ed89f48292357dd49bf9 "pdflatex"
-  "main.lot" 1768635839 417 6469521988ec74c9fb8cf80a1701dc18 "pdflatex"
-  "main.out" 1768635839 5591 d7fc51e272ed752a63b82859e3ef23a2 "pdflatex"
-  "main.tex" 1768635826 56842 30cebe0afbebad1236b9604cbf15edbf ""
-  "main.toc" 1768635839 3312 85dc2d09ba9e99bd42c80ee9bfe8593f "pdflatex"
+  "main.aux" 1768639075 17204 25c3ff48daf83d442ff24205f0feaca6 "pdflatex"
+  "main.bbl" 1768639016 3790 9eb66d2d059a75f516919257ec6a3f0b "bibtex main"
+  "main.lof" 1768639076 2817 ee3cc01687db6683f201f205ffd4db1a "pdflatex"
+  "main.lot" 1768639076 417 27021ff58dd0a285244ba2cc79ee4391 "pdflatex"
+  "main.out" 1768639076 5591 d7fc51e272ed752a63b82859e3ef23a2 "pdflatex"
+  "main.tex" 1768639069 57386 2f76bb021184265133b45a28dbe2dddb ""
+  "main.toc" 1768639076 3312 a0829b5c424901f3124dd2700e906669 "pdflatex"
   "uor_logo.jpg" 1768540515 23589 ad562246983ad1dc3ca3d1ccf7e955f0 ""
   (generated)
   "cover.aux"
