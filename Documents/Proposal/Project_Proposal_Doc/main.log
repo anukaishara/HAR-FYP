@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.1.11)  17 JAN 2026 15:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.1.11)  17 JAN 2026 17:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -596,20 +596,23 @@ Package pdftex.def Info: Validation.png  used on input line 659.
 (pdftex.def)             Requested size: 250.0991pt x 330.03644pt.
  [23 <./Validation.png>] [24{c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 Chapter 4.
-<Timeline.png, id=491, 1341.01pt x 1597.97pt>
+<Timeline.png, id=491, 963.6pt x 1323.44438pt>
 File: Timeline.png Graphic file (type png)
 <use Timeline.png>
 Package pdftex.def Info: Timeline.png  used on input line 699.
-(pdftex.def)             Requested size: 370.981pt x 442.06429pt.
+(pdftex.def)             Requested size: 333.46758pt x 457.98221pt.
 [25
 
- <./Timeline.png>] [26]
+]
+Overfull \vbox (15.45874pt too high) has occurred while \output is active []
+
+ [26 <./TImeline.png>] [27]
 Chapter 5.
-(./main.bbl [27
+(./main.bbl [28
 
-] [28
+] [29
 
-]) [29] (./main.aux (./cover.aux))
+]) [30] (./main.aux (./cover.aux))
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-29>
@@ -618,18 +621,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D7FC51E272ED752A63B82859E3EF23A2;5591.
  ) 
 Here is how much of TeX's memory you used:
- 19039 strings out of 467538
- 430876 string characters out of 5423725
+ 19040 strings out of 467538
+ 430883 string characters out of 5423725
  782695 words of memory out of 5000000
  47632 multiletter control sequences out of 15000+600000
- 645353 words of font info for 98 fonts, out of 8000000 for 9000
+ 645354 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,12n,79p,1310b,751s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on main.pdf (36 pages, 6599501 bytes).
+Output written on main.pdf (37 pages, 5947450 bytes).
 PDF statistics:
- 595 PDF objects out of 1000 (max. 8388607)
- 495 compressed objects within 5 object streams
- 164 named destinations out of 1000 (max. 500000)
+ 603 PDF objects out of 1000 (max. 8388607)
+ 501 compressed objects within 6 object streams
+ 165 named destinations out of 1000 (max. 500000)
  304 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -305,11 +305,11 @@ INPUT ./Validation.png
 INPUT ./Validation.png
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm
 INPUT c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
-INPUT ./Timeline.png
-INPUT ./Timeline.png
-INPUT ./Timeline.png
-INPUT ./Timeline.png
-INPUT ./Timeline.png
+INPUT ./TImeline.png
+INPUT ./TImeline.png
+INPUT ./TImeline.png
+INPUT ./TImeline.png
+INPUT ./TImeline.png
 INPUT ./main.bbl
 INPUT ./main.bbl
 INPUT main.bbl
