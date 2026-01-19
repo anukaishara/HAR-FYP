@@ -6,21 +6,21 @@
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Overview of the DIP pipeline}}{7}{figure.caption.3}%
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Overview of the TIP pipeline}}{7}{figure.caption.4}%
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Overview of the FIP pipeline}}{8}{figure.caption.5}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Overview of the system proposed in tautges 2011}}{8}{figure.caption.6}%
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Overview of the system proposed in Kelly (2010)}}{9}{figure.caption.7}%
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Sensor positioning of WWSN and the three axes of accelerometers.}}{10}{figure.caption.8}%
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Evaluation of SMPLify reconstruction performance across varying accuracy percentiles}}{12}{figure.caption.9}%
-\contentsline {figure}{\numberline {2.8}{\ignorespaces Qualitative results of Human Mesh Recovery (HMR) on unconstrained monocular RGB images}}{12}{figure.caption.10}%
-\contentsline {figure}{\numberline {2.9}{\ignorespaces The ROMP One-Stage Regression Architecture for 3D Mesh Recovery}}{13}{figure.caption.12}%
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Decomposition of the SMPL model into shape ($\beta $) and pose ($\theta $) parameters}}{14}{figure.caption.13}%
-\contentsline {figure}{\numberline {2.11}{\ignorespaces Real-time 3D Human Mesh Recovery (HMR) from a single RGB image}}{14}{figure.caption.14}%
-\contentsline {figure}{\numberline {2.12}{\ignorespaces High-resolution surface reconstruction using Pixel-aligned Implicit Functions}}{15}{figure.caption.15}%
-\contentsline {figure}{\numberline {2.13}{\ignorespaces Comparison of joint volume loss in standard Linear Blend Skinning (LBS) vs. the corrected Pose Space Deformation}}{15}{figure.caption.16}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Overview of the system proposed in tautges 2011}}{9}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Overview of the system proposed in Kelly (2010)}}{10}{figure.caption.7}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Sensor positioning of WWSN and the three axes of accelerometers.}}{11}{figure.caption.8}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Evaluation of SMPLify reconstruction performance across varying accuracy percentiles}}{13}{figure.caption.9}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Qualitative results of Human Mesh Recovery (HMR) on unconstrained monocular RGB images}}{13}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces The ROMP One-Stage Regression Architecture for 3D Mesh Recovery}}{14}{figure.caption.12}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Decomposition of the SMPL model into shape ($\beta $) and pose ($\theta $) parameters}}{15}{figure.caption.13}%
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Real-time 3D Human Mesh Recovery (HMR) from a single RGB image}}{15}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.12}{\ignorespaces High-resolution surface reconstruction using Pixel-aligned Implicit Functions}}{16}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Comparison of joint volume loss in standard Linear Blend Skinning (LBS) vs. the corrected Pose Space Deformation}}{16}{figure.caption.16}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Block diagram of the proposed methodology }}{19}{figure.caption.21}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Flowchart of the Estimate the joint postures and the orientations }}{20}{figure.caption.23}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Flowchart of the Avatar Generation and Animation }}{22}{figure.caption.25}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Flowchart of the Validation }}{23}{figure.caption.27}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Block diagram of the proposed methodology }}{20}{figure.caption.21}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Flowchart of the Estimate the joint postures and the orientations }}{21}{figure.caption.23}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Flowchart of the Avatar Generation and Animation }}{23}{figure.caption.25}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Flowchart of the Validation }}{24}{figure.caption.27}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces TimeLine }}{25}{figure.caption.30}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces TimeLine }}{26}{figure.caption.30}%
 \addvspace {10\p@ }
