@@ -421,14 +421,14 @@ The research developed two distinct paradigms for activity classification based 
 Traditional motion capture often relies on deriving absolute 3D coordinates ($x, y, z$) for individual joints. However, for applications requiring high anatomical fidelity, simple coordinate-based methods are insufficient as they lack surface information and rigid biomechanical constraints. Parametric skeletal reconstruction addresses these limitations by estimating pose angles of a digital skin. This approach ensures reconstructed motion adheres to physiological limits and serves as the foundation for "Digital Twin" technologies.
 
 \subsubsection*{SMPLify (Skinned Multi-Person Linear Model)}
-The SMPL model is a vertex-based statistical model defining the human body surface. It is parametric, controlled by two low-dimensional vectors: Shape ($\beta$), representing coefficients derived from PCA, and Pose ($\theta$), representing axis-angle rotations of joints in a kinematic tree. The skin consists of 6,890 vertices bound using Linear Blend Skinning (LBS) weights \cite{loper2015smpl}. The effectiveness of this reconstruction approach is illustrated in Figure \ref{fig:smplify_eval}, which demonstrates the SMPLify model's performance across varying accuracy percentiles. 
+The SMPL model is a vertex-based statistical model defining the human body surface. It is parametric, controlled by two low-dimensional vectors: Shape ($\beta$), representing coefficients derived from Principal Component Analysis (\ac{PCA}), and Pose ($\theta$), representing axis-angle rotations of joints in a kinematic tree. The skin consists of 6,890 vertices bound using Linear Blend Skinning (LBS) weights \cite{loper2015smpl}. The effectiveness of this reconstruction approach is illustrated in Figure \ref{fig:smplify_eval}, which demonstrates the SMPLify model's performance across varying accuracy percentiles. 
 
 \begin{enumerate}[leftmargin=*]
     \item \textbf{Mathematical Formulation} \\
     The body mesh is a function of shape ($\beta$) and pose ($\theta$):
   \begin{enumerate}[leftmargin=*]
         \item \textbf{Shape ($\beta$)} \\
-        A vector of 10 coefficients derived from Principal Component Analysis (PCA) of body scans. Changing these values alters the subject's height, weight, and muscularity without affecting their pose.
+        A vector of 10 coefficients derived from Principal Component Analysis (\ac{PCA}) of body scans. Changing these values alters the subject's height, weight, and muscularity without affecting their pose.
         
         \item \textbf{Pose ($\theta$)} \\
         A vector of $24 \times 3$ parameters representing the axis-angle rotation of the 23 joints relative to their parents in the kinematic tree, plus the global orientation of the root joint (Pelvis).
@@ -529,7 +529,9 @@ Human digitization has evolved from primitive skeletal models to complex, mesh-b
 \end{enumerate}
 
 \subsection{Validation for Accelerometer-Based Activity Reconstruction}
-A primary objective of this research is to validate the proposed activity reconstruction model through comprehensive assessment of its accuracy, consistency, plausibility, and reliability. To achieve rigorous validation, this study adopts a hierarchical framework comprising four distinct levels, each addressing a different dimension of reconstruction quality. This multi-tiered approach is particularly critical for accelerometer-based systems, where inherent challenges such as sensor drift and the limited observational scope of inertial measurement units compared to optical motion capture systems necessitate evaluation beyond conventional geometric accuracy metrics alone.
+A primary objective of this research is to validate the proposed activity reconstruction model through a comprehensive evaluation of its accuracy, consistency, plausibility, and reliability. To ensure rigorous validation, the study utilizes a hierarchical framework consisting of four distinct levels, each targeting a specific dimension of reconstruction quality. This multi-level approach is particularly essential for accelerometer-based systems, as inherent challenges such as sensor drift and the limited observational capability of inertial measurement.
+
+\newpage
 
 \begin{enumerate}[leftmargin=*, itemsep=1em, label=\roman*.]
 
@@ -632,6 +634,7 @@ Since joint postures and the orientations cannot be directly obtained by only us
 The process commences with directly employing the available hardware components for retrieving raw data from wearable devices pertaining to the accelerometer sensor. The hardware components are solely responsible for providing initial inertial measurements to facilitate the analysis of joint posture and orientation. Wearable sensor-retrieved raw data constitutes the input for the proposed system addressing the estimation of joint posture and orientation by employing the strategy of integrating various estimation techniques.
 
 Three parallel strategies are incorporated within the proposed architecture for estimating joint posture parameters:
+
 \begin{enumerate}
     \item \textbf{Machine Learning Prediction:} A prediction model using machine learning algorithms has been employed for patterns within the accelerometer data and estimating joint posture and orientation information.
     \item \textbf{Geometrical Equations:} Geometrical equations for joint estimation, considering relative orientations among the sensors and gravity constraints, have been employed for joint parameter derivation.
@@ -711,7 +714,7 @@ This module defines the inputs required to build the Digital Twin:
 
 
 \section{Resource Required}
-This is a general estimation of budget for this project. These prices can be vary since the exact electronics/ services are not decided yet.
+This is a general estimation of budget for this project. These prices can be vary since the exact components and services are not decided yet.
 
 \begin{table}[H]
     \centering
@@ -732,36 +735,18 @@ This is a general estimation of budget for this project. These prices can be var
 
 
 \chapter{Conclusion}
-\noindent This project proposal outlines a comprehensive framework for accomplishing high
-fidelity human activity reconstruction with a sparse configuration of only five 3-axis 
-accelerometers. By strategically positioning these sensors on the wrists, ankles, and 
-torso, the suggested system addresses the critical need for a low-cost, minimally 
-intrusive, and portable alternative to standard motion capture technologies which 
-often rely on dense, expensive, and complex sensor arrays. \vspace{\baselineskip}
+\noindent This project proposal offers a framework for accomplishing accurate human activity recognition using a sparse sensor configuration of five 3-axis accelerometers. Through the placement of the sensors at the wrist, ankle, and torso, the proposed approach meets the requirement for developing a non-invasive and portable solution for human activity recognition, which requires lower costs compared to the usual motion capture systems that are dense, expensive, and complex. \vspace{\baselineskip}
 
 
-\noindent The methodology uniquely bridges the gap between raw inertial data and realistic 
-visualization by combining three parallel estimation strategies: machine learning
-based pattern recognition, geometric orientation equations, and inverse kinematics 
-theory. This combined approach serves to maintain robustness of the joint posture 
-and orientation estimation despite ambiguities in the accelerometer-only data.\vspace{\baselineskip}
+\noindent The approach systematically investigates three different estimation techniques in parallel to connect raw inertial measurements with realistic visualization. They are pattern recognition through machine-learning techniques, orientation equations in geometry, and inverse kinematics theories. The combination of different techniques can improve the reliability of joint posture and orientation estimation in the presence of ambiguities in raw accelerometer data.\vspace{\baselineskip}
 
 
-\noindent A significant contribution of this research is the development of a personalized 
-"Digital Twin" through an automated 3D avatar generation pipeline. The system 
-eliminates the need for generic digital templates and manual measurements by 
-utilizing deep regression models like ROMP or HMR, as well as the Skinned Multi
-Person Linear (SMPL) model. This provides metric accuracy and biologically 
-realistic skin deformation, which successfully reduces common visual defects such 
-as joint volume loss and kinematic drift. \vspace{\baselineskip}
+\noindent One of the key contributions of the above-mentioned research is the creation of a personalized “Digital Twin” using an “automatic three-dimensional avatar generation pipeline.” The process eliminates the need for generic digital templates and manual measurements in place and uses deep regression techniques like \ac{ROMP} or \ac{HMR} in conjunction with the Skinned Multi-Person Linear (\ac{SMPL}) model, thereby achieving metric accuracy and realistic skin deformation while avoiding joint volume loss and kinematic drift problems. \vspace{\baselineskip}
 
 
-\noindent Finally, the project implements a robust four-tier validation framework that includes 
-geometric, physical, perceptual, and reliability assessments - to ensure the system's 
-performance fulfils real-world expectations. This project's effective integration of 
-sparse inertial sensing with advanced computer vision and biomechanical modeling, 
-results in a scalable and efficient solution for applications in healthcare, sports 
-analysis, and immersive virtual environments.\vspace{\baselineskip}
+\noindent Finally, the solution also applies an effective four-tier validation mechanism that takes into account the geometric, physical, perceptual, and reliability verification to ensure the performance of the system aligns well with the expectations in the real world. This project’s effective inte-
+gration of sparse inertial sensing with advanced computer vision and biomechanical modeling, results in a scalable and efficient solution for applications in healthcare,
+sports analysis, and immersive virtual environments. \vspace{\baselineskip}
 
 
 
