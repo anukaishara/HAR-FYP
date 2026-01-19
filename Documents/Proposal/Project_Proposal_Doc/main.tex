@@ -342,7 +342,7 @@ This project presents a simplified human activity reconstruction system using a 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{Overview of the TIP pipeline.png}
+  \includegraphics[angle=90,origin=c,width=0.4\textwidth,height=0.39\textheight]{Overview of the TIP pipeline.png}
     \caption{Overview of the TIP pipeline}
     \label{fig:tip_pipeline}
 \end{figure}
@@ -352,13 +352,13 @@ This project presents a simplified human activity reconstruction system using a 
 \ac{PIP} integrates physics-based modeling with optimization and inverse kinematics to enforce physical plausibility, such as balance constraints and ground contact consistency. This approach enables more realistic motion reconstruction and improved contact handling compared to learning-only methods. However, the complexity of system design and high computational requirements restrict its real-time applicability \cite{xiao2024fast}.
 
 \subsubsection*{(e) Fast Inertial Poser (\ac{FIP})}
-\ac{FIP} presents a real-time human motion reconstruction framework that estimates full-body pose using only six sparse \ac{IMU}s while incorporating human body shape information. The method utilizes a bidirectional \ac{RNN} that respects the human kinematic structure to enable low-latency inference. Body parameters such as height and limb lengths help resolve pose ambiguities caused by sparse sensing. Experimental validation on the \ac{AMASS} and \ac{DIP}-\ac{IMU} datasets demonstrates state-of-the-art performance, achieving over 60~\ac{FPS} with less than 15~ms latency \cite{xiao2024fast}. Figure~\ref{fig:fip_pipeline} shows the overview of the \ac{FIP} pipeline.
-
+\ac{FIP} presents a real-time human motion reconstruction framework that estimates full-body pose using only six sparse \ac{IMU}s while incorporating human body shape information. The method utilizes a bidirectional \ac{RNN} that respects the human kinematic structure to enable low-latency inference. Body parameters such as height and limb lengths help resolve pose ambiguities caused by sparse sensing. Experimental validation on the \ac{AMASS} and \ac{DIP}-\ac{IMU} datasets demonstrates state-of-the-art performance, achieving over 60~\ac{FPS} with less than 15~ms latency \cite{xiao2024fast}. Figure~\ref{fig:fip_illustration} shows the overview of the \ac{FIP} pipeline.
+\\
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.95\textwidth]{Overview of the FIP pipeline.png}
-    \caption{Overview of the FIP pipeline}
-    \label{fig:fip_pipeline}
+  \includegraphics[origin=c,width=0.9\textwidth,height=0.9\textheight,keepaspectratio]{Illustration of FIP.png}
+    \caption{Illustration of FIP}
+    \label{fig:fip_illustration}
 \end{figure}
 
 \FloatBarrier
