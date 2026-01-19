@@ -328,7 +328,7 @@ This project presents a simplified human activity reconstruction system using a 
 \ac{SIP} is an optimization-based method that formulates pose estimation as a global or temporal optimization problem using motion priors and kinematic constraints. Although this method achieves high accuracy with sparse \ac{IMU}s, it is computationally expensive and exhibits higher latency, which limits its applicability in real-time and mobile systems \cite{yi2021transpose}.
 
 \subsubsection*{(b) Deep Inertial Poser (\ac{DIP})}
-\ac{DIP} employs bidirectional \ac{RNN}s to estimate joint rotations from \ac{IMU} data, incorporating learned kinematic constraints to achieve faster inference compared to \ac{SIP} while maintaining good accuracy. However, the requirement of both past and future frames introduces non-causal inference and latency, making it unsuitable for live applications \cite{huang2018deep}. Figure~\ref{fig:dip_pipeline} illustrates the overview of the \ac{DIP} pipeline.
+\ac{DIP} employs bidirectional \ac{RNN}s to estimate joint rotations from \ac{IMU} data, incorporating learned kinematic constraints to achieve faster inference compared to \ac{SIP} while maintaining good accuracy.However, this system is not suitable for real time applications because of the non causal inference and the latency of the system where it is depending on past and future frames. \cite{huang2018deep}. Figure~\ref{fig:dip_pipeline} illustrates the overview of the \ac{DIP} pipeline.
 
 \begin{figure}[H]
     \centering
@@ -338,7 +338,7 @@ This project presents a simplified human activity reconstruction system using a 
 \end{figure}
 
 \subsubsection*{(c) Transformer Inertial Poser (\ac{TIP})}
-\ac{TIP} adopts a transformer-based architecture to capture long-range temporal dependencies without relying on an inverse kinematics solver, enabling accurate handling of complex motions \cite{yi2021transpose}. Despite its improved performance, \ac{TIP} requires significant computational and memory resources, which limits its deployment on embedded or wearable platforms. Figure~\ref{fig:tip_pipeline} presents the overview of the \ac{TIP} pipeline.
+\ac{TIP} is a transformer based system which can handle complex motions accurately since it captures long range temporal dependencies without using inverse kinematics solver. But this system requires high computational power and memory resources limiting the usage in embedded and wearable applications. \cite{yi2021transpose}.Figure~\ref{fig:tip_pipeline} presents the overview of the \ac{TIP} pipeline.
 
 \begin{figure}[H]
     \centering
@@ -349,10 +349,10 @@ This project presents a simplified human activity reconstruction system using a 
 
 \newpage
 \subsubsection*{(d) Physics-based Inertial Poser (\ac{PIP})}
-\ac{PIP} integrates physics-based modeling with optimization and inverse kinematics to enforce physical plausibility, such as balance constraints and ground contact consistency. This approach enables more realistic motion reconstruction and improved contact handling compared to learning-only methods. However, the complexity of system design and high computational requirements restrict its real-time applicability \cite{xiao2024fast}.
+\ac{PIP} is a physics-based model with optimization and inverse kinematics to enhance the balance constraints and ground contact consistency. This system has improved realistic human motion reconstruction and contact handling than the learning based models. But high computational power and complex system design limits the real time applicability\cite{xiao2024fast}.
 
 \subsubsection*{(e) Fast Inertial Poser (\ac{FIP})}
-\ac{FIP} presents a real-time human motion reconstruction framework that estimates full-body pose using only six sparse \ac{IMU}s while incorporating human body shape information. The method utilizes a bidirectional \ac{RNN} that respects the human kinematic structure to enable low-latency inference. Body parameters such as height and limb lengths help resolve pose ambiguities caused by sparse sensing. Experimental validation on the \ac{AMASS} and \ac{DIP}-\ac{IMU} datasets demonstrates state-of-the-art performance, achieving over 60~\ac{FPS} with less than 15~ms latency \cite{xiao2024fast}. Figure~\ref{fig:fip_pipeline} shows the overview of the \ac{FIP} pipeline.
+\ac{FIP} is a real time human motion reconstruction model which estimates full body motion using only six sparse \ac{IMU}s while considering the human body shape information. This model uses a bidirectional \ac{RNN} that and enables low-latency inference. Body parameters such as height and limb lengths help resolve pose ambiguities caused by sparse sensing. Experimental validation on the \ac{AMASS} and \ac{DIP}-\ac{IMU} datasets demonstrates state-of-the-art performance, achieving over 60~\ac{FPS} with less than 15~ms latency \cite{xiao2024fast}. Figure~\ref{fig:fip_pipeline} shows the overview of the \ac{FIP} pipeline.
 
 \begin{figure}[!htbp]
     \centering
