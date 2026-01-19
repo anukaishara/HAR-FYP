@@ -1,19 +1,23 @@
 \begin{thebibliography}{10}
 
-\bibitem{huang2018deep}
-Y.~Huang, M.~Kaufmann, E.~Aksan, M.~J. Black, O.~Hilliges, and G.~Pons-Moll, ``Deep inertial poser: Learning to reconstruct human pose from sparse inertial measurements in real time,'' {\em ACM Transactions on Graphics (TOG)}, vol.~37, no.~6, pp.~1--15, 2018.
-
 \bibitem{yi2021transpose}
 X.~Yi, Y.~Zhou, and F.~Xu, ``Transpose: Real-time 3d human translation and pose estimation with six inertial sensors,'' {\em ACM Transactions On Graphics (TOG)}, vol.~40, no.~4, pp.~1--13, 2021.
 
 \bibitem{xiao2024fast}
 X.~Xiao, J.~Wang, P.~Feng, A.~Gong, X.~Zhang, and J.~Zhang, ``Fast human motion reconstruction from sparse inertial measurement units considering the human shape,'' {\em Nature Communications}, vol.~15, no.~1, p.~2423, 2024.
 
+\bibitem{huang2018deep}
+Y.~Huang, M.~Kaufmann, E.~Aksan, M.~J. Black, O.~Hilliges, and G.~Pons-Moll, ``Deep inertial poser: Learning to reconstruct human pose from sparse inertial measurements in real time,'' {\em ACM Transactions on Graphics (TOG)}, vol.~37, no.~6, pp.~1--15, 2018.
+
 \bibitem{tautges2011motion}
 J.~Tautges, A.~Zinke, B.~Kr{\"u}ger, J.~Baumann, A.~Weber, T.~Helten, M.~M{\"u}ller, H.-P. Seidel, and B.~Eberhardt, ``Motion reconstruction using sparse accelerometer data,'' {\em ACM Transactions on Graphics (ToG)}, vol.~30, no.~3, pp.~1--12, 2011.
 
 \bibitem{kelly2010human}
 P.~Kelly, C.~{\'O}~Conaire, and N.~E. O'Connor, ``Human motion reconstruction using wearable accelerometers,'' 2010.
+
+\bibitem{gunawardena2025wsn}
+S.~Gunawardena, P.~Amarasingha, S.~Gunawardhana, and S.~Sabaragamuwa, ``Wireless sensor network aided human activity detection using artificial intelligence,'' June 2025.
+\newblock Preprint on ResearchGate.
 
 \bibitem{loper2015smpl}
 M.~Loper, N.~Mahmood, J.~Romero, G.~Pons-Moll, and M.~J. Black, ``Smpl: A skinned multi-person linear model,'' {\em ACM Transactions on Graphics (TOG)}, vol.~34, no.~6, pp.~1--16, 2015.

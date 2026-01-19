@@ -5,39 +5,41 @@
   table {
     border-collapse: collapse;
     font-family: "Segoe UI", Arial, sans-serif;
-    /* Mathematical Calibration for 11:9 Ratio */
-    width: 1045px; 
+    /* Removed fixed width to allow 'exact width' calculation */
+    width: auto; 
     border: 2px solid #000;
-    table-layout: fixed;
+    /* Changed to auto so columns respond to content size */
+    table-layout: auto;
     margin: 20px auto;
   }
   th, td {
     border: 1px solid #000;
     text-align: center;
-    padding: 0;
-    font-size: 11px;
-    /* Increased height to satisfy the 11:9 ratio */
+    padding: 4px; /* Added slight padding for readability */
+    font-size: 13px; /* Increased from 11px */
     height: 45px; 
   }
   .task-col {
     text-align: left;
     font-weight: bold;
-    width: 253px; 
-    padding-left: 10px;
-    font-size: 13px;
+    /* Forces column to shrink to the minimum width of the text */
+    width: 1%;
+    white-space: nowrap; 
+    padding: 0 15px;
+    font-size: 16px; /* Increased from 13px */
     line-height: 1.2;
     background-color: #ffffff;
-    word-wrap: break-word;
   }
   .month-header {
     background-color: #f2f2f2;
     font-weight: bold;
-    font-size: 13px;
+    font-size: 15px; /* Increased from 13px */
     height: 35px;
   }
   .week-col {
-    width: 22px; 
-    font-size: 10px;
+    /* Set a minimum width for the week boxes */
+    min-width: 25px; 
+    font-size: 12px; /* Increased from 10px */
   }
   .shaded {
     background-color: #555555 !important;

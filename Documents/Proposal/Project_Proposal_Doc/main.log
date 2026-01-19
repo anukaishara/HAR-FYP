@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.1.11)  14 JAN 2026 20:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.1.11)  17 JAN 2026 17:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/Users/Anuka/Desktop/7th Sem/EE7802 UGP/Proposal/Project_Proposal_main/main.tex"
-(c:/Users/Anuka/Desktop/7th Sem/EE7802 UGP/Proposal/Project_Proposal_main/main.tex
+**"c:/Users/Anuka/Desktop/7th Sem/EE7802 UGP/Github_Repo/HAR-FYP/Documents/Proposal/Project_Proposal_Doc/main.tex"
+(c:/Users/Anuka/Desktop/7th Sem/EE7802 UGP/Github_Repo/HAR-FYP/Documents/Proposal/Project_Proposal_Doc/main.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-29>
 (c:/texlive/2025/texmf-dist/tex/latex/base/report.cls
@@ -349,28 +349,28 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \c@g@acro@SMPL@int=\count352
 \c@g@acro@TIP@int=\count353
 \c@g@acro@VR@int=\count354
-Package translations Info: No language package found. I am going to use `english' as default language. on input line 219.
+Package translations Info: No language package found. I am going to use `english' as default language. on input line 217.
  (./main.aux (./cover.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 219.
-LaTeX Font Info:    ... okay on input line 219.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 219.
-LaTeX Font Info:    ... okay on input line 219.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 219.
-LaTeX Font Info:    ... okay on input line 219.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 219.
-LaTeX Font Info:    ... okay on input line 219.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 219.
-LaTeX Font Info:    ... okay on input line 219.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 219.
-LaTeX Font Info:    ... okay on input line 219.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 219.
-LaTeX Font Info:    ... okay on input line 219.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 219.
-LaTeX Font Info:    ... okay on input line 219.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 219.
-LaTeX Font Info:    ... okay on input line 219.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 217.
+LaTeX Font Info:    ... okay on input line 217.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 217.
+LaTeX Font Info:    ... okay on input line 217.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 217.
+LaTeX Font Info:    ... okay on input line 217.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 217.
+LaTeX Font Info:    ... okay on input line 217.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 217.
+LaTeX Font Info:    ... okay on input line 217.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 217.
+LaTeX Font Info:    ... okay on input line 217.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 217.
+LaTeX Font Info:    ... okay on input line 217.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 217.
+LaTeX Font Info:    ... okay on input line 217.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 217.
+LaTeX Font Info:    ... okay on input line 217.
  (c:/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count355
@@ -392,11 +392,11 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 )) (c:/texlive/2025/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
 File: translations-basic-dictionary-english.trsl (english translation file `translations-basic-dictionary')
 )
-Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 219.
+Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 217.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 219.
+Package hyperref Info: Link coloring OFF on input line 217.
  (./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
@@ -439,7 +439,7 @@ Package hyperref Info: Link coloring OFF on input line 219.
 \openout2 = `cover.aux'.
 
 (./cover.tex
-<uor_logo.jpg, id=103, 236.885pt x 332.24126pt>
+<uor_logo.jpg, id=107, 236.885pt x 332.24126pt>
 File: uor_logo.jpg Graphic file (type jpg)
 <use uor_logo.jpg>
 Package pdftex.def Info: uor_logo.jpg  used on input line 6.
@@ -475,125 +475,135 @@ Chapter 1.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.264 
+l.262 
        [1] [2]
-Overfull \hbox (4.26968pt too wide) in paragraph at lines 281--282
+Overfull \hbox (4.26968pt too wide) in paragraph at lines 279--280
 \OT1/cmr/m/n/12 cesses, and drift com-pen-sa-tion al-go-rithms which in-creases the com-pu-ta-tional power,
  []
 
 [3] [4] [5]
 Chapter 2.
-<Overview of the DIP pipeline.png, id=271, 1145.02782pt x 288.3272pt>
+<Overview of the DIP pipeline.png, id=256, 1145.02782pt x 288.3272pt>
 File: Overview of the DIP pipeline.png Graphic file (type png)
 <use Overview of the DIP pipeline.png>
-Package pdftex.def Info: Overview of the DIP pipeline.png  used on input line 360.
+Package pdftex.def Info: Overview of the DIP pipeline.png  used on input line 333.
 (pdftex.def)             Requested size: 395.98996pt x 99.71495pt.
 [6
 
- <./Overview of the DIP pipeline.png>]
-<Overview of the TIP pipeline.png, id=282, 1108.8928pt x 389.20406pt>
+]
+<Overview of the TIP pipeline.png, id=266, 1108.8928pt x 389.20406pt>
 File: Overview of the TIP pipeline.png Graphic file (type png)
 <use Overview of the TIP pipeline.png>
-Package pdftex.def Info: Overview of the TIP pipeline.png  used on input line 370.
+Package pdftex.def Info: Overview of the TIP pipeline.png  used on input line 343.
 (pdftex.def)             Requested size: 395.98996pt x 138.98499pt.
-<Overview of the FIP pipeline.png, id=287, 1181.16281pt x 516.42938pt>
+<Overview of the FIP pipeline.png, id=270, 1181.16281pt x 516.42938pt>
 File: Overview of the FIP pipeline.png Graphic file (type png)
 <use Overview of the FIP pipeline.png>
-Package pdftex.def Info: Overview of the FIP pipeline.png  used on input line 383.
+Package pdftex.def Info: Overview of the FIP pipeline.png  used on input line 356.
 (pdftex.def)             Requested size: 395.98996pt x 173.13297pt.
- [7 <./Overview of the TIP pipeline.png>]
-<Overview of the system proposed in tautges 2011.png, id=296, 508.14844pt x 269.50688pt>
+ [7 <./Overview of the DIP pipeline.png> <./Overview of the TIP pipeline.png>]
+<Overview of the system proposed in tautges 2011.png, id=279, 508.14844pt x 269.50688pt>
 File: Overview of the system proposed in tautges 2011.png Graphic file (type png)
 <use Overview of the system proposed in tautges 2011.png>
-Package pdftex.def Info: Overview of the system proposed in tautges 2011.png  used on input line 396.
+Package pdftex.def Info: Overview of the system proposed in tautges 2011.png  used on input line 369.
 (pdftex.def)             Requested size: 395.98996pt x 210.02945pt.
  [8 <./Overview of the FIP pipeline.png> <./Overview of the system proposed in tautges 2011.png>]
-<Overview of the system proposed in kelly 2010.png, id=308, 515.67656pt x 816.80156pt>
+<Overview of the system proposed in kelly 2010.png, id=290, 515.67656pt x 816.80156pt>
 File: Overview of the system proposed in kelly 2010.png Graphic file (type png)
 <use Overview of the system proposed in kelly 2010.png>
-Package pdftex.def Info: Overview of the system proposed in kelly 2010.png  used on input line 405.
-(pdftex.def)             Requested size: 291.78174pt x 462.17923pt.
-
-Overfull \hbox (0.95245pt too wide) in paragraph at lines 414--415
+Package pdftex.def Info: Overview of the system proposed in kelly 2010.png  used on input line 381.
+(pdftex.def)             Requested size: 287.46284pt x 455.32437pt.
+ [9 <./Overview of the system proposed in kelly 2010.png>]
+<Sensor positioning of WWSN and 3 axes of accelerometer.png, id=300, 371.13657pt x 214.55156pt>
+File: Sensor positioning of WWSN and 3 axes of accelerometer.png Graphic file (type png)
+<use Sensor positioning of WWSN and 3 axes of accelerometer.png>
+Package pdftex.def Info: Sensor positioning of WWSN and 3 axes of accelerometer.png  used on input line 401.
+(pdftex.def)             Requested size: 395.98996pt x 228.92296pt.
+ [10 <./Sensor positioning of WWSN and 3 axes of accelerometer.png>]
+Overfull \hbox (0.95245pt too wide) in paragraph at lines 412--413
 \OT1/cmr/m/n/12 Traditional mo-tion cap-ture of-ten re-lies on de-riv-ing ab-so-lute 3D co-or-di-nates ($\OML/cmm/m/it/12 x; y; z$\OT1/cmr/m/n/12 )
  []
 
-[9 <./Overview of the system proposed in kelly 2010.png>]
-<Evaluation of SMPLify reconstruction performance across varying accuracy percentiles.png, id=318, 714.2685pt x 393.26926pt>
+<Evaluation of SMPLify reconstruction performance across varying accuracy percentiles.png, id=312, 714.2685pt x 393.26926pt>
 File: Evaluation of SMPLify reconstruction performance across varying accuracy percentiles.png Graphic file (type png)
 <use Evaluation of SMPLify reconstruction performance across varying accuracy percentiles.png>
-Package pdftex.def Info: Evaluation of SMPLify reconstruction performance across varying accuracy percentiles.png  used on input line 436.
+Package pdftex.def Info: Evaluation of SMPLify reconstruction performance across varying accuracy percentiles.png  used on input line 434.
 (pdftex.def)             Requested size: 395.98996pt x 218.03299pt.
- [10]
-<Qualitative results of Human Mesh Recovery (HMR) on unconstrained monocular RGB images.png, id=331, 1004.553pt x 382.42876pt>
+[11]
+<Qualitative results of Human Mesh Recovery (HMR) on unconstrained monocular RGB images.png, id=325, 1004.553pt x 382.42876pt>
 File: Qualitative results of Human Mesh Recovery (HMR) on unconstrained monocular RGB images.png Graphic file (type png)
 <use Qualitative results of Human Mesh Recovery (HMR) on unconstrained monocular RGB images.png>
-Package pdftex.def Info: Qualitative results of Human Mesh Recovery (HMR) on unconstrained monocular RGB images.png  used on input line 448.
+Package pdftex.def Info: Qualitative results of Human Mesh Recovery (HMR) on unconstrained monocular RGB images.png  used on input line 446.
 (pdftex.def)             Requested size: 395.98996pt x 150.75134pt.
- [11 <./Evaluation of SMPLify reconstruction performance across varying accuracy percentiles.png> <./Qualitative results of Human Mesh Recovery (HMR) on unconstrained monocular RGB images.png>]
-<The ROMP One-Stage Regression Architecture for 3D Mesh Recovery.png, id=343, 937.70325pt x 207.174pt>
+ [12 <./Evaluation of SMPLify reconstruction performance across varying accuracy percentiles.png> <./Qualitative results of Human Mesh Recovery (HMR) on unconstrained monocular RGB images.png>]
+<The ROMP One-Stage Regression Architecture for 3D Mesh Recovery.png, id=339, 937.70325pt x 207.174pt>
 File: The ROMP One-Stage Regression Architecture for 3D Mesh Recovery.png Graphic file (type png)
 <use The ROMP One-Stage Regression Architecture for 3D Mesh Recovery.png>
-Package pdftex.def Info: The ROMP One-Stage Regression Architecture for 3D Mesh Recovery.png  used on input line 471.
+Package pdftex.def Info: The ROMP One-Stage Regression Architecture for 3D Mesh Recovery.png  used on input line 470.
 (pdftex.def)             Requested size: 395.98996pt x 87.48982pt.
-<Decomposition of the SMPL model into shape and pose parameters.png, id=347, 631.60968pt x 519.44063pt>
+<Decomposition of the SMPL model into shape and pose parameters.png, id=342, 631.60968pt x 519.44063pt>
 File: Decomposition of the SMPL model into shape and pose parameters.png Graphic file (type png)
 <use Decomposition of the SMPL model into shape and pose parameters.png>
-Package pdftex.def Info: Decomposition of the SMPL model into shape and pose parameters.png  used on input line 486.
+Package pdftex.def Info: Decomposition of the SMPL model into shape and pose parameters.png  used on input line 485.
 (pdftex.def)             Requested size: 333.46758pt x 274.24806pt.
- [12 <./The ROMP One-Stage Regression Architecture for 3D Mesh Recovery.png>]
-<Real-time 3D Human Mesh Recovery (HMR) from a single RGB image.png, id=363, 937.25156pt x 400.49625pt>
+ [13 <./The ROMP One-Stage Regression Architecture for 3D Mesh Recovery.png>]
+<Real-time 3D Human Mesh Recovery (HMR) from a single RGB image.png, id=357, 937.25156pt x 400.49625pt>
 File: Real-time 3D Human Mesh Recovery (HMR) from a single RGB image.png Graphic file (type png)
 <use Real-time 3D Human Mesh Recovery (HMR) from a single RGB image.png>
-Package pdftex.def Info: Real-time 3D Human Mesh Recovery (HMR) from a single RGB image.png  used on input line 498.
+Package pdftex.def Info: Real-time 3D Human Mesh Recovery (HMR) from a single RGB image.png  used on input line 497.
 (pdftex.def)             Requested size: 375.14705pt x 160.30565pt.
-<High-resolution surface reconstruction using Pixel-aligned Implicit Functions (PIFu).png, id=366, 645.16031pt x 264.99pt>
+<High-resolution surface reconstruction using Pixel-aligned Implicit Functions (PIFu).png, id=358, 645.16031pt x 264.99pt>
 File: High-resolution surface reconstruction using Pixel-aligned Implicit Functions (PIFu).png Graphic file (type png)
 <use High-resolution surface reconstruction using Pixel-aligned Implicit Functions (PIFu).png>
-Package pdftex.def Info: High-resolution surface reconstruction using Pixel-aligned Implicit Functions (PIFu).png  used on input line 505.
+Package pdftex.def Info: High-resolution surface reconstruction using Pixel-aligned Implicit Functions (PIFu).png  used on input line 504.
 (pdftex.def)             Requested size: 375.14705pt x 154.08652pt.
- [13 <./Decomposition of the SMPL model into shape and pose parameters.png> <./Real-time 3D Human Mesh Recovery (HMR) from a single RGB image.png>]
-<Comparison of joint volume loss in standard Linear Blend Skinning (LBS) vs. the corrected Pose Space Deformation (PSD).png, id=377, 846.91406pt x 203.25937pt>
+ [14 <./Decomposition of the SMPL model into shape and pose parameters.png> <./Real-time 3D Human Mesh Recovery (HMR) from a single RGB image.png>]
+<Comparison of joint volume loss in standard Linear Blend Skinning (LBS) vs. the corrected Pose Space Deformation (PSD).png, id=369, 846.91406pt x 203.25937pt>
 File: Comparison of joint volume loss in standard Linear Blend Skinning (LBS) vs. the corrected Pose Space Deformation (PSD).png Graphic file (type png)
 <use Comparison of joint volume loss in standard Linear Blend Skinning (LBS) vs. the corrected Pose Space Deformation (PSD).png>
-Package pdftex.def Info: Comparison of joint volume loss in standard Linear Blend Skinning (LBS) vs. the corrected Pose Space Deformation (PSD).png  used on input line 517.
+Package pdftex.def Info: Comparison of joint volume loss in standard Linear Blend Skinning (LBS) vs. the corrected Pose Space Deformation (PSD).png  used on input line 516.
 (pdftex.def)             Requested size: 375.14705pt x 90.03297pt.
- [14 <./High-resolution surface reconstruction using Pixel-aligned Implicit Functions (PIFu).png> <./Comparison of joint volume loss in standard Linear Blend Skinning (LBS) vs. the corrected Pose Space Deformation (PSD).png>] [15] [16] [17]
+ [15 <./High-resolution surface reconstruction using Pixel-aligned Implicit Functions (PIFu).png> <./Comparison of joint volume loss in standard Linear Blend Skinning (LBS) vs. the corrected Pose Space Deformation (PSD).png>] [16] [17] [18]
 Chapter 3.
-<Methodology Chart.png, id=434, 2570.60374pt x 1978.39125pt>
+<Methodology Chart.png, id=427, 2570.60374pt x 1978.39125pt>
 File: Methodology Chart.png Graphic file (type png)
 <use Methodology Chart.png>
 Package pdftex.def Info: Methodology Chart.png  used on input line 607.
 (pdftex.def)             Requested size: 375.14705pt x 288.71593pt.
-<Estimate Joint Postures.png, id=435, 3928.6775pt x 6380.83875pt>
+<Estimate Joint Postures.png, id=429, 3928.6775pt x 6380.83875pt>
 File: Estimate Joint Postures.png Graphic file (type png)
 <use Estimate Joint Postures.png>
-Package pdftex.def Info: Estimate Joint Postures.png  used on input line 616.
-(pdftex.def)             Requested size: 362.64256pt x 588.95262pt.
-[18
+Package pdftex.def Info: Estimate Joint Postures.png  used on input line 618.
+(pdftex.def)             Requested size: 353.62567pt x 574.34808pt.
+[19
 
- <./Methodology Chart.png>] [19 <./Estimate Joint Postures.png>]
-<3D Skeletal Reconstruction.png, id=448, 2647.8925pt x 3244.12pt>
+ <./Methodology Chart.png>] [20 <./Estimate Joint Postures.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 635--638
+
+ []
+
+[21]
+<3D Skeletal Reconstruction.png, id=451, 2647.8925pt x 3244.12pt>
 File: 3D Skeletal Reconstruction.png Graphic file (type png)
 <use 3D Skeletal Reconstruction.png>
-Package pdftex.def Info: 3D Skeletal Reconstruction.png  used on input line 635.
-(pdftex.def)             Requested size: 362.64256pt x 444.27347pt.
- [20] [21 <./3D Skeletal Reconstruction.png>]
-<Validation.png, id=463, 2659.9375pt x 3510.11375pt>
+Package pdftex.def Info: 3D Skeletal Reconstruction.png  used on input line 648.
+(pdftex.def)             Requested size: 343.026pt x 420.26537pt.
+ [22 <./3D Skeletal Reconstruction.png>]
+<Validation.png, id=459, 2659.9375pt x 3510.11375pt>
 File: Validation.png Graphic file (type png)
 <use Validation.png>
-Package pdftex.def Info: Validation.png  used on input line 649.
-(pdftex.def)             Requested size: 375.14705pt x 495.05466pt.
- [22 <./Validation.png>] [23] [24{c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+Package pdftex.def Info: Validation.png  used on input line 659.
+(pdftex.def)             Requested size: 250.0991pt x 330.03644pt.
+ [23 <./Validation.png>] [24{c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 Chapter 4.
-<Timeline.png, id=500, 6705.05pt x 7989.85pt>
+<Timeline.png, id=491, 963.6pt x 1323.44438pt>
 File: Timeline.png Graphic file (type png)
 <use Timeline.png>
-Package pdftex.def Info: Timeline.png  used on input line 689.
-(pdftex.def)             Requested size: 370.981pt x 442.06429pt.
+Package pdftex.def Info: Timeline.png  used on input line 698.
+(pdftex.def)             Requested size: 320.96309pt x 440.81721pt.
 [25
 
- <./Timeline.png (PNG copy)>] [26]
+ <./TImeline.png>] [26]
 Chapter 5.
 (./main.bbl [27
 
@@ -605,21 +615,21 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-29>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 45ED60A7730FA4B8BF1BA24A5ED382B8;5193.
+(rerunfilecheck)             Checksum: D7FC51E272ED752A63B82859E3EF23A2;5591.
  ) 
 Here is how much of TeX's memory you used:
- 19024 strings out of 467538
- 430166 string characters out of 5423725
- 781879 words of memory out of 5000000
- 47619 multiletter control sequences out of 15000+600000
+ 19039 strings out of 467538
+ 430876 string characters out of 5423725
+ 782695 words of memory out of 5000000
+ 47632 multiletter control sequences out of 15000+600000
  645353 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,79p,1281b,751s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,79p,1310b,751s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on main.pdf (36 pages, 22732404 bytes).
+Output written on main.pdf (36 pages, 5947229 bytes).
 PDF statistics:
- 602 PDF objects out of 1000 (max. 8388607)
- 493 compressed objects within 5 object streams
- 162 named destinations out of 1000 (max. 500000)
- 291 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 595 PDF objects out of 1000 (max. 8388607)
+ 495 compressed objects within 5 object streams
+ 164 named destinations out of 1000 (max. 500000)
+ 304 words of extra memory for PDF output out of 10000 (max. 10000000)
 
