@@ -250,7 +250,7 @@ This project presents a simplified human activity reconstruction system using a 
 % Main Content
 \chapter{Introduction}
 \section{Background}
-\noindent Human activity reconstruction of a user’s 3D skeletal configuration has become increasingly important for analyzing and visualizing human movement in areas such as healthcare, sports analysis, rehabilitation, virtual reality, gaming, biomechanical analysis and immersive human computer interaction, including virtual and augmented reality, since it enables remote monitoring and evaluation. These systems must function reliably in everyday environments and minimize intrusiveness and user instrumentation.\vspace{\baselineskip}
+\noindent Human activity reconstruction of a user’s 3D skeletal configuration has become increasingly important for analyzing and visualizing human movement in areas such as healthcare, sports analysis, rehabilitation, virtual reality, gaming, biomechanical analysis and immersive human computer interaction including virtual and augmented reality since it enables remote monitoring and evaluation. Also,the approach of reconstructing human motion using movement data rather than using video data helps to preserve the privacy of the users of these systems. These systems must function reliably in everyday environments and minimize the intrusiveness and user instrumentation.\vspace{\baselineskip}
 
 \noindent Traditional motion capture systems rely on high-end optical based setups with multiple cameras, markers such as Vicon, and high accuracy inertial sensors, which require expensive infrastructure, controlled environments, and complex setups to attach them to the body, making them unsuitable for portable or everyday use.\vspace{\baselineskip}
 
@@ -282,15 +282,17 @@ This project presents a simplified human activity reconstruction system using a 
 
 \section{Objectives and Scope}
 
-\subsection{Objectives}
+\subsection{Aim}
 
-\noindent The aim of this project is to develop a low cost and wearable human activity detection and reconstruction system using accelerometers.\vspace{\baselineskip}
+\noindent Develop a low cost and simple wearable accelerometer based human activity reconstruction system that accurately estimates the movements of the joints and reconstructs the full body motion and visualizes it through a personalized 3D avatar while validating the reconstructed motion against synchronized reference video data.\vspace{\baselineskip}
+
+\subsection{Objectives}
 
 \noindent The specific objectives of the project are as follows,
 \vspace{\baselineskip}
 
 \begin{enumerate}[leftmargin=*, itemsep=1em]
-    \item{Accurately acquire raw motion data from the user during movement} \\
+    \item{Accurately acquire raw time synchronized motion data from the user during movement} \\
     \textit{Expected outcome} -- Accurate accelerometer-based sensor readings with synchronized timestamps representing the user's physical movement to be used for further processing.
 
     \item {Design and develop a method to estimate joint postures and orientations using the collected raw accelerometer data} \\
@@ -320,13 +322,13 @@ This project presents a simplified human activity reconstruction system using a 
 \section{Previous Work}
 
 \subsection{Developing the Models using Sparse \ac{IMU}s to Estimate the Joint Postures and the Orientations}
-\ac{IMU} based human activity reconstruction aims to model full body pose while avoiding the limitations of camera-based systems. Over time, research on this topic has evolved from optimization-based approaches to deep learning models while reducing the number of sensors, computational power, cost, and durability. \ac{SIP}, \ac{DIP}, \ac{TIP}, \ac{PIP}, and \ac{FIP} represent key milestones along this research journey.
+\ac{IMU}-based human activity reconstruction aims to model full-body pose while avoiding the limitations of camera-based systems. Over time, research on this topic has evolved from optimization-based approaches to deep learning models while reducing the number of sensors, computational power, cost, and improving durability. \ac{SIP}, \ac{DIP}, \ac{TIP}, \ac{PIP}, and \ac{FIP} represent key milestones along this research journey.
 
-\subsubsection*{Sparse Inertial Poser (\ac{SIP})}
-\ac{SIP} is an optimization-based method that formulated pose estimation as a global or temporal optimization problem using motion priors and kinematic constraints. Even though this method has a high accuracy with sparse \ac{IMU}s, it is computationally expensive and has a higher latency, which limits real-time and mobile applicability \cite{yi2021transpose}.
+\subsubsection*{(a) Sparse Inertial Poser (\ac{SIP})}
+\ac{SIP} is an optimization-based method that formulates pose estimation as a global or temporal optimization problem using motion priors and kinematic constraints. Although this method achieves high accuracy with sparse \ac{IMU}s, it is computationally expensive and exhibits higher latency, which limits its applicability in real-time and mobile systems \cite{yi2021transpose}.
 
-\subsubsection*{Deep Inertial Poser (\ac{DIP})}
-\ac{DIP} employs bidirectional \ac{RNN}s to estimate joint rotations from the \ac{IMU} dataset, handled through learned kinematic constraints making it faster than the SIP method with a good accuracy rate. However, past and future frames are needed to improve accuracy; their dependence on future information introduces non-causal inference and latency, making them unsuitable for live applications \cite{huang2018deep}. The followig Figure~\ref{fig:dip_pipeline} shows the overview of the DIP pipeline.
+\subsubsection*{(b) Deep Inertial Poser (\ac{DIP})}
+\ac{DIP} employs bidirectional \ac{RNN}s to estimate joint rotations from \ac{IMU} data, incorporating learned kinematic constraints to achieve faster inference compared to \ac{SIP} while maintaining good accuracy. However, the requirement of both past and future frames introduces non-causal inference and latency, making it unsuitable for live applications \cite{huang2018deep}. Figure~\ref{fig:dip_pipeline} illustrates the overview of the \ac{DIP} pipeline.
 
 \begin{figure}[H]
     \centering
@@ -335,8 +337,8 @@ This project presents a simplified human activity reconstruction system using a 
     \label{fig:dip_pipeline}
 \end{figure}
 
-\subsubsection*{Transformer Inertial Poser (\ac{TIP})}
-\ac{TIP} uses a transformer-based architecture to capture long-range temporal dependencies without an inverse kinematic solver, allowing it to handle complex motions accurately[cite: 103]. However, it requires high computational and memory resources, limiting deployment on embedded or wearable devices \cite{yi2021transpose}. The followig Figure~\ref{fig:tip_pipeline} shows the overview of the TIP pipeline.
+\subsubsection*{(c) Transformer Inertial Poser (\ac{TIP})}
+\ac{TIP} adopts a transformer-based architecture to capture long-range temporal dependencies without relying on an inverse kinematics solver, enabling accurate handling of complex motions \cite{yi2021transpose}. Despite its improved performance, \ac{TIP} requires significant computational and memory resources, which limits its deployment on embedded or wearable platforms. Figure~\ref{fig:tip_pipeline} presents the overview of the \ac{TIP} pipeline.
 
 \begin{figure}[H]
     \centering
@@ -345,11 +347,12 @@ This project presents a simplified human activity reconstruction system using a 
     \label{fig:tip_pipeline}
 \end{figure}
 
-\subsubsection*{Physics-based Inertial Poser (\ac{PIP})}
-\ac{PIP} combines physics-based modeling with optimization and inverse kinematics to enforce physical plausibility, such as balance and ground contact[cite: 142]. It can estimate physically realistic motion and handle contact better than other methods[cite: 143]. However, this method also requires complex system design and high computational cost, limiting real-time applicability \cite{xiao2024fast}.
+\newpage
+\subsubsection*{(d) Physics-based Inertial Poser (\ac{PIP})}
+\ac{PIP} integrates physics-based modeling with optimization and inverse kinematics to enforce physical plausibility, such as balance constraints and ground contact consistency. This approach enables more realistic motion reconstruction and improved contact handling compared to learning-only methods. However, the complexity of system design and high computational requirements restrict its real-time applicability \cite{xiao2024fast}.
 
-\subsubsection*{Fast Inertial Poser (\ac{FIP})}
-\ac{FIP} embodies a real-time solution based on human motion reconstruction to deduce full-body pose based on six sparse \ac{IMU}s by adapting information of the human shape. The solution employs a bidirectional \ac{RNN} honoring the human body kinematic structure to facilitate real-time computation and minimize latency. The inclusion of body parameters, such as height and limb lengths, aids in canceling ambiguities in pose inference arising from sparse sensing. Experimental results on \ac{AMASS} and \ac{DIP}-\ac{IMU} datasets provide evidence of state-of-the-art performance, running above 60 \ac{FPS} within a 15ms latency \cite{xiao2024fast}. The followig Figure~\ref{fig:fip_pipeline} shows the overview of the FIP pipeline.
+\subsubsection*{(e) Fast Inertial Poser (\ac{FIP})}
+\ac{FIP} presents a real-time human motion reconstruction framework that estimates full-body pose using only six sparse \ac{IMU}s while incorporating human body shape information. The method utilizes a bidirectional \ac{RNN} that respects the human kinematic structure to enable low-latency inference. Body parameters such as height and limb lengths help resolve pose ambiguities caused by sparse sensing. Experimental validation on the \ac{AMASS} and \ac{DIP}-\ac{IMU} datasets demonstrates state-of-the-art performance, achieving over 60~\ac{FPS} with less than 15~ms latency \cite{xiao2024fast}. Figure~\ref{fig:fip_pipeline} shows the overview of the \ac{FIP} pipeline.
 
 \begin{figure}[!htbp]
     \centering
@@ -360,6 +363,7 @@ This project presents a simplified human activity reconstruction system using a 
 
 \FloatBarrier
 
+\newpage
 \subsection{Developing the Models using Accelerometers to Estimate the Joint Postures and the Orientations}
 \begin{enumerate}[leftmargin=*, itemsep=1em]
     \item Human activity reconstruction for full-body pose has been performed using only four sparse 3-axis accelerometers placed on the wrists and ankles. Instead of using accelerometer readings directly, which can introduce significant drift, this method used a data-driven approach leveraging a large motion capture database. A simulate-and-optimize approach was utilized to generate synthesized accelerometer readings to align with sensor data through nearest-neighbor search and graph optimization. Inverse kinematics and reduced-dimensional pose representations were used to recover plausible full-body poses in real-time \cite{tautges2011motion}. Following Figure~\ref{fig:tautges2011} shows the overview of the system proposed in tautges 2011.
@@ -370,14 +374,14 @@ This project presents a simplified human activity reconstruction system using a 
         \caption{Overview of the system proposed in tautges 2011}
         \label{fig:tautges2011}
     \end{figure}
-    \newpage  
+  
     \item Human motion can also be reconstructed using wearable accelerometers in complete isolation from the requirement for optical motion capture systems. A portable, low-cost framework where several body-mounted tri-axial accelerometers were used to estimate full-body motion, especially for sports and outdoors for which optical systems are impractical. Instead of directly computing the joint angles from sensor data, their approach relies on a data-driven motion database and a motion graph constructed from pre-recorded motion capture data. On this database, virtual accelerometers were simulated, and a dynamic programming–based matching algorithm was used for finding pose sequences whose simulated accelerations best matched the measured sensor readings. While the method indeed produced naturalistic motions using only accelerometer data, it was prone to positional drift over time, showing one major limitation of accelerometer-based motion reconstruction approaches.\cite{kelly2010human} Following Figure~\ref{fig:kelly2010} shows the overview of the system proposed in kelly 2010.
 
 \begin{figure}[!htbp]
     \centering
     \includegraphics[
-        width=0.7\textwidth,
-        height=0.65\textheight,
+        width=0.8\textwidth,
+        height=0.8\textheight,
         keepaspectratio]{Overview of the system proposed in kelly 2010.png}
     \caption{Overview of the system proposed in Kelly (2010)}
     \label{fig:kelly2010}
