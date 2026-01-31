@@ -8,7 +8,7 @@ import time
 # ==========================================
 # CONFIGURATION
 # ==========================================
-MODEL_FOLDER = 'model_data'
+MODEL_FOLDER = 'C:\Users\Anuka\model_data'
 PROFILE_FILE = 'user_profile.npy'
 GENDER = 'neutral'
 

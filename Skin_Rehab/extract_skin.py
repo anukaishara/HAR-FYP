@@ -11,7 +11,7 @@ import glob
 INPUT_IMAGE_PATH = "inputs/internet_test.jpg" 
 OUTPUT_DIR = "outputs/"
 PROFILE_FILE = "user_profile.npy"
-MODEL_FOLDER = "model_data"
+MODEL_FOLDER = "C:\Users\Anuka\model_data
 GENDER = "neutral"
 
 # ==========================================

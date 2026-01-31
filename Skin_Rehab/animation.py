@@ -11,7 +11,7 @@ from scipy.spatial.transform import Rotation as R
 # ==========================================
 # CONFIGURATION
 # ==========================================
-MODEL_FOLDER = 'model_data'
+MODEL_FOLDER = 'C:\Users\Anuka\model_data'
 PROFILE_FILE = 'user_profile.npy'
 OUTPUT_DIR = 'outputs'
 GENDER = 'neutral'
