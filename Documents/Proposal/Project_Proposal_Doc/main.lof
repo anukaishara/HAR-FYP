@@ -18,9 +18,16 @@
 \contentsline {figure}{\numberline {2.13}{\ignorespaces Comparison of joint volume loss in standard Linear Blend Skinning (LBS) vs. the corrected Pose Space Deformation}}{16}{figure.caption.16}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Block diagram of the proposed methodology }}{20}{figure.caption.21}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Flowchart of the Estimate the joint postures and the orientations }}{21}{figure.caption.23}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Flowchart of the Avatar Generation and Animation }}{23}{figure.caption.25}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Flowchart of the Validation }}{24}{figure.caption.27}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Pipeline of the proposed model}}{21}{figure.caption.23}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Overall Pipeline of the proposed Hybrid Inverse Kinematics and Deep Learning Sensor Rotation Estimation}}{22}{figure.caption.24}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Overall Pipeline of Sequence-Level Orientation Estimation using Attention-Based Deep Learning}}{24}{figure.caption.25}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Pipeline of Geometric Equations for Rotation Estimation Model}}{26}{figure.caption.26}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Flowchart of the Avatar Generation and Animation }}{28}{figure.caption.28}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Flowchart of the Validation }}{29}{figure.caption.30}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces TimeLine }}{26}{figure.caption.30}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Validation Pipeline Using the DIP IMU Data set }}{31}{figure.caption.33}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Graph of Mean Geodesic Error Per Joint for both the Approaches.}}{32}{figure.caption.34}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Graph of SIP mean vs the Number of Runs}}{33}{figure.caption.35}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces TimeLine }}{35}{figure.caption.37}%
 \addvspace {10\p@ }
