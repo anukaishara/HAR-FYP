@@ -621,27 +621,121 @@ This research follows a structured approach to human activity reconstruction. Fi
 \end{figure}
 
 \subsubsection{Estimate the joint postures and the orientations}
-Since joint postures and the orientations cannot be directly obtained by only using accelerometer data, we are planning to work on different approaches at the same time as follows. Following Figure \ref{fig:estimate_joint_postures_flowchart} shows the flowchart of the estimate the joint postures and the orientations.
+The flow chart in the following figure \ref{fig:Pipeline_of_the_proposed_model} presents the full architecture of the human motion reconstruction algorithm based on accelerometers only. Full architecture consists of three stages: Sensor Rotation Estimation Model which is the newly added sensor rotation prediction layer to approximate the unknown sensor rotations resulting from the lack of gyroscope information, FIP (Fast Inertial Poser) which is used to obtain the joint rotations, and the final human motion output.
+
+The unprocessed data from six accelerometers is initially fed into the Sensor Rotation Estimation Model, in which the physics-based and deep-learning-based models are tested for their ability to predict the missing sensor rotations. The optimal model is chosen depending on the minimum value of the rotation prediction error. At last, the predicted sensor rotations along with the unprocessed data from accelerometers are used as input to the Fast Inertial Poser (FIP) model. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.87\textwidth,
     height=0.82\textheight,
-    keepaspectratio]{Estimate Joint Postures.png}
-    \caption{Flowchart of the Estimate the joint postures and the orientations }
-  \label{fig:estimate_joint_postures_flowchart}
+    keepaspectratio]{Pipeline of the proposed model.png}
+    \caption{Pipeline of the proposed model}
+  \label{fig:Pipeline_of_the_proposed_model}
 \end{figure}
 
-The process commences with directly employing the available hardware components for retrieving raw data from wearable devices pertaining to the accelerometer sensor. The hardware components are solely responsible for providing initial inertial measurements to facilitate the analysis of joint posture and orientation. Wearable sensor-retrieved raw data constitutes the input for the proposed system addressing the estimation of joint posture and orientation by employing the strategy of integrating various estimation techniques.
-
-Three parallel strategies are incorporated within the proposed architecture for estimating joint posture parameters:
-
 \begin{enumerate}
-    \item \textbf{Machine Learning Prediction:} A prediction model using machine learning algorithms has been employed for patterns within the accelerometer data and estimating joint posture and orientation information.
-    \item \textbf{Geometrical Equations:} Geometrical equations for joint estimation, considering relative orientations among the sensors and gravity constraints, have been employed for joint parameter derivation.
-    \item \textbf{Inverse Kinematics:} The theory of inverse kinematics for the refinement of joint orientation estimates, based on anatomical and biomechanical constraints, has been introduced.
-\end{enumerate}
+    \item \textbf{Deep Learning Based Rotation Prediction Models} 
 
-The parallel strategies illustrated above permit a comparative assessment and enhance the robustness of the posture estimation process. The results are assessed based on sensor accuracy, computational ability, and estimation robustness. If inadequate, the system upgrades existing elements, such as optimizing sensor locations or sampling. Once standards are satisfied, data collection and experimentation take place to accomplish a comprehensive joint posture estimation system.
+    Two deep learning–based approaches were explored to estimate the joint rotations. 
+
+For both the approaches AMASS was preferred over DIP-IMU and TotalCapture datasets as there was an increase in diversity regarding the range of motion that was recorded by human beings. In addition, sensor data generation became convenient through the use of the SMPL body model. Moreover, sensor data generation became very convenient since the positions of the sensors were free to choose without dealing with IMU calibration problems.
+
+
+\begin{enumerate}[label=\roman*.]
+    \item \textbf{Hybrid Inverse Kinematics and Deep Learning Sensor Rotation Estimation Model}
+    
+    The suggested technique employs inverse kinematics and deep learning methods to predict the rotations of body joints using sparse accelerometer signals. The training of temporal deep learning models was achieved using artificial acceleration measurements created based on the AMASS dataset to learn the dynamics of the body movements. The entire framework consists of data generation, preprocessing, creating sliding window sequences, predicting rotations using inverse kinematics and deep learning methods, and finally estimating human poses using the SMPL body model. The following flowchart in Figure \ref{fig:Pipeline_of_the_firstDL} illustrates the overall pipeline of the proposed frame-level orientation estimation approach using accelerometer data.
+
+    \begin{figure}[H]
+    \centering
+    \includegraphics[angle=90,origin=c,width=0.78\textwidth,height=0.60\textheight]{Overall Pipeline of the proposed Hybrid Inverse Kinematics and Deep Learning Sensor Rotation Estimation.png}
+    \caption{Overall Pipeline of the proposed Hybrid Inverse Kinematics and Deep Learning Sensor Rotation Estimation}
+    \label{fig:Pipeline_of_the_firstDL}
+    \end{figure}
+
+    \newpage
+
+    To begin with, a sub-set from the large dataset named ACCAD was used to train the model, and since it was performed in our own PCs, only a small dataset was needed for preprocessing and training. 
+
+    The sliding window technique was employed to incorporate the time dependency of human actions through grouping of consecutive measurements from the accelerometer into short sequences, rather than analyzing single frames in isolation. This allowed the deep learning model to learn motion continuity and temporal relationships between movements, improving the accuracy and stability of the predicted body rotations. 
+
+    In this case, a light weight and physics based approach was applied to estimating the pitch and roll angles using gravitational alignment of the acceleration signal, thus resulting in a highly efficient yet very easy to train model. It performed well for joints like the pelvis where gravitational signals proved to be very helpful. However, the major disadvantage with the model was that it failed to perform well due to lack of ability on the part of the accelerometers to detect the yaw angle, thus making it ineffective especially in twist and turn actions, particularly in the ankles and wrists.
+
+    \item \textbf{Sequence-Level Orientation Estimation using Attention-Based Deep Learning }
+    
+    While the physics-based model showed the feasibility of using accelerometer measurements alone for estimating device orientation, there were some issues to be solved in this regard. First, there was a lack of estimation capability for yaw rotation; second, a narrow temporal context was present at a local level; third, estimation is done sensor-wise independently. The goal of the Accelerometer-only IMU Estimation Module (AIEM), which uses deep learning models, is to eliminate the drawbacks of the model using gravity vector alignment algorithm. The AIEM makes inferences about full three-dimensional rotations, including yaw rotation, using only the sequences learned from accelerometer measurements. The following flowchart in Figure \ref{fig:Pipeline_of_the_secondDL} illustrates the overall pipeline of the proposed sequence-level orientation estimation from accelerometer data.
+
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.87\textwidth,
+    height=0.82\textheight,
+    keepaspectratio]{Overall Pipeline of Sequence-Level Orientation Estimation using Attention-Based Deep Learning.png}
+    \caption{Overall Pipeline of Sequence-Level Orientation Estimation using Attention-Based Deep Learning}
+    \label{fig:Pipeline_of_the_secondDL}
+    \end{figure}
+
+Following are the main stages of the AIEM architecture of the above mentioned approach.
+
+\textbf{Temporal Convolutional Network (TCN)}
+
+In the TCN, each of the six accelerometer sensor data is processed independently. Dilated convolutions depending on time are applied. In other words, it means that simultaneously with the analysis of time intervals located close to each other, remote time intervals are also taken into account. As a result, motion characteristics are identified based on the three-dimensional acceleration data, and each output is transformed into a 128-dimensional vector.
+
+\newpage
+
+\textbf{Cross Sensor Attention}
+
+Once the representations from individual sensors have been generated, there is a cross-sensor attention layer wherein all six sensors can communicate between each other. During each time point, the sensor observes the states of the other five sensors and updates its state according to the same. This is due to the real-world relationship between different body parts. For instance, the state of the pelvis affects how the ankle could possibly be oriented.
+
+\vspace{0.3cm}
+
+\textbf{Temporal Self-Attention}
+
+The six sensors' data is flattened into a tensor and then self-attention is applied to the entire temporal dimension. The idea here is that all frames can be considered relative to each other so the pose classification has global context over the entire sequence. This process is especially helpful in resolving ambiguous poses which become clear when considering the entire trajectory of motion.
+
+\vspace{0.3cm}
+
+\textbf{Bi-directional LSTM}
+
+The Bi-directional LSTM model processes inputs in two directions; from left to right (forward direction) and from right to left (backward direction). Both of these models process information to give an output, which makes sure that the output considers information about its past and future states to provide a better orientation estimation of the whole sequence.
+
+\vspace{0.3cm}
+
+\textbf{Rotation Decoder}
+
+The last module uses this high-dimensional vector to generate rotation matrices from six parameters, which requires converting the 512-dimensional vector into rotation matrix space through the Gram-Schmidt orthogonalization method.
+\end{enumerate}
+    \item \textbf{Geometric equations for rotation estimation} 
+     
+    The current investigation has established a mathematical model of studying human arm motion using a two link kinematic model. As opposed to the deep learning algorithm, which relies on heavy training and large datasets, the model utilizes the basic geometric and trigonometric principles. Reachable workspace is calculated by using the theory of spherical shell while Rodrigues' formula is used for calculating the joint positions from the pre-defined angles, in the case of forward kinematics. The motion reconstruction could be carried out in real time by breaking down the gravity measurement from the accelerometer into roll and pitch angles. The following flowchart in the Figure \ref{fig:Pipeline_of_the_mathmodel} shows the architecture of the approach mentioned above.
+    
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.87\textwidth,
+    height=0.95\textheight,
+    keepaspectratio]{Pipeline of Geometric Equations for Rotation Estimation Model.png}
+    \caption{Pipeline of Geometric Equations for Rotation Estimation Model}
+    \label{fig:Pipeline_of_the_mathmodel}
+    \end{figure}
+
+    \textbf{Part 1 - Reachable Workspace}
+
+This part describes the workspace of the arm in terms of a spherical shell, which helps compute the range of reachability of the arm using mathematical constraints to determine the maximum and minimum reachable distances and visualize them as spheres.
+
+\vspace{0.3cm}
+
+\textbf{Part 2 - Forward Kinematics}
+
+This part demonstrates realistic arm movement using joint angles. By applying spherical coordinate systems and the Rodrigues Rotation Formula, the exact 3D coordinates of the joints are computed and animated over 200 frames.
+
+\vspace{0.3cm}
+
+\textbf{Part 3 - IMU Sensors Data Reconstruction}
+
+This part reconstructs motion using accelerometer data obtained from the wrist IMU sensor. The sensor data is filtered using moving average and gravity decomposition algorithms to estimate roll and pitch angles and compute the wrist joint position in 3D space without using machine learning algorithms.
+
+There are some of the advantages offered by this mathematical model. First, no training data is needed to use this model. The amount of computational power needed is also very little. The process remains comprehensible at all times during computations. However, this approach does have certain limitations. It is not possible to compute yaw angles with the help of accelerometers. Fast dynamics rule out any possibility of using gravitational measures in estimating angles. In addition, it uses approximations to get the joint location. More sensors will be needed to construct the entire state space.
+
+\end{enumerate}
 
 \subsubsection{Avatar Generation and Animation}
 In human activity reconstruction, the visualization layer must go beyond basic skeletal overlays to deliver a biologically realistic and metrically precise representation of the individual. Below Figure \ref{fig:avatar_generation_flowchart} shows the flowchart of the avatar generation and animation which we are planning to work on.  A significant limitation identified in current research is the reliance on generic skeletal models that fail to account for individual variations in limb length and body mass.The primary objective of this subsystem is to develop a unified framework that generates a personalized "Digital Twin" and animates it using a high-fidelity skin deformation pipeline. Instead of manual rigging, this research automates the transition from a 2D image to a moving 3D surface through three stages:
@@ -702,6 +796,92 @@ This module defines the inputs required to build the Digital Twin:
     \item \textbf{Kinematic Interface:} The system receives 24×3 axis-angle rotation parameters from the Motion Reconstruction Module.
     \item \textbf{Synchronization:} The avatar initializes in a "Zero Pose" at $t=0$ to align the virtual skeleton and mesh with calibrated sensor orientations.
 \end{enumerate}
+
+\chapter{Results}
+\section{Estimate the joint postures and the orientations }
+
+However, both geometric equation based approach for estimating rotations and Hybrid Inverse Kinematics with Deep Learning method for estimating rotations had some issues including inability of detecting the yaw angle, inability to understand the motion dependency on time, and generation of unrealistically physical motions. Therefore, among all other techniques used in estimating the rotations, the Sequence Level Orientation Estimation technique with attention-based deep learning showed the best accuracy. Consequently, development and testing of the whole model was done using this technique. 
+
+\begin{figure}[H]
+    \centering
+  \includegraphics[width=0.77\textwidth]{Validation Pipeline Using the DIP IMU Data set.png}
+    \caption{Validation Pipeline Using the DIP IMU Data set }
+    \label{fig:Validation Pipeline Using the DIP IMU Data set}
+\end{figure}
+
+Figure \ref{fig:Validation Pipeline Using the DIP IMU Data set} above illustrates  the validation pipeline that was adopted to validate the motion reconstruction techniques introduced using only the accelerometer sensors relying on the DIP-IMU dataset. In this context, the FIP model trained with IMU data, including both accelerometer and gyroscope signals, was selected as the reference technique. Two approaches relying on accelerometer-based signals were evaluated. In the first case, AIEM signals were provided together with pre-trained weights for the FIP model, while, in the latter one, both models were fine-tuned in an end-to-end manner.
+
+The geodesic error for each joint using the two approaches that use only accelerometers has been plotted on the below graph in Figure \ref{fig:Graph of Mean Geodesic Error Per Joint for both Approaches.}. As indicated by the graph above, the darker regions signify higher rotational error. As can be deduced from the graph above, the end-to-end AIEM + FIP fine-tuning approach had much lower errors compared to the approach with frozen pre-trained FIP weights in nearly all joints. Notably, the approach with frozen pre-trained FIP weights exhibited very high rotational error rates in some joints, particularly those on the shoulder, elbow, hip, and knee.
+
+\begin{figure}[H]
+    \centering
+  \includegraphics[width=0.79\textwidth]{Graph of Mean Geodesic Error Per Joint for both Approaches..png}
+    \caption{Graph of Mean Geodesic Error Per Joint for both the Approaches.}
+    \label{fig:Graph of Mean Geodesic Error Per Joint for both Approaches.}
+\end{figure}
+
+Therefore, further development and training were continued using Approach 2, as it achieved higher accuracy and more reliable performance compared to the Approach 1.
+
+As follows from the chart in the Figure \ref{fig:Graph of SIP mean compared to the Number of Runs} below, there was the reduction in SIP(Sparse Inertial Poser (SIP) metric used to evaluate motion reconstruction error). error changes during the various experiments of the proposed approach of sequence-level orientation estimation through attention-based deep learning. Hence, it is possible to see the reduction of SIP error values from the first run, when the model provided the worst results, up to the optimal model. As we can see from this chart, the SIP error of the first experiment was very high and reached 102°. With regard to the following models, there was the decrease of the SIP error up to 30° and 28° correspondingly. The latest run provided us with the mean SIP of 25.9° calculated on 1,321 motion sequences.
+
+\begin{figure}[H]
+    \centering
+  \includegraphics[width=0.79\textwidth]{Graph of SIP mean compared to the Number of Runs.png}
+    \caption{Graph of SIP mean vs the Number of Runs}
+    \label{fig:Graph of SIP mean compared to the Number of Runs}
+\end{figure}
+
+Nevertheless, compared to the FIP model with IMU data of all axes, the model that only uses accelerometer readings demonstrated a larger SIP error (11.5° higher) than the latter one. The reason for this was the absence of the yaw angle and its angular speed.
+
+\begin{table}[H]
+\centering
+\caption{Typical SIP values for different motion categories.}
+\renewcommand{\arraystretch}{2.0}
+
+\begin{tabular}{|>{\raggedright\arraybackslash}p{4.5cm}
+                |>{\centering\arraybackslash}p{3cm}
+                |>{\raggedright\arraybackslash}p{6cm}|}
+\hline
+
+\textbf{Motion Category} &
+\textbf{Typical SIP} &
+\textbf{Why} \\
+\hline
+
+\textbf{Balance recovery, slow walks} &
+\textbf{7--15$^\circ$} &
+Predictable acceleration patterns, low dynamics \\
+\hline
+
+\textbf{Normal walking, gentle gestures} &
+\textbf{15--20$^\circ$} &
+Periodic, learnable motion cycles \\
+\hline
+
+\textbf{Jogging, side-steps, turns} &
+\textbf{20--30$^\circ$} &
+Higher dynamics, some directional ambiguity \\
+\hline
+
+\textbf{Running, jumps, lifts} &
+\textbf{30--40$^\circ$} &
+Strong non-linear accelerations \\
+\hline
+
+\textbf{Circular walks} &
+\textbf{40--60$^\circ$} &
+Continuous rotation -- impossible without gyro \\
+\hline
+
+\textbf{Hard throws, high kicks} &
+\textbf{60--72$^\circ$} &
+Maximum velocity, orientation changes fastest \\
+\hline
+
+\end{tabular}
+\end{table}
+
+The above table gives us more insights into the effects that different motions have on the SIP values. The slow motions, such as balancing and walking, will generate lower SIP values because their motion is periodic in nature and they have almost no dynamics. Walking and gestures will result in smaller SIP errors since their motion patterns are also periodic and known. However, motions that are dynamic in nature like jogging, running, jumping, powerful throw, and spinning will generate higher SIP values since their acceleration is highly non-linear and they also contain a lot of rotations.
 
 \chapter{Timeline and Resource Required}
 \section{Timeline}
