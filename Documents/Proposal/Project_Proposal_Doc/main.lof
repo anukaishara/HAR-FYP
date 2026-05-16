@@ -11,23 +11,30 @@
 \contentsline {figure}{\numberline {2.6}{\ignorespaces Sensor positioning of WWSN and the three axes of accelerometers.}}{11}{figure.caption.8}%
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Evaluation of SMPLify reconstruction performance across varying accuracy percentiles}}{13}{figure.caption.9}%
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Qualitative results of Human Mesh Recovery (HMR) on unconstrained monocular RGB images}}{13}{figure.caption.10}%
-\contentsline {figure}{\numberline {2.9}{\ignorespaces The ROMP One-Stage Regression Architecture for 3D Mesh Recovery}}{14}{figure.caption.12}%
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Decomposition of the SMPL model into shape ($\beta $) and pose ($\theta $) parameters}}{15}{figure.caption.13}%
-\contentsline {figure}{\numberline {2.11}{\ignorespaces Real-time 3D Human Mesh Recovery (HMR) from a single RGB image}}{15}{figure.caption.14}%
-\contentsline {figure}{\numberline {2.12}{\ignorespaces High-resolution surface reconstruction using Pixel-aligned Implicit Functions}}{16}{figure.caption.15}%
-\contentsline {figure}{\numberline {2.13}{\ignorespaces Comparison of joint volume loss in standard Linear Blend Skinning (LBS) vs. the corrected Pose Space Deformation}}{16}{figure.caption.16}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces The ROMP One-Stage Regression Architecture for 3D Mesh Recovery}}{14}{figure.caption.11}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Architectural Overview of WHAM}}{15}{figure.caption.12}%
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Decomposition of the SMPL model into shape ($\beta $) and pose ($\theta $) parameters}}{16}{figure.caption.13}%
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Real-time 3D Human Mesh Recovery (HMR) from a single RGB image}}{16}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.13}{\ignorespaces High-resolution surface reconstruction using Pixel-aligned Implicit Functions}}{17}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.14}{\ignorespaces Comparison of joint volume loss in standard Linear Blend Skinning (LBS) vs. the corrected Pose Space Deformation}}{17}{figure.caption.16}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Block diagram of the proposed methodology }}{20}{figure.caption.21}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Pipeline of the proposed model}}{21}{figure.caption.23}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Overall Pipeline of the proposed Hybrid Inverse Kinematics and Deep Learning Sensor Rotation Estimation}}{22}{figure.caption.24}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Overall Pipeline of Sequence-Level Orientation Estimation using Attention-Based Deep Learning}}{24}{figure.caption.25}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Pipeline of Geometric Equations for Rotation Estimation Model}}{26}{figure.caption.26}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Flowchart of the Avatar Generation and Animation }}{28}{figure.caption.28}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Flowchart of the Validation }}{29}{figure.caption.30}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Block diagram of the proposed methodology }}{21}{figure.caption.21}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Pipeline of the proposed model}}{22}{figure.caption.22}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Overall Pipeline of the proposed Hybrid Inverse Kinematics and Deep Learning Sensor Rotation Estimation}}{23}{figure.caption.23}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Overall Pipeline of Sequence-Level Orientation Estimation using Attention-Based Deep Learning}}{25}{figure.caption.24}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Pipeline of Geometric Equations for Rotation Estimation Model}}{27}{figure.caption.25}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces The standard, front-facing 2D photograph utilized as the raw input for avatar generation.}}{30}{figure.caption.28}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces The neutral master SMPL 3D template prior to biometric deformation.}}{31}{figure.caption.29}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces The finalized, personalized 3D digital twin generated from the 2D input photograph.}}{32}{figure.caption.30}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces The web-based motion viewer interface for visualizing the animated digital twin.}}{33}{figure.caption.31}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Validation Pipeline Using the DIP IMU Data set }}{31}{figure.caption.33}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Graph of Mean Geodesic Error Per Joint for both the Approaches.}}{32}{figure.caption.34}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Graph of SIP mean vs the Number of Runs}}{33}{figure.caption.35}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Validation Pipeline Using the DIP IMU Data set }}{35}{figure.caption.32}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Graph of Mean Geodesic Error Per Joint for both the Approaches.}}{36}{figure.caption.33}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Graph of SIP mean vs the Number of Runs}}{37}{figure.caption.34}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Qualitative comparison of raw video frames versus Stage-1 preprocessed frames}}{39}{figure.caption.36}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Figure 4.1: Temporal Smoothness Comparison. (a) Aggregate metrics. (b) Per-channel temporal jitter }}{40}{figure.caption.37}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Jitter Distribution Boxplot illustrating the suppression of extreme orientational outliers }}{41}{figure.caption.38}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Per-Joint Temporal Jitter in ROMP vs WHAM}}{42}{figure.caption.39}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces TimeLine }}{35}{figure.caption.37}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces TimeLine }}{44}{figure.caption.40}%
 \addvspace {10\p@ }

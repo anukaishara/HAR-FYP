@@ -1,7 +1,7 @@
 \gdef \the@ipfilectr {@-1}
 \acswitchoff 
 \gdef \the@ipfilectr {}
-\contentsline {chapter}{Acronyms}{vii}{chapter*.1}%
+\contentsline {chapter}{Acronyms}{viii}{chapter*.1}%
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Background}{1}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Problem Statement}{3}{section.1.2}%
@@ -15,27 +15,37 @@
 \contentsline {subsection}{\numberline {2.1.2}Developing the Models using Accelerometers to Estimate the Joint Postures and the Orientations}{9}{subsection.2.1.2}%
 \contentsline {subsection}{\numberline {2.1.3}Human Activity Detection Using WWSN and Artificial Intelligence}{11}{subsection.2.1.3}%
 \contentsline {subsection}{\numberline {2.1.4}3D Skeletal Reconstruction using Parametric Pose Angles}{12}{subsection.2.1.4}%
-\contentsline {subsubsection}{ROMP (Regressing Monocular 3D Pose and Shape)}{13}{subsubsection*.11}%
-\contentsline {subsection}{\numberline {2.1.5}3D Skin Generation and Skeletal Binding}{14}{subsection.2.1.5}%
-\contentsline {subsection}{\numberline {2.1.6}Validation for Accelerometer-Based Activity Reconstruction}{16}{subsection.2.1.6}%
-\contentsline {section}{\numberline {2.2}Gaps in Literature}{18}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Developing the Models using Accelerometers to Estimate the Joint Postures and the Orientations }{18}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Parametric Reconstruction and Anatomical Binding}{18}{subsection.2.2.2}%
-\contentsline {paragraph}{Metric Scale and Manual Measurement Ambiguity}{18}{paragraph*.17}%
-\contentsline {paragraph}{Biometric Mismatch and Kinematic Drift}{19}{paragraph*.18}%
-\contentsline {paragraph}{Volume Preservation and Physiological Binding Gaps}{19}{paragraph*.19}%
-\contentsline {chapter}{\numberline {3}Methodology}{20}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Research Design}{20}{section.3.1}%
-\contentsline {subsubsection}{Estimate the joint postures and the orientations}{21}{subsubsection*.22}%
-\contentsline {subsubsection}{Avatar Generation and Animation}{26}{subsubsection*.27}%
-\contentsline {subsubsection}{Validation}{29}{subsubsection*.29}%
-\contentsline {section}{\numberline {3.2}Data Collection}{30}{section.3.2}%
-\contentsline {subsubsection}{Accelerometer Based Sensor Readings Collection}{30}{subsubsection*.31}%
-\contentsline {subsubsection}{Biometric and Kinematic Data Integration}{30}{subsubsection*.32}%
-\contentsline {chapter}{\numberline {4}Results}{31}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Estimate the joint postures and the orientations }{31}{section.4.1}%
-\contentsline {chapter}{\numberline {5}Timeline and Resource Required}{35}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Timeline}{35}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Resource Required}{36}{section.5.2}%
-\contentsline {chapter}{\numberline {6}Conclusion}{37}{chapter.6}%
-\contentsline {chapter}{References}{37}{chapter.6}%
+\contentsline {subsubsection}{\numberline {2.1.4.1}ROMP (Regressing Monocular 3D Pose and Shape)}{13}{subsubsection.2.1.4.1}%
+\contentsline {subsubsection}{\numberline {2.1.4.2}WHAM (World grounded Humans with Accurate Motion)}{14}{subsubsection.2.1.4.2}%
+\contentsline {subsection}{\numberline {2.1.5}3D Skin Generation and Skeletal Binding}{15}{subsection.2.1.5}%
+\contentsline {subsection}{\numberline {2.1.6}Validation for Accelerometer-Based Activity Reconstruction}{17}{subsection.2.1.6}%
+\contentsline {section}{\numberline {2.2}Gaps in Literature}{19}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Developing the Models using Accelerometers to Estimate the Joint Postures and the Orientations }{19}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Parametric Reconstruction and Anatomical Binding}{19}{subsection.2.2.2}%
+\contentsline {paragraph}{Metric Scale and Manual Measurement Ambiguity}{19}{paragraph*.17}%
+\contentsline {paragraph}{Biometric Mismatch and Kinematic Drift}{20}{paragraph*.18}%
+\contentsline {paragraph}{Volume Preservation and Physiological Binding Gaps}{20}{paragraph*.19}%
+\contentsline {chapter}{\numberline {3}Methodology}{21}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Research Design}{21}{section.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.0.1}Estimate the joint postures and the orientations}{22}{subsubsection.3.1.0.1}%
+\contentsline {subsection}{\numberline {3.1.1}Validation}{27}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Avatar Generation and Animation}{29}{subsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.2.1}Digital Twin Initialization}{29}{subsubsection.3.1.2.1}%
+\contentsline {paragraph}{Overview and Objective}{29}{paragraph*.26}%
+\contentsline {paragraph}{Pipeline Architecture and Methodology}{29}{paragraph*.27}%
+\contentsline {subsubsection}{\numberline {3.1.2.2}Kinematic Motion Application}{32}{subsubsection.3.1.2.2}%
+\contentsline {section}{\numberline {3.2}Data Collection}{33}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Accelerometer Based Sensor Readings Collection}{33}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Biometric and Kinematic Data Integration}{33}{subsection.3.2.2}%
+\contentsline {chapter}{\numberline {4}Results}{35}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Estimate the joint postures and the orientations }{35}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Validation - Visual Reconstruction Performance}{38}{subsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.1.1}Preprocessing Enhancement and Subject Isolation}{38}{subsubsection.4.1.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.1.2}Computational Efficiency}{39}{subsubsection.4.1.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.1.3}Temporal Stability and Jitter Reduction }{39}{subsubsection.4.1.1.3}%
+\contentsline {subsubsection}{\numberline {4.1.1.4}Preprocessing Enhancement and Subject Isolation}{41}{subsubsection.4.1.1.4}%
+\contentsline {chapter}{\numberline {5}Timeline and Resource Required}{44}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Timeline}{44}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Resource Required}{45}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Conclusion}{46}{chapter.6}%
+\contentsline {chapter}{References}{46}{chapter.6}%

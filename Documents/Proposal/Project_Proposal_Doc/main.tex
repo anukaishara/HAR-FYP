@@ -11,7 +11,7 @@
 \usepackage{array} % For column definitions in tabularx
 \usepackage{etoolbox} % For \patchcmd
 %% ____Bibliography____%%
-\usepackage[numbers,sort&compress]{natbib}
+\usepackage[numbers]{natbib}
 \usepackage{chapterbib}
 \usepackage[breaklinks]{hyperref} % For clickable links in the document
 %\hypersetup{colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=blue}
@@ -30,6 +30,13 @@
 \makeatother
 
 % Customize table of contents, list of figures, and list of tables
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\titleformat{\paragraph}[block]
+  {\normalfont\normalsize\bfseries}
+  {\theparagraph}
+  {1em}
+  {}
 \renewcommand{\cfttoctitlefont}{\hfill\Large\bfseries}
 \renewcommand{\cftaftertoctitle}{\hfill}
 \renewcommand{\cftloftitlefont}{\hfill\Large\bfseries}
@@ -211,6 +218,191 @@
 \DeclareAcronym{VR}{
   short = VR,
   long  = Virtual Reality
+}
+
+\DeclareAcronym{twod}{
+  short = 2D,
+  long  = Two-Dimensional
+}
+
+\DeclareAcronym{threed}{
+  short = 3D,
+  long  = Three-Dimensional
+}
+
+\DeclareAcronym{fourd}{
+  short = 4D,
+  long  = Four-Dimensional
+}
+
+\DeclareAcronym{ACCAD}{
+  short = ACCAD,
+  long  = Advanced Computing Center for the Arts and Design
+}
+
+\DeclareAcronym{AIEM}{
+  short = AIEM,
+  long  = Accelerometer-only IMU Estimation Module
+}
+
+\DeclareAcronym{CLAHE}{
+  short = CLAHE,
+  long  = Contrast Limited Adaptive Histogram Equalization
+}
+
+\DeclareAcronym{CNN}{
+  short = CNN,
+  long  = Convolutional Neural Network
+}
+
+\DeclareAcronym{DIPIMU}{
+  short = DIP-IMU,
+  long  = Deep Inertial Poser Inertial Measurement Unit Dataset
+}
+
+\DeclareAcronym{DPVO}{
+  short = DPVO,
+  long  = Deep Patch Visual Odometry
+}
+
+\DeclareAcronym{ESRGAN}{
+  short = ESRGAN,
+  long  = Enhanced Super-Resolution Generative Adversarial Network
+}
+
+\DeclareAcronym{F1}{
+  short = F1,
+  long  = F1 Score
+}
+
+\DeclareAcronym{GLB}{
+  short = GLB,
+  long  = GL Transmission Format Binary
+}
+
+\DeclareAcronym{glTF}{
+  short = glTF,
+  long  = GL Transmission Format
+}
+
+\DeclareAcronym{HMR2}{
+  short = HMR2,
+  long  = Human Mesh Recovery 2
+}
+
+\DeclareAcronym{HPC}{
+  short = HPC,
+  long  = High Performance Computing
+}
+
+\DeclareAcronym{KNN}{
+  short = KNN,
+  long  = K-Nearest Neighbors
+}
+
+\DeclareAcronym{LAB}{
+  short = LAB,
+  long  = Lightness A B Color Space
+}
+
+\DeclareAcronym{LSTM}{
+  short = LSTM,
+  long  = Long Short-Term Memory
+}
+
+\DeclareAcronym{MVN}{
+  short = MVN,
+  long  = Xsens MVN Motion Capture System
+}
+
+\DeclareAcronym{MuJoCo}{
+  short = MuJoCo,
+  long  = Multi-Joint Dynamics with Contact
+}
+
+\DeclareAcronym{NeuralPhysCap}{
+  short = NeuralPhysCap,
+  long  = Neural Physics-based Motion Capture
+}
+
+\DeclareAcronym{PC}{
+  short = PC,
+  long  = Personal Computer
+}
+
+\DeclareAcronym{PhysCap}{
+  short = PhysCap,
+  long  = Physics-based Motion Capture
+}
+
+\DeclareAcronym{PPMotion}{
+  short = PP-Motion,
+  long  = Physical-Perceptual Motion
+}
+
+\DeclareAcronym{RealESRGAN}{
+  short = Real-ESRGAN,
+  long  = Real-World Enhanced Super-Resolution Generative Adversarial Network
+}
+
+\DeclareAcronym{ResNet}{
+  short = ResNet,
+  long  = Residual Network
+}
+
+\DeclareAcronym{RFC}{
+  short = RFC,
+  long  = Random Forest Classifier
+}
+
+\DeclareAcronym{RTX}{
+  short = RTX,
+  long  = NVIDIA RTX Graphics Platform
+}
+
+\DeclareAcronym{SLAM}{
+  short = SLAM,
+  long  = Simultaneous Localization and Mapping
+}
+
+\DeclareAcronym{SVM}{
+  short = SVM,
+  long  = Support Vector Machine
+}
+
+\DeclareAcronym{TCN}{
+  short = TCN,
+  long  = Temporal Convolutional Network
+}
+
+\DeclareAcronym{TotalCapture}{
+  short = TotalCapture,
+  long  = TotalCapture Dataset
+}
+
+\DeclareAcronym{UV}{
+  short = UV,
+  long  = U-V Texture Coordinate
+}
+
+\DeclareAcronym{ViTDet}{
+  short = ViTDet,
+  long  = Vision Transformer Detector
+}
+
+\DeclareAcronym{ViTPose}{
+  short = ViTPose,
+  long  = Vision Transformer Pose Estimation
+}
+
+\DeclareAcronym{WHAM}{
+  short = WHAM,
+  long  = World-grounded Humans with Accurate Motion
+}
+
+\DeclareAcronym{WWSN}{
+  short = WWSN,
+  long  = Wearable Wireless Sensor Network
 }
 
 
@@ -481,6 +673,26 @@ While SMPL provides the container for the data, ROMP is the engine used to extra
     \label{fig:romp_architecture}
 \end{figure}
 
+\subsubsection{WHAM (World grounded Humans with Accurate Motion)}
+Regarding the limitations of frame-by-frame regression algorithms like ROMP, progress in the field of pose estimation using optical cameras has been achieved through temporal modeling and world-referencing. One example of such an algorithm is the algorithm called WHAM [\cite{wham_cvpr2024}], which attempts to estimate human motion within the 3D world by referring to a common global coordinate system.
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Temporal Sequence Modeling via Dual-Fusion } \\
+    This model varies from the basic methodology of regression in stages or frames since it uses dual fusion. First, the WHAM model identifies a series of 2D keypoint features through an already trained detection method. The feature vector is then inputted to the motion encoder for learning the continuous motion of the human body. To prevent the loss of dense information from sparse keypoints that might be experienced in the first step, WHAM merges the motion information that is learned from the motion encoder with dense features obtained directly from video frames.
+
+    \item \textbf{World Grounding and SLAM Integration } \\
+    One of the issues associated with motion tracking using a single camera is the problem of camera-object coupling, which involves the effect of the camera movement on the perception of the object's movements. With regard to the WHAM framework, the angular velocity of the camera is utilized using an algorithm called the DPVO algorithm, which represents the visual SLAM algorithm. The angular velocity is input into the global trajectory decoder together with human body movement parameters, leading to the differentiation between the two in a mathematical sense.
+    
+  \end{enumerate}
+  The following diagram in \ref{fig:wham_arch}, shows the architectural overview of the WHAM, demonstrating the 2D keypoint detection, dense visual features, and SLAM-derived camera angular velocity for global trajectory estimation.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{wham_arch.png}
+    \caption[Architectural Overview of WHAM]{Architectural Overview of WHAM [\cite{wham_cvpr2024}]}
+    \label{fig:wham_arch}
+\end{figure}
+
+
 \subsection{3D Skin Generation and Skeletal Binding}
 Human digitization has evolved from primitive skeletal models to complex, mesh-based representations containing both identity and motion. Current research in 3D skin generation and skeletal binding is dominated by three major technological pillars: 
 
@@ -737,49 +949,171 @@ There are some of the advantages offered by this mathematical model. First, no t
 
 \end{enumerate}
 
-\subsubsection{Avatar Generation and Animation}
-In human activity reconstruction, the visualization layer must go beyond basic skeletal overlays to deliver a biologically realistic and metrically precise representation of the individual. Below Figure \ref{fig:avatar_generation_flowchart} shows the flowchart of the avatar generation and animation which we are planning to work on.  A significant limitation identified in current research is the reliance on generic skeletal models that fail to account for individual variations in limb length and body mass.The primary objective of this subsystem is to develop a unified framework that generates a personalized "Digital Twin" and animates it using a high-fidelity skin deformation pipeline. Instead of manual rigging, this research automates the transition from a 2D image to a moving 3D surface through three stages:
-\\
+
+\subsection{Validation}
+
+For the purpose of carrying out an effective evaluation of the correctness of the orientation determination models using the accelerometers, there has been set up a visual verification method. The objective in this case is to determine reference joint theta values using the visual data as a benchmark for comparison against the sensor-based estimates.
+
 \begin{enumerate}
-    \item \textbf{Skeletal Reconstruction:} The system investigates Deep Regression methods (e.g., ROMP or HMR) to automatically predict skeletal parameters ($\theta$) and shape coefficients ($\beta$) from a single monocular image in a single pass.
-    \newpage
-    \item \textbf{Surface Modelling and Binding:} The avatar utilizes the Skinned Multi-Person Linear (SMPL) model, defining the surface with 6,890 vertices attached to a skeletal structure using Linear Blend Skinning (LBS).
-    \item \textbf{Animation Pipeline:} A real-time processing loop receives a standardized Pose Vector ($\theta$) composed of axis-angle rotation parameters. This vector drives the LBS engine to apply rotations to the scaled skeleton with a target latency of less than 15ms .
+    \item \textbf{The Baseline Model (ROMP)}
+
+    The initial experiments using visual reconstruction were conducted using ROMP, which is a single stage regressor for obtaining multiple poses of a person in three-dimensional space. ROMP has been used in this experiment, where it was run on videos, and the obtained pose from the SMPL model was saved in a format consisting of 72 axis angles for each frame, along with the global orientation angle for the entire body. Since there is no temporal modeling done while extracting the theta sequence, it can be presumed that there would be temporal jitter in the estimations of the pose.
+
+    \item \textbf{Upgraded Architecture (WHAM)}
+
+    To overcome the drawbacks that exist in the independent frame regression framework, the validation back-end was modified to include the WHAM framework. The WHAM framework has two critical advantages compared to the initial framework:
+
+    \begin{enumerate}
+        \item \textbf{Temporal Sequence Modeling}
+
+        By implementing temporal sequencing using WHAM, the ability to predict motions across frames can be utilized; therefore, ensuring kinematic consistency and eliminating the jitters that come from a one-step regressor.
+
+        \item \textbf{World Grounding via SLAM}
+
+        Because of the addition of DPVO, which assists in tracking the camera's position, WHAM can differentiate between camera movement and human motion.
+    \end{enumerate}
+
+    \item \textbf{Robust Vision Preprocessing}
+
+    The performance of WHAM is limited by the precision of the 2D keypoint detections that the underlying detector model (ViTPose) produces. Given that 2D skeleton detection models are highly susceptible to issues like motion blur, low lighting conditions, and camera shake, it was decided to incorporate a GPU-based preprocessing stage into the model.
+
+    \begin{enumerate}
+        \item \textbf{Ego-Motion Compensation and Subject Isolation}
+
+        An ego-motion correction step has been added to avoid motion blur due to camera motion. It uses the optical flow algorithm known as Lucas-Kanade method[\cite{lucas1981iterative}] for identifying features in the background and estimating the affine transformation matrix, which mathematically cancels out any motion done by the camera. After stabilization, a maximum pooled motion saliency mask is generated to differentiate the human from the background.
+
+        \item \textbf{Adaptive Illumination and Local Contrast Recovery}
+
+        In the case where data collection is carried out under uncontrolled conditions, the effect of non-uniform lighting will be present, resulting in low-quality gradient cues for Vision Transformers. To counteract the problem, the pipeline adopts the step of transforming individual images into LAB color space. In this process, CLAHE[\cite{zuiderveld1994contrast}] is applied to only the L-channel. Contrast improvement is done on a localized basis, thus making the object more visible in dark regions without having the negative effects of histogram equalization.
+
+        \item \textbf{Edge-Preserving, Denoising and Landmark Sharpening}
+
+        Noise reduction is the final stage of preprocessing that does not distort the borders of the figure. In particular, Guided Image Filter [\cite{he2013guided}] is performed first to eliminate high frequency noise from the camera sensor but retain strong boundaries of the body shape. Second, straight away after filtering, unsharp masking is used to highlight visible features of the body contours -- namely, fingers, wrists, and ankles. This is especially vital since such high-frequency areas are needed as keypoint nodes in the ViTPose[\cite{xu2022vitpose}] detector’s kinematic tree.
+    \end{enumerate}
+
 \end{enumerate}
+
+\subsection{Avatar Generation and Animation}
+
+\subsubsection{Digital Twin Initialization}
+
+\paragraph{Overview and Objective}
+\noindent One of the key aims of the Human Activity Reconstruction project is the visualization of the kinematically predicted data from the sensors using a personalized digital twin. To accomplish this, a specially-designed software pipeline was developed that generates a fully textured, accurate 3D avatar from a single uncalibrated, front-on 2D photograph.
+
+\noindent This component is used to define the static visual asset (body mesh and texture) which will be dynamically animated later by the kinematics engine. The generation pipeline is automated and runs through six steps, all of which use cutting edge computer vision and deep learning frameworks.
+
+
+
+
+
+
+\paragraph{Pipeline Architecture and Methodology}
+
+\begin{enumerate}
+
+    \item \textbf{Stage 1: Image Enhancement and Pre-processing}
+
+    The output 3D texture quality, as well as the accuracy of the biometric estimates made by the neural network, is largely determined by the resolution of the original photograph. The pipeline automatically determines the size of the image. When a short edge of the input image is identified as being less than a certain threshold (512 pixels), the system sends the image to a Real-ESRGAN (Enhanced Super-Resolution Generative Adversarial Network) \cite{wang2021realesrgan}. A 4$\times$ upscaling algorithm designed to retain fine edges and facial details, ensuring that the resulting pixel grid for the feature extraction process has a high density. The raw baseline input to this enhancement process is the typical front-facing photograph shown in Figure~\ref{fig:avatar_input}.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{The standard, front-facing 2D photograph.png}
+    \caption{The standard, front-facing 2D photograph utilized as the raw input for avatar generation.}
+    \label{fig:avatar_input}
+\end{figure}
+
+    \item \textbf{Stage 2: Person Detection and Body Shape Estimation}
+
+    The system utilizes the HMR2 (Human Mesh Recovery) architecture \cite{goel2023humans4d} in the ``4D-Humans'' project to mathematically model the body shape of the subject.
+
+    \begin{enumerate}
+        \item \textbf{Detection}
+
+        A ViTDet (Vision Transformer Detector) \cite{li2022vitdet} is used to perform a scan of the image and find the human image in the image and mark it out in a precise bounding box.
+
+        \item \textbf{Estimation}
+
+        The processed image is fed to the HMR2 transformer model that predicts the parameters of the cropped image into the SMPL body model (Skinned Multi-Person Linear) \cite{loper2015smpl}. The pipeline specifically leverages 10 $\beta$ (beta) parameters, every one of which is connected to distinct body features, for example, height, shoulder width, or limb length.
+    \end{enumerate}
+
+    \item \textbf{Stage 3: SMPL Mesh Deformation}
+
+    The master SMPL body template is deformed to fit the proportions of the user through the extracted beta parameters. In neutral form, the SMPL template has 6,890 vertices and 13,776 triangles. The beta parameters modify the template mesh in a particular direction, for instance, making the body taller, wider or changing the limbs' lengths. Each beta value is applied to the template, and the resulting mesh is unique to the body shape of the person in the picture. The neutral state of this master template (before this subject-specific deformation) is shown in Figure~\ref{fig:smpl_template}.
+
+    \item \textbf{Stage 4: Person Segmentation}
+
+    The subject needs to be separated from its physical context before photographic colors can be mapped to the 3D model. The pipeline includes a deep learning background removal module to produce a very accurate binary alpha mask. This step helps eliminate any non-human pixels from the 2D image, which could otherwise be incorrectly baked onto the avatar's clothes or skin.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{SMPL 3D template.png}
+    \caption{The neutral master SMPL 3D template prior to biometric deformation.}
+    \label{fig:smpl_template}
+\end{figure}
+
+    \item \textbf{Stage 5: UV Unwrapping and Texture Baking}
+
+    This stage creates a high-resolution 2048$\times$2048 texture atlas by carefully composing the user's specific skin and clothing onto the 3D mesh, which is carried out in four steps:
+
+    \begin{enumerate}
+        \item \textbf{Parameterization}
+
+        The xatlas library unwraps the 3D surface into a non-overlapping 2D UV coordinate space.
+
+        \item \textbf{Color Projection}
+
+        RGB values are extracted from the photograph and directly projected on top of the same area of the UV atlas.
+
+        \item \textbf{Obscured Surface Processing}
+
+        Front-facing surface elements are displayed with all of the original colours of the picture as rendered in the photo; side-facing and hidden surface elements seamlessly fade to a ``Body Color,'' which is an average derived from the image.
+
+        \item \textbf{Refinement}
+
+        Final post processing filters remove boundary gaps and surface noise, leaving a clean, photo realistic texture.
+    \end{enumerate}
+
+    \item \textbf{Stage 6: GLB Assembly and Export}
+
+    The 3D mesh is exported as a personalized and textured mesh in 3D format (GLB). GLB is a binary version of the glTF (GL Transmission Format) standard, a popular 3D file format that packages the geometry (3D mesh), UV coordinates, texture atlas, and material properties into a single, self-contained file. The format allows it to be played on a standard 3D viewer, a game engine (e.g. Unity, Unreal Engine), or a web-based rendering library (e.g. Three.js) and therefore can be integrated into the planned web part of the system. The finalized, personalized digital twin resulting from this complete generation pipeline is displayed in Figure~\ref{fig:final_avatar}, demonstrating the successful application of the deformed mesh and baked texture atlas.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{The finalized, personalized 3D digital twin.png}
+    \caption{The finalized, personalized 3D digital twin generated from the 2D input photograph.}
+    \label{fig:final_avatar}
+\end{figure}
+
+
+\end{enumerate}
+
+\subsubsection{Kinematic Motion Application}
+
+\begin{enumerate}
+
+    \item \textbf{Data Integration and Preprocessing}
+
+    The kinematic motion application employs an interactive visualization engine built with React, Three.js, and React Three Fiber that runs on the web browser. The initial step involved in the animation is loading asynchronously the raw data files of the motion, which include the shape parameters (\texttt{betas.json}), joint angles (\texttt{thetas.csv}), and world translations (\texttt{trans.csv}). During the process of parsing the 72-column joint angles data, a moving average filter of a 2-window size is employed. It is important to smooth out the data at this point to avoid any floating point precision errors due to serialization.
+
+    \item \textbf{3D Pose Reconstruction and Quaternion Conversion}
+
+    The time series obtained are used for building the animation using the SMPL skeletal structure. The 72-dimensional vector comprises the orientations (axis-angle representation) of 24 joints in the skeleton. The axis-angle representation is automatically converted to Quaternions while performing the 3D rendering process iteratively (the calculations take place in the \texttt{useFrame} function). The reason behind this conversion is related to avoiding problems that might occur because of the Euler angle rotation representation. Namely, Euler angle suffers from gimbal lock problems and is highly sensitive to the sequence of rotation angles. Finally, the absolute translation position is scaled to ensure that its difference with respect to the $t = 0$ time is removed. As a result, the digital twin always starts at the origin of the 3D world independently of the person's position relative to the camera.
+
+    \item \textbf{Temporal Playback Engine}
+
+    To make sure that the timing of the generated digital motion matches the actual physical motion in real life, the playback engine is kept separate from the rendering process, which is hardware-dependent. While the 3D scene render is executed continuously using the \texttt{requestAnimationFrame} loop, the time status of the avatar is handled by the interval timer, which runs at 30 frames per second. Even though the JavaScript loop in the browser cannot provide millisecond accuracy, the architecture makes it possible to prevent the acceleration of the movement due to a fast client refresh rate.
+
+\end{enumerate}
+
+\noindent A visual representation of the implemented web interface is provided in Figure~\ref{fig:motion_viewer}.
+
 \begin{figure}[H]
     \centering
-    \includegraphics[
-    width=0.87\textwidth,
-    height=0.6\textheight,
-    keepaspectratio]{3D Skeletal Reconstruction.png}
-    \caption{Flowchart of the Avatar Generation and Animation }
-  \label{fig:avatar_generation_flowchart}
+    \includegraphics[width=0.9\textwidth]{motion_viewer.png}
+    \caption{The web-based motion viewer interface for visualizing the animated digital twin.}
+    \label{fig:motion_viewer}
 \end{figure}
-\newpage
-\subsubsection{Validation}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth,
-    height=0.9\textheight,
-    keepaspectratio
-    ]{Validation.png}
-    \caption{Flowchart of the Validation }
-  \label{fig:validation_flowchart}
-\end{figure}
-In human action reconstruction, an ideal system is expected to follow a hierarchical framework comprising four distinct levels as shown in the above Figure \ref{fig:validation_flowchart}. However, to date, no existing model fully satisfies all four levels of this framework. The primary objective of our methodology is not to validate or improve an existing model, but rather to develop a new model that addresses the identified limitations in current approaches.
-
-Therefore, instead of validating our system against an ideal but unavailable benchmark, we validate our proposed model through comparative analysis with well-established and validated models that are currently used in real-world applications. Based on our literature review, we identified several relevant models for this purpose, including
-
-\begin{enumerate}[leftmargin=*]
-    \item PP-Motion\cite{zhao2025ppmotion}
-    \item EveryWear\cite{zhu2025human}
-    \item Step2Motion\cite{ponton2025step2motion}
-\end{enumerate}
-Among these, we select a representative model that employs computer vision and image processing techniques and compare its performance with our proposed model. The comparison focuses on key evaluation criteria such as accuracy, consistency, plausibility, and reliability. This comparative validation allows us to assess the effectiveness of our approach while positioning our model within the context of existing, validated systems.
 
 \section{Data Collection}
 
-\subsubsection{Accelerometer Based Sensor Readings Collection}
+\subsection{Accelerometer Based Sensor Readings Collection}
 \begin{enumerate}[leftmargin=*]
     \item Five 3-axis accelerometer sensors are placed on key body segments: both wrists, both ankles, and the torso.
     \item Each sensor measures linear acceleration along three orthogonal axes (x, y, z), including both gravitational and motion-induced acceleration.
@@ -788,15 +1122,13 @@ Among these, we select a representative model that employs computer vision and i
     \item Predefined activity sets ensure consistency across data samples.
 \end{enumerate}
 
-\subsubsection{Biometric and Kinematic Data Integration}
+\subsection{Biometric and Kinematic Data Integration}
 This module defines the inputs required to build the Digital Twin:
 \begin{enumerate}[leftmargin=*]
-    \item \textbf{Visual Calibration Data:} A single high-resolution monocular RGB image of the subject in a neutral A-pose, resized to $512 \times 512$ pixels.
-    \item \textbf{Manual Biometric Metadata:} The subject’s true height ($H_{real}$) is used for Height-Anchor Scaling to transform unit-less bone lengths into centimeter measurements.
-    \item \textbf{Kinematic Interface:} The system receives 24×3 axis-angle rotation parameters from the Motion Reconstruction Module.
-    \item \textbf{Synchronization:} The avatar initializes in a "Zero Pose" at $t=0$ to align the virtual skeleton and mesh with calibrated sensor orientations.
+    \item \textbf{Visual Calibration Data:} A single high-resolution monocular RGB image is captured with the subject standing in a neutral A-pose to minimize self-occlusion. The pipeline makes use of a dynamic resolution check to deliver high fidelity feature landmarks to the neural network. The shortest edge of the image must be at least 512 pixels in length or will be processed through a Real-ESRGAN network to enhance it by 4× with AI.
+    \item \textbf{Manual Biometric Metadata:} The only manual metadata required by the pipeline is the subject’s gender. This classification is a primary routing control to use the correct baseline SMPL template (Male or Female). It sets the proper biological topology, meaning that the base skeletal structure, shoulder-to-hip ratios and physiological fat distributions are inherent and correct prior to any further shape deformation by the neural network.
+    \item \textbf{Kinematic Interface:} The system acts as the receiving unit for the dynamic movements pipe line. It requires a 72 dimensional orientation vector (consisting of 24 distinct skeletal joints in axis angle form) as its input per frame. Currently, it has been configured in a manner such that it takes in the true kinematic data that is acquired through the optical pipeline of WHAM. This is done in order to assess the performance of the digital twin and figure out the exact data structure for the sensor pipeline component.
 \end{enumerate}
-
 \chapter{Results}
 \section{Estimate the joint postures and the orientations }
 
@@ -882,6 +1214,67 @@ Maximum velocity, orientation changes fastest \\
 \end{table}
 
 The above table gives us more insights into the effects that different motions have on the SIP values. The slow motions, such as balancing and walking, will generate lower SIP values because their motion is periodic in nature and they have almost no dynamics. Walking and gestures will result in smaller SIP errors since their motion patterns are also periodic and known. However, motions that are dynamic in nature like jogging, running, jumping, powerful throw, and spinning will generate higher SIP values since their acceleration is highly non-linear and they also contain a lot of rotations.
+
+
+\subsection{Validation - Visual Reconstruction Performance}
+The shift from a frame-based regressor method (ROMP)[\cite{sun2021monocular}] to a sequential modeling technique (WHAM)[\cite{wham_cvpr2024}] yielded significant improvements in efficiency, stability, and consistency. In order to evaluate the improvements achieved by the model, a performance assessment experiment was conducted with a standardized sprinting sequence, which consisted of 371 frames.
+
+\subsubsection{Preprocessing Enhancement and Subject Isolation}
+Prior to evaluating the deep learning libraries, the qualitative analysis of the custom vision pre-processing pipeline was performed using the benchmark video sequence 'sprint' with 371 images. It was done to make sure that the custom vision pipeline will restore localized contrast and kinematic landmarks without adding any background noise.
+
+\begin{figure}[H]
+    \centering
+  \includegraphics[width=\textwidth,height=0.82\textheight,keepaspectratio]{sprint_raw_vs_preprocessed.png}
+    \caption{Qualitative comparison of raw video frames versus Stage-1 preprocessed frames}
+    \label{fig:preprocessing}
+
+\end{figure}
+
+The first issue with the original footage is that it is an underexposed shot with low contrast, as can be seen in Figure \ref{fig:preprocessing}. In the preprocessed image sequences, it is visible that there is an obvious increase in the size of the area in relation to the object. This proves that the ego-motion stabilization using the Lucas-Kanade approach worked out well, which allowed applying the mask of saliency to extract the figure of the running person, which, in its turn, facilitated applying the correction only to the needed areas.
+
+\subsubsection{Computational Efficiency}
+Processing of the 371 frame video sequence was conducted using the standard ROMP architecture that operates locally with a throughput of 6.38 Frames Per Second (FPS). The above mentioned throughput rate is inadequate for conducting sensor validation at high frequency intervals. In contrast, processing the exact inference using the WHAM architecture that employs the RTX 5090 HPC back-end server was completed within 0.84 seconds with a throughput of 441.14 FPS.
+
+\subsubsection{Temporal Stability and Jitter Reduction }
+The major disadvantage associated with the monocular baseline approach was that it involved a high occurrence of temporal jitter. It was measured based on the absolute difference between the successive frame orientations (deltatheta ), for all 72 orientation channels (24 joints in axis-angle form).
+
+\begin{figure}[H]
+    \centering
+  \includegraphics[width=\textwidth,height=0.82\textheight,keepaspectratio]{comparison_5_summary_dashboard.png}
+    \caption{Figure 4.1: Temporal Smoothness Comparison. (a) Aggregate metrics. (b) Per-channel temporal jitter }
+    \label{fig:comparison5}
+
+\end{figure}
+
+As demonstrated in Figure \ref{fig:comparison5}a above, WHAM outperformed ROMP in all stability metrics. Specifically, the mean temporal jitter metric dropped by more than 56 \%/ from 0.0628 radians per frame for ROMP to 0.0274 radians per frame for WHAM. Additionally, WHAM drastically reduced the impact of outlier values. The largest individual jitter value recorded in ROMP was 0.7425 radians, which resulted in too much teleportation of limbs. However, in WHAM, the highest individual jitter value was just 0.1477 radians.
+\newline
+The assessment of the jitter based on per-channel analysis assists in identifying the exact regions where the model breaks down when performing highly dynamic motion. In the SMPL hierarchy model, the Pelvis serves as the root joint, and any error in rotation at the root gets compounded throughout the hierarchy. Looking at Figure \ref{fig:comparison5}b above, one can notice that the ROMP hierarchy suffers catastrophic failures in relation to the Pelvis, with a jitter that is too high for visual perception (0.743 radians). Also, high articulating joints during the sprint stance (left knee and right knee) suffer critical failures leading to limb teleportation.
+
+\begin{figure}[H]
+    \centering
+  \includegraphics[width=0.77\textwidth]{comparison_4_jitter_boxplot.png}
+    \caption{Jitter Distribution Boxplot illustrating the suppression of extreme orientational outliers }
+    \label{fig:comparison4}
+
+\end{figure}
+
+The error distribution for WHAM, as can be seen in Figure \ref{fig:comparison4}, displays that the error distribution for WHAM has a narrow interquartile range without any outliers; however, since ROMP is independent of any frame of reference, its error distribution is unpredictable.
+
+\subsubsection{Preprocessing Enhancement and Subject Isolation}
+According to joint analysis of jitter, there exists one particular area of failure of the traditional method that is corrected by WHAM.
+
+\begin{figure}[H]
+    \centering
+  \includegraphics[width=\textwidth,height=0.82\textheight,keepaspectratio]{comparison_1_jitter_per_joint.png}
+    \caption{Per-Joint Temporal Jitter in ROMP vs WHAM}
+    \label{fig:comparison1}
+\end{figure}
+
+SMPL model kinematics uses the joint named Pelvis as the root joint. For the baseline approach, a mistake made in the root joint leads to exponential amplification of jitter in all other joints in the kinematic chain. As we can see from Figure \ref{fig:comparison1}, the ROMP technique suffers from great instability in the root joint (the value of jitter equals 0.5 radians). Such problems with instability in the root joint are responsible for global movement instability in early experiments; however, due to temporal and SLAM world grounding, WHAM reaches near-zero root joint jitter level (0.02 radians).
+\\
+Therefore, WHAM allows creating a ground truth for joint angle estimation.
+
+
 
 \chapter{Timeline and Resource Required}
 \section{Timeline}
