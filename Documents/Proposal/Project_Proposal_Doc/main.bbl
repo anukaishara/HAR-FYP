@@ -33,7 +33,7 @@ S.~Gunawardena, P.~Amarasingha, S.~Gunawardhana, and S.~Sabaragamuwa,
 \newblock Preprint on ResearchGate.
 
 \bibitem{loper2015smpl}
-M.~Loper, N.~Mahmood, J.~Romero, G.~Pons-Moll, and M.~J. Black, ``Smpl: A
+M.~Loper, N.~Mahmood, J.~Romero, G.~Pons-Moll, and M.~J. Black, ``{SMPL}: A
   skinned multi-person linear model,'' {\em ACM Transactions on Graphics
   (TOG)}, vol.~34, no.~6, pp.~1--16, 2015.
 
@@ -47,6 +47,12 @@ Y.~Sun, Q.~Bao, W.~Liu, W.~Gao, Y.~Fu, M.~Chen, and T.~Mei, ``Monocular,
   one-stage, regression of multiple 3d people,'' in {\em Proceedings of the
   IEEE/CVF International Conference on Computer Vision (ICCV)},
   pp.~11179--11188, 2021.
+
+\bibitem{wham_cvpr2024}
+S.~Jung, J.~Sun, M.~Kim, J.-S. Park, J.~Park, and K.~M. Lee, ``Wham:
+  Reconstructing world-grounded humans with pose and shape from video,'' in
+  {\em Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, pp.~1--15, 2024.
 
 \bibitem{saito2019pifu}
 S.~Saito, Z.~Huang, R.~Natsume, S.~Morishima, A.~Kanazawa, and H.~Li, ``Pifu:
@@ -79,5 +85,42 @@ J.~L. Ponton, E.~Alvarado, L.~G. Foo, N.~Pelechano, C.~Andujar, and
 P.~Molloy, Y.~Zhou, M.~Habermann, and C.~Theobalt, ``The impact of
   anthropometric scaling on inertial motion capture accuracy,'' {\em Journal of
   Biomechanics}, vol.~152, p.~111571, 2023.
+
+\bibitem{lucas1981iterative}
+B.~D. Lucas and T.~Kanade, ``An iterative image registration technique with an
+  application to stereo vision,'' in {\em Proceedings of the 7th International
+  Joint Conference on Artificial Intelligence (IJCAI)}, vol.~2, pp.~674--679,
+  1981.
+
+\bibitem{zuiderveld1994contrast}
+K.~Zuiderveld, ``Contrast limited adaptive histogram equalization,'' in {\em
+  Graphics Gems IV}, pp.~474--485, Academic Press Professional, Inc., 1994.
+
+\bibitem{he2013guided}
+K.~He, J.~Sun, and X.~Tang, ``Guided image filtering,'' {\em IEEE Transactions
+  on Pattern Analysis and Machine Intelligence}, vol.~35, no.~6,
+  pp.~1397--1409, 2013.
+
+\bibitem{xu2022vitpose}
+Y.~Xu, J.~Zhang, Q.~Zhang, and D.~Tao, ``{ViTPose}: Simple vision transformer
+  baselines for human pose estimation,'' in {\em Advances in Neural Information
+  Processing Systems (NeurIPS)}, vol.~35, pp.~38571--38584, 2022.
+
+\bibitem{wang2021realesrgan}
+X.~Wang, L.~Xie, C.~Dong, and Y.~Shan, ``{Real-ESRGAN}: Training real-world
+  blind super-resolution with pure synthetic data,'' in {\em Proceedings of the
+  IEEE/CVF International Conference on Computer Vision (ICCV)}, pp.~1905--1914,
+  2021.
+
+\bibitem{goel2023humans4d}
+S.~Goel, G.~Pavlakos, J.~Rajasegaran, A.~Kanazawa, and J.~Malik, ``Humans in
+  {4D}: Reconstructing and tracking humans with transformers,'' in {\em
+  Proceedings of the IEEE/CVF International Conference on Computer Vision
+  (ICCV)}, pp.~14983--14994, 2023.
+
+\bibitem{li2022vitdet}
+Y.~Li, H.~Mao, R.~Girshick, and K.~He, ``Exploring plain vision transformer
+  backbones for object detection,'' in {\em European Conference on Computer
+  Vision (ECCV)}, pp.~280--296, Springer, 2022.
 
 \end{thebibliography}

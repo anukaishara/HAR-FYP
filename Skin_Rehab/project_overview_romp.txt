@@ -1,0 +1,382 @@
+Skin_Rehab - ROMP/SMPL Project Overview
+=======================================
+
+Purpose
+-------
+Skin_Rehab is a Python prototype for building and visualizing a human-motion
+digital twin from ROMP outputs. It uses ROMP/simple-romp to estimate SMPL pose
+and shape from an image or video, smplx to generate SMPL meshes, and trimesh to
+export or play the resulting avatar.
+
+The current codebase is optimized around two workflows:
+1. Creating a personalized SMPL avatar from a single image.
+2. Extracting video motion into 72-value SMPL pose sequences and playing them
+   smoothly through precomputed mesh frames.
+
+
+Repository Contents
+-------------------
+- inputs/
+  - Source media used by the scripts.
+  - Current files include internet_test.jpg and sprint.mp4.
+
+- outputs/
+  - Generated ROMP results, frame dumps, textures, OBJ/GLB meshes, profile data,
+    and CSV exports.
+  - This folder contains many generated sprint_theta PNG/NPZ/JPG files. Treat
+    them as runtime artifacts rather than hand-authored source.
+
+- outputs/sprint_theta/
+  - Video-processing outputs for inputs/sprint.mp4.
+  - Includes per-frame ROMP .npz/.png files, video_results.npz, extracted frame
+    images, sprint_sequence_raw.csv, sprint_beta_sequence.csv, and runner_shape.glb.
+
+- scripts/
+  - Environment setup, GPU checks, Hugging Face login, NPZ inspection, and
+    compatibility patches.
+
+- .vscode/settings.json
+  - Local IDE interpreter configuration for the skin_rehab conda environment.
+
+
+Core Data Types
+---------------
+- SMPL pose / thetas
+  - 72 floats per frame.
+  - Layout: global_orient(3) + body_pose(69).
+  - ROMP may expose this data under keys such as pose, smpl_thetas, thetas, or
+    params, depending on mode and version.
+
+- SMPL shape / betas
+  - 10 floats describing body identity/shape.
+  - The main profile generator writes them to outputs/user_profile.npy.
+  - Some older animation/export scripts still expect user_profile.npy in the repo
+    root; see "Known Ambiguities and Fixes" below.
+
+- ROMP .npz results
+  - Usually contain a results key.
+  - results may be a dict, a list, or a nested dict keyed by image/frame names.
+  - Several scripts use defensive extraction logic because ROMP output structure
+    changes between image/video modes and simple-romp versions.
+
+- Camera parameters
+  - ROMP may provide cam or cam_trans.
+  - Texture/export scripts use this weak-perspective-style camera vector to
+    project SMPL vertices into image space for UV mapping.
+
+
+Environment and External Assets
+-------------------------------
+Primary dependencies:
+- Python 3.10
+- PyTorch with CUDA
+- simple-romp / ROMP command-line executable
+- smplx
+- opencv-python
+- numpy, scipy, pandas
+- trimesh
+- pyglet<2
+
+Optional texture-generation dependencies:
+- diffusers
+- transformers
+- accelerate
+- safetensors
+- StableDiffusionInpaintPipeline using runwayml/stable-diffusion-inpainting
+
+Setup helper:
+- scripts/setup_env.bat installs the main packages and applies a chumpy patch.
+
+Machine-specific external paths currently hard-coded in scripts:
+- C:\Users\Anuka\.conda\envs\skin_rehab\Scripts\romp.exe
+- C:\Users\Anuka\.romp
+- C:\Users\Anuka\model_data
+- One fallback path in create_digital_twin.py points to an older SkinRehab_Project
+  model_data folder.
+
+To move this project to another machine, these paths should be replaced with a
+shared config file or environment variables.
+
+
+Main Workflows
+--------------
+
+1. Create a user profile from a still image
+   Script: create_digital_twin.py
+
+   Input:
+   - inputs/internet_test.jpg
+
+   Output:
+   - outputs/user_profile.npy
+
+   What it does:
+   - Runs ROMP in image mode with --calc_smpl.
+   - Loads the newest .npz file in outputs/.
+   - Extracts betas from smpl_betas or betas, falling back to zeros if missing.
+   - Attempts to estimate scale from detected joints and USER_HEIGHT_CM.
+   - Saves a profile dict containing betas, scale, and height_cm.
+
+   Note:
+   - The scale estimate depends on ROMP joint availability and indexing, so treat
+     it as an approximate calibration value.
+
+
+2. Generate a textured digital twin OBJ
+   Preferred script: run_ai_twin.py
+   Related scripts: extract_skin.py, generate_textured_mesh.py, live_debug.py
+
+   Main inputs:
+   - inputs/internet_test.jpg
+   - outputs/user_profile.npy
+   - outputs/*internet_test*.npz, or the newest outputs/*.npz fallback
+
+   Main output:
+   - outputs/Digital_Twin_AI_Version.obj
+
+   What run_ai_twin.py does:
+   - Loads betas from outputs/user_profile.npy.
+   - Extracts camera and pose from ROMP results.
+   - Builds an SMPL mesh with smplx.
+   - Creates a 512x512 texture canvas.
+   - Places the source image on the left half of the texture.
+   - Optionally inpaints the right half as a back-view texture with Stable
+     Diffusion.
+   - Splits UV mapping between front and back vertices using vertex normals.
+   - Rotates the mesh 180 degrees around X and lifts it by 1.05 on Y.
+   - Exports a textured OBJ.
+
+   Related script differences:
+   - extract_skin.py is a similar low-VRAM AI texture pipeline and exports
+     outputs/Digital_Twin_NextLevel.obj.
+   - generate_textured_mesh.py is a simpler photo-texture exporter, but expects
+     user_profile.npy in the repo root and writes Final_Digital_Twin.obj in the
+     repo root.
+   - live_debug.py exports four OBJ variants into outputs/ to diagnose orientation
+     and UV flip issues; it also expects user_profile.npy in the repo root.
+
+
+3. Extract pose/theta sequences from video
+   Script: theta_video.py
+
+   Input:
+   - inputs/sprint.mp4
+
+   Output directory:
+   - outputs/sprint_theta/
+
+   Intended CSV output:
+   - outputs/sprint_theta/sprint_sequence.csv
+
+   What it does:
+   - Runs ROMP in video mode with --calc_smpl.
+   - Finds a matching .npz output in outputs/sprint_theta/.
+   - Extracts the first 72 pose values per frame.
+   - Saves them as a headerless CSV.
+
+   Important note:
+   - The repository currently also contains sprint_sequence_raw.csv, generated by
+     extract_from_video_results.py. That diagnostic file is not the exact output
+     path configured in theta_video.py.
+
+
+4. Diagnose video extraction and export raw theta CSV
+   Script: extract_from_video_results.py
+
+   Inputs:
+   - inputs/sprint.mp4
+   - outputs/sprint_theta/video_results.npz
+
+   Output:
+   - outputs/sprint_theta/sprint_sequence_raw.csv
+
+   What it does:
+   - Reads the real video FPS/frame count with OpenCV.
+   - Reads ROMP-captured frame count from video_results.npz.
+   - Exports raw 72-value pose rows.
+   - Reports whether ROMP missed frames.
+
+
+5. Extract video betas and generate an average-shape mesh
+   Scripts:
+   - extract_betas.py
+   - generate_beta_mesh.py
+
+   Outputs:
+   - outputs/sprint_theta/sprint_beta_sequence.csv
+   - outputs/sprint_theta/runner_shape.glb
+
+   What they do:
+   - extract_betas.py reads video_results.npz and extracts 10 SMPL betas per
+     frame.
+   - generate_beta_mesh.py averages those betas and exports a neutral-pose GLB.
+
+
+6. Play SMPL animation smoothly
+   Primary scripts:
+   - render.py
+   - animation.py
+
+   Demo script:
+   - animate_twin.py
+
+   Strategy:
+   - Recursively scan ROMP .npz structures for arrays shaped (72,) or (N, 72).
+   - Detect whether the data is a video block or many single-frame arrays.
+   - Stitch single-frame candidates when needed.
+   - Interpolate about 30 FPS source data to 60 FPS.
+   - Precompute all SMPL vertices before playback.
+   - During playback, update mesh vertices instead of running SMPL every frame.
+
+   Differences:
+   - render.py targets TARGET_FPS=60 with a timing loop.
+   - animation.py interpolates by INTERPOLATION_FACTOR=2 and runs the viewer as
+     fast as the callback allows.
+   - animate_twin.py is a simple synthetic waving demo and calculates SMPL inside
+     the callback, so it is slower and mainly useful for sanity checking.
+
+   Important:
+   - render.py and animation.py currently expect PROFILE_FILE='user_profile.npy'
+     in the repo root, while create_digital_twin.py writes outputs/user_profile.npy.
+
+
+Utility Scripts
+---------------
+- debug_view.py
+  - Loads outputs/user_profile.npy and opens a neutral silver/clay SMPL mesh in
+    the trimesh viewer.
+
+- scripts/inspect_npz.py
+  - Prints the root keys and visible result structure of the newest outputs/*.npz.
+
+- scripts/check_gpu.py
+  - Prints Python executable, PyTorch version, CUDA availability, and GPU name.
+
+- scripts/gpu_detect.py
+  - Creates a pyglet/OpenGL context and reports the renderer/vendor. Useful for
+    checking whether trimesh playback is using the RTX GPU or integrated graphics.
+
+- scripts/login_hf.py
+  - Logs into Hugging Face for model downloads used by diffusers.
+
+- scripts/patch_chumpy.py and scripts/patch_fix.py
+  - Compatibility patches for chumpy with newer Python/NumPy behavior.
+
+- scripts/project_notes.md
+  - Earlier architecture notes focused on 60 FPS playback, Universal Hunter pose
+    extraction, interpolation, pre-baking, and GPU selection.
+
+
+Generated Artifact Index
+------------------------
+Current generated outputs include:
+- outputs/user_profile.npy
+- outputs/internet_test.npz
+- outputs/internet_test.png
+- outputs/AI_TEXTURE_DEBUG.png
+- outputs/Digital_Twin_AI_Version.obj
+- outputs/material.mtl, outputs/material_0.png, outputs/material_0.jpeg
+- outputs/sprint_theta/video_results.npz
+- outputs/sprint_theta/sprint_sequence_raw.csv
+- outputs/sprint_theta/sprint_beta_sequence.csv
+- outputs/sprint_theta/runner_shape.glb
+- many outputs/sprint_theta/*.npz and *.png frame artifacts
+- many outputs/sprint_theta/sprint_frames/*.jpg extracted frame artifacts
+
+These files are useful for local experiments but are mostly reproducible build
+artifacts. If this repository is prepared for sharing, consider excluding large
+generated outputs via .gitignore and documenting how to regenerate them.
+
+
+Known Ambiguities and Fixes
+---------------------------
+1. Profile path mismatch
+   - Writes profile: create_digital_twin.py -> outputs/user_profile.npy.
+   - Reads outputs/user_profile.npy: run_ai_twin.py, extract_skin.py,
+     debug_view.py, animate_twin.py.
+   - Reads root user_profile.npy: render.py, animation.py,
+     generate_textured_mesh.py, live_debug.py.
+   - Practical fix: either copy outputs/user_profile.npy to user_profile.npy
+     before running those older scripts, or update all PROFILE_FILE constants to
+     outputs/user_profile.npy.
+
+2. Model path mismatch
+   - ROMP model files are usually referenced under C:\Users\Anuka\.romp.
+   - smplx model files are usually referenced under C:\Users\Anuka\model_data.
+   - Practical fix: centralize model paths in one config module.
+
+3. ROMP result schema variance
+   - Some scripts expect flat result dictionaries.
+   - Some scripts expect nested dictionaries keyed by image/frame names.
+   - The animation scripts are the most defensive because they recursively scan
+     for 72-value pose arrays.
+
+4. CSV naming mismatch
+   - theta_video.py writes sprint_sequence.csv.
+   - extract_from_video_results.py writes sprint_sequence_raw.csv.
+   - Existing repo artifact is sprint_sequence_raw.csv.
+
+5. Generated outputs mixed with source
+   - outputs/ contains large generated data. This can make project scanning noisy.
+   - A future cleanup should add a .gitignore policy for frames, intermediate NPZ
+     files, generated OBJ/GLB assets, and debug textures.
+
+6. Stable Diffusion requirements
+   - AI inpainting is optional. If diffusers is unavailable or the model fails to
+     load, run_ai_twin.py skips or falls back depending on the script.
+   - The inpainting model may need internet access the first time it is downloaded
+     and may require Hugging Face setup depending on the local cache/state.
+
+7. Viewer/GPU behavior
+   - PyTorch CUDA and OpenGL/trimesh renderer GPU choice are separate concerns.
+   - Use scripts/check_gpu.py for PyTorch CUDA.
+   - Use scripts/gpu_detect.py for the active OpenGL renderer.
+
+
+Recommended Happy Path
+----------------------
+1. Put a front-facing-ish user image at inputs/internet_test.jpg.
+2. Run create_digital_twin.py to create outputs/user_profile.npy and a ROMP .npz.
+3. Run debug_view.py to verify the neutral avatar shape.
+4. Run run_ai_twin.py to export outputs/Digital_Twin_AI_Version.obj.
+5. For video motion, put inputs/sprint.mp4 in place and run theta_video.py.
+6. Run extract_from_video_results.py if you need frame-count diagnostics and
+   sprint_sequence_raw.csv.
+7. Before running render.py or animation.py, resolve the profile path mismatch by
+   copying the profile to user_profile.npy or editing those scripts.
+
+
+Source File Index
+-----------------
+Top-level source:
+- animate_twin.py
+- animation.py
+- create_digital_twin.py
+- debug_view.py
+- extract_betas.py
+- extract_from_video_results.py
+- extract_skin.py
+- generate_beta_mesh.py
+- generate_textured_mesh.py
+- live_debug.py
+- render.py
+- run_ai_twin.py
+- theta_video.py
+
+Script utilities:
+- scripts/check_gpu.py
+- scripts/gpu_detect.py
+- scripts/inspect_npz.py
+- scripts/login_hf.py
+- scripts/patch_chumpy.py
+- scripts/patch_fix.py
+- scripts/project_notes.md
+- scripts/setup_env.bat
+
+
+Provenance
+----------
+This overview was updated by scanning the current repository source files,
+utility scripts, project notes, inputs, and generated output structure. It
+separates hand-authored source from generated artifacts and calls out mismatches
+that affect actual script execution.
